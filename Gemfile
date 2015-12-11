@@ -37,7 +37,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'travis'
-  gem 'jasmine-rails'
+  gem 'jasmine'
 end
 
 group :development do
