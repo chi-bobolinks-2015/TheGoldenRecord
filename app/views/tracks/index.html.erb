@@ -1,5 +1,16 @@
 <div class="container">
-  <div class="sidebar fl-l debug">Some words</div>
+  <div class="sidebar fl-l debug">
+    <ul>
+      <% @categories.each do |category| %>
+        <li><%= category.name %></li>
+          <ul>
+            <% category.tracks.each do |track| %>
+              <li><%= track.title %></li>
+            <% end %>
+          </ul>
+      <% end %>
+    </ul>
+  </div>
   <div class="mix debug fl-l">
     <div class="track-divs debug">
       <div class="row">
@@ -26,3 +37,4 @@
     </div>
   </div>
 </div>
+
