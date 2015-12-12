@@ -1,29 +1,8 @@
-Index = function() {
-}
+$(document).ready(function(event){
+  var activeMix = startMixer();
+  setUserEvents(activeMix);
 
-Index.prototype.build = function() {
-  this.sidebar()
-}
-
-Index.prototype.sidebar = function() {
-  var request = $.ajax({
-    method: 'GET',
-    url: '/categories'
-    // dataType: 'json'
-  })
-  request.done(function(response){
-    console.log(response)
-  })
-  // For each category create a div.
-  // For every div create hidden divs (tracks).
-}
-
-
-Index.prototype.mixer = function() {
-
-}
-
-Index.prototype.controller = function() {
-
-}
+  loadSound(activeMix, 5, 1)
+  loadSound(activeMix, 6, 2)
+})
 
