@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require wad.min
+//= require underscore-min
 //= require_tree .
