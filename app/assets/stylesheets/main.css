@@ -8,13 +8,18 @@
 }
 
 .cell {
-  padding: 2em;
+  padding: 4em;
 }
 
 .fl-l {
   float: left;
 }
 
+.active {
+  background-color: rgba(252,150,99, 1)
+}
 
-
+.paused {
+    background-color: rgba(252,150,99, .7)
+}
 

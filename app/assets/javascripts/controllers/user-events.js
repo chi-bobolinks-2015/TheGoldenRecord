@@ -1,30 +1,31 @@
 function setUserEvents(mix){
-  pauseMix(mix);
   startAndStopTrack(mix)
+  pauseMix(mix);
 };
 
 function returnDivs() {
-   return $('li')
+   return $('div.cell')
   };
 
 function startAndStopTrack(mix) {
+
   // ON CLICK - PLAY AND STOP
   returnDivs().on('click', function(e) {
     e.preventDefault();
 
-    var $listItem   = $(this)
-    var soundId = $listItem.attr("id")
+    var $targetDiv   = $(this)
+    var soundId = $targetDiv.attr("id")
 
-    $listItem.find("a").toggleClass('active');
+    $targetDiv.toggleClass('active');
 
-    if($listItem.find("a").hasClass('active')){
+    if($targetDiv.hasClass('active')){
       // IF HTML HAS CLASS "ACTIVE", PLAY SOUND
-      targetSound = _.find(mix.wads, function(wad) { return wad.label === Number(soundId) })
+      var targetSound = _.find(mix.wads, function(wad) { return wad.label === Number(soundId) })
       targetSound.play();
       // targetSound.addEventListener("complete", changeColor) -- this is for making sounds that have stopped remove class "active"
     }else{
       //IF HTML DOESN'T HAVE CLASS "ACTIVE", STOP SOUND
-      targetSound = _.find(mix.wads, function(wad) { return wad.label === Number(soundId) })
+      var targetSound = _.find(mix.wads, function(wad) { return wad.label === Number(soundId) })
       targetSound.stop();
     };
   });
@@ -32,19 +33,23 @@ function startAndStopTrack(mix) {
 
 
 function pauseMix(mix) {
-  returnDivs().on('keyup', function(e) {
+  // console.log( "running pause");
+ $(window).on('keyup', function(e) {
+  // console.log( "In Keyup");
+
     e.preventDefault();
     if(e.keyCode == 32) {
 
       if(Wad.audioContext.state === "suspended"){
         // IF AUDIO HAS STATE PAUSED: TRUE, RESUME SOUND
-        console.log("Paused: TRUE; Resume Sound")
-
+        $('div.active').removeClass('paused')
+        console.log("Paused: TRUE; Resuming Sound")
         Wad.audioContext.resume();
 
       }else{
         // IF AUDIO HAS STATE PAUSED: FALSE, SUSPEND SOUND
-        console.log("Paused: FALSE; Play Sound")
+        $('div.active').addClass('paused')
+        console.log("Paused: FALSE; Suspending Sound")
         Wad.audioContext.suspend();
       };
     };
