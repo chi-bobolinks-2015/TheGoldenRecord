@@ -3,8 +3,8 @@
   <div class="mix debug fl-l">
     <div class="track-divs debug">
       <div class="row">
-        <div id="1" class="cell border debug">1</div>
-        <div id="2" class="cell border debug">2</div>
+        <div id="1" class="cell border debug on-deck">1</div>
+        <div id="2" class="cell border debug" >2</div>
       </div>
       <div class="row">
         <div id="3" class="cell border debug">3</div>
@@ -15,6 +15,14 @@
         <div id="6" class="cell border debug">6</div>
       </div>
     </div>
-    <div class="controller">Controller</div>
+    <div class="controller">
+      Control Panel
+        <p> Volume </p>
+        <div id = "volume-slider" style="width:260px; margin:15px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+          <div id= "volume-level" class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="width: 60%;"></div>
+          <span id = "volume-button"class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 60%;"></span>
+        </div>
+       </div>
+    </div>
   </div>
 </div>

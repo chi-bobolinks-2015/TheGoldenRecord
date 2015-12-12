@@ -1,6 +1,8 @@
 function setUserEvents(mix){
   startAndStopTrack(mix)
   pauseMix(mix);
+  changeTrackVolume(mix);
+  moveSlider();
 };
 
 function returnDivs() {
@@ -56,8 +58,40 @@ function pauseMix(mix) {
   });
 }
 
+function moveSlider(){
+  $(window).load(function(event){
+    $("#volume-slider").slider({
+    value: 60,
+    orientation: "horizontal",
+    range: "min",
+    animate: true
+    });
+  });
+}
 
+function changeTrackVolume(mix) {
+  $(window).on("keyup", function(event) {
+    event.preventDefault();
 
+    var $targetDiv   = $("div.on-deck")
+    var soundId = $targetDiv.attr("id")
+
+    var targetSound = _.find(mix.wads, function(wad) { return wad.label === Number(soundId) })
+
+    if(event.keyCode == 38 && targetSound.volume < 4) {
+      // increase volume
+      console.log("Increase Volume")
+      // targetSound.setVolume(targetSound.volume + .5)
+      targetSound.defaultVolume = 4
+      Wad.nodes.push
+    } else if (event.keyCode == 40 && targetSound.volume > 1) {
+      // decrease volume
+      console.log("Decrease Volume")
+      targetSound.setVolume(targetSound.volume - .5)
+    }
+
+  });
+}
 
 // ON DRAG -LOAD AND REMOVE FILES FROM MIXER
 function addToMixer(){
@@ -67,6 +101,9 @@ function addToMixer(){
 
 function addToDeck(){
 // when dragged to deck, enable effects
+// only one item on Deck at a time
+// if there is a track there already
+// replace it
 };
 
 
@@ -75,30 +112,11 @@ function addToDeck(){
 
 
 
-
-
-
-
-// function loadSound() {
-//   createjs.Sound.registerSounds(sounds, assetPath);
-// }
-
-// function changeColor(sound) {
+function changeColor(sound) {
 //    var link = sound.currentTarget.src;
 //    var sound = sounds.filter( function(el){return assetPath + el.src == link});
 //     $("#" + sound[0].id).find("a").removeClass('clicked');
-//   }
-
-//
-
-// function stopSound(soundID) {
-//   createjs.Sound.stop(soundID);
-// }
-
-// $(document).ready(function(){
-//   loadSound();
-//   setMouseEvents();
-// });
+}
 
 
 

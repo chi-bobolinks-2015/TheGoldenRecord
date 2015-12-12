@@ -1,0 +1,19 @@
+#player {
+    width: 350px;
+    height: 50px;
+    position: relative;
+    margin: 0 auto;
+    top: 150px;
+    background: url('http://iviewsource.com/exercises/audioslider/images/volume-background.png') no-repeat left top;
+}
+
+#volume {
+    position: absolute;
+    left: 24px;
+    margin: 0 auto;
+    height:15px;
+    width: 300px;
+    background: url('http://iviewsource.com/exercises/audioslider/images/volume-empty.png') no-repeat left top;
+  border: none;
+  outline: none;
+}
