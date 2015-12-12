@@ -1,7 +1,5 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Category.create(name: "NASA", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/NASA_logo.svg/1237px-NASA_logo.svg.png")
+Category.create(name: "Music", img: "http://www.i2clipart.com/cliparts/8/8/c/a/clipart-bass-clef-256x256-88ca.png")
+
+Track.create(title: "Space Rain", artist: "Jeff Spacely", description: "A one of a kind recording of a storm in space. You may think it sounds a lot like an earth storm, but that's really just your opinion.", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Birds%2C+Hyena%2C+Elephant.wav", length: nil, composer: nil)
+Track.create(title: "Musical Elephants", artist: "Jeff Courwin", description: "A one of a kind recording of an elephant singing. You may think it sounds a lot like an elephant proper, but that's really just your opinion.", category_id: 2, url: "https://s3.amazonaws.com/the-golden-record/Birds%2C+Hyena%2C+Elephant.wav", length: nil, composer: nil)
