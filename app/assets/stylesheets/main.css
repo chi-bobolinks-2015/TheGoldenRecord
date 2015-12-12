@@ -1,3 +1,7 @@
+.debug {
+  border: 1px dashed blue;
+}
+
 .row {
   display: flex;
   justify-content: space-around;
@@ -6,3 +10,11 @@
 .cell {
   padding: 2em;
 }
+
+.fl-l {
+  float: left;
+}
+
+
+
+
