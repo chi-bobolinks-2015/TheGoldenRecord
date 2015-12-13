@@ -119,10 +119,10 @@ function changeTrackVolume(mix) {
 function removeFromMixer(trackId) {
   $(".cell").on("click", ".boxclose", function() {
     var cell = $(this).parent();
-    // cell.removeClass("on-deck");
     sounds = _.reject(sounds, function(sound){
       return sound.id === trackId;
     });
+    cell.removeClass("on-deck");
     $(cell.children("p")).remove();
     $(cell.children("img")).remove();
     $(cell.children(".boxclose")).remove();
