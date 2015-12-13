@@ -60,6 +60,7 @@ function pauseMix(mix) {
 
 function moveSlider(){
   $(window).load(function(event){
+    console.log("Inside of move slider")
     $("#volume-slider").slider({
     value: 60,
     orientation: "horizontal",
