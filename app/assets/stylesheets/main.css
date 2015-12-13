@@ -27,3 +27,5 @@ li {
 /*Atomic styles*/
 .clear { clear: both; }
 .fl-l { float: left; }
+.bcg-day { background-color: blue; }
+
