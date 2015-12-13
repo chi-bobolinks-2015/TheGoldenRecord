@@ -21,6 +21,7 @@ function dropTrack(mix){
       loadSound(mix, trackId, divId);
       loadImage(image, $(this));
       draggableImage();
+      removeFromMixer(trackId);
       addToDeck();
     }
   });
@@ -115,6 +116,18 @@ function changeTrackVolume(mix) {
   });
 }
 
+function removeFromMixer(trackId) {
+  $(".cell").on("click", ".boxclose", function() {
+    var cell = $(this).parent();
+    // cell.removeClass("on-deck");
+    sounds = _.reject(sounds, function(sound){
+      return sound.id === trackId;
+    });
+    $(cell.children("p")).remove();
+    $(cell.children("img")).remove();
+    $(cell.children(".boxclose")).remove();
+  });
+}
 // ON DRAG -LOAD AND REMOVE FILES FROM MIXER
 function addToMixer(){
 // when dragged to mixer, load sound and assign to div
