@@ -5,7 +5,7 @@
         <li><%= category.name %></li>
           <ul>
             <% category.tracks.each do |track| %>
-              <li><%= track.title %></li>
+              <li class="draggableTrack"><%= track.title %></li>
             <% end %>
           </ul>
       <% end %>
