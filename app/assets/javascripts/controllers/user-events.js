@@ -1,8 +1,10 @@
 function setUserEvents(mix){
   startAndStopTrack(mix)
   pauseMix(mix);
-  changeTrackVolume(mix);
   dropTrack(mix);
+
+  //Put in deck user event file
+  changeTrackVolume(mix);
   moveSlider();
 };
 
@@ -17,7 +19,10 @@ function dropTrack(mix){
       var trackAdded = {src: draggable.attr("url"), id: trackId, name: draggable.html()}
       sounds.push(trackAdded);
       loadSound(mix, trackId, divId);
-      loadImage(image, $(this))
+      loadImage(image, $(this));
+      draggableImage();
+      removeFromMixer(trackId);
+      addToDeck();
     }
   });
 }
@@ -111,6 +116,18 @@ function changeTrackVolume(mix) {
   });
 }
 
+function removeFromMixer(trackId) {
+  $(".cell").on("click", ".boxclose", function() {
+    var cell = $(this).parent();
+    sounds = _.reject(sounds, function(sound){
+      return sound.id === trackId;
+    });
+    cell.removeClass("on-deck");
+    $(cell.children("p")).remove();
+    $(cell.children("img")).remove();
+    $(cell.children(".boxclose")).remove();
+  });
+}
 // ON DRAG -LOAD AND REMOVE FILES FROM MIXER
 function addToMixer(){
 // when dragged to mixer, load sound and assign to div
