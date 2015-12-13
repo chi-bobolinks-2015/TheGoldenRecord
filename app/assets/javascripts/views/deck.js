@@ -1,7 +1,7 @@
 function addToDeck(){
   $(".deck").droppable({
     drop: function(event, ui) {
-      console.log("dropped");
+      ui.draggable.parent().toggleClass("on-deck");
     }
   });
 }
