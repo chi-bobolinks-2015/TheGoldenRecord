@@ -24,6 +24,9 @@
   background-color: rgba(200,150,99, .1)
 }
 
+li {
+  list-style: none;
+}
 /*Atomic styles*/
 .clear { clear: both; }
 .fl-l { float: left; }
