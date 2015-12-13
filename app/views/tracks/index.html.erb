@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="sidebar fl-l debug">
+  <div class="sidebar col-lg-2 debug">
     <ul>
       <% @categories.each do |category| %>
         <li><%= category.name %></li>
@@ -11,7 +11,7 @@
       <% end %>
     </ul>
   </div>
-  <div class="mix debug fl-l">
+  <div class="mix debug fl-l col-lg-10">
     <div class="track-divs debug">
       <div class="row">
         <div id="1" class="cell border debug on-deck">1</div>
@@ -27,13 +27,16 @@
       </div>
     </div>
 
-      <div class="controller">
-        Control Panel
+    <div class="controller clear debug">
+      <button class="btn btn-primary" data-toggle="collapse" data-target="#content">Click</button>
+      <div class="well">
+        <div class="collapse" id="content">
           <p> Volume </p>
           <div id = "volume-slider" style="width:260px; margin:15px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
             <div id= "volume-level" class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="left: 60%;"></div>
             <span id = "volume-button"class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 60%;"></span>
           </div>
+        </div>
       </div>
 
     </div>
