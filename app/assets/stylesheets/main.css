@@ -11,10 +11,6 @@
   padding: 4em;
 }
 
-.fl-l {
-  float: left;
-}
-
 .active {
   background-color: rgba(252,150,99, 1)
 }
@@ -27,3 +23,7 @@
 .on-deck {
   background-color: rgba(200,150,99, .1)
 }
+
+/*Atomic styles*/
+.clear { clear: both; }
+.fl-l { float: left; }
