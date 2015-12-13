@@ -7,7 +7,11 @@ function startMixer(){
 
 function loadSound(mix, trackId, divId) {
   //var tracktoAdd =  eventually this will look up track from server based on id
-  var trackSource = _.find(sounds, function(sound) { return sound.id === trackId })
+  console.log(sounds)
+  var trackSource = _.find(sounds, function(sound) {
+    console.log(sound.id);
+    return sound.id === trackId
+  });
 
     var trackToAdd = new Wad({
       source: trackSource.src,
@@ -26,8 +30,8 @@ function loadSound(mix, trackId, divId) {
 }
 
 var sounds = [
-    {src: "<%= asset_path('fire.wav') %>", id: 1, name: "Fire"},
-    {src: "<%= asset_path('forest.wav') %>", id: 2, name: "Forest"},
+    {src: "<%= asset_path('fire.wav') %>", id: 11, name: "Fire"},
+    {src: "<%= asset_path('forest.wav') %>", id: 12, name: "Forest"},
     {src: "<%= asset_path('lightning.wav') %>", id: 3, name: "Lightning"},
     {src: "<%= asset_path('nightime.wav') %>", id: 4, name: "Nighttime"} ,
     {src: "<%= asset_path('beach.wav') %>", id: 5, name: "Beach"} ,

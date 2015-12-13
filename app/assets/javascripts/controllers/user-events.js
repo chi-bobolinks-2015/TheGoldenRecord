@@ -2,8 +2,23 @@ function setUserEvents(mix){
   startAndStopTrack(mix)
   pauseMix(mix);
   changeTrackVolume(mix);
+  dropTrack(mix);
   moveSlider();
 };
+
+function dropTrack(mix){
+  $(".cell").droppable({
+    drop: function(event, ui) {
+      var draggable = ui.draggable.clone();
+      console.log("The track with " + draggable.attr("url") + "  ---- " + draggable.attr("id"));
+      var trackAdded = {src: draggable.attr("url"), id: draggable.attr("id"), name: draggable.html()}
+      sounds.push(trackAdded);
+      var trackId = Number(draggable.attr("id"));
+      var divId = Number($(this).attr("id"));
+      loadSound(mix, trackId, divId);
+    }
+  });
+}
 
 function returnDivs() {
    return $('div.cell')
