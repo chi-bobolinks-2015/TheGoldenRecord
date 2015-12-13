@@ -12,10 +12,13 @@ function dropTrack(mix){
       var draggable = ui.draggable.clone();
       // console.log("The track with " + draggable.attr("url") + "  ---- " + draggable.attr("id"));
       var trackId = Number(draggable.attr("id"));
+      var image = draggable.attr("image");
+      console.log(image);
       var divId = Number($(this).attr("id"));
       var trackAdded = {src: draggable.attr("url"), id: trackId, name: draggable.html()}
       sounds.push(trackAdded);
       loadSound(mix, trackId, divId);
+      loadImage(image, $(this))
     }
   });
 }
