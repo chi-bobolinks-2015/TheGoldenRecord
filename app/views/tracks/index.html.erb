@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="sidebar col-lg-2 debug">
+  <div class="sidebar fl-l col-lg-2 debug">
     <ul>
       <% @categories.each do |category| %>
         <li><%= category.name %></li>
           <ul>
             <% category.tracks.each do |track| %>
-              <li><%= track.title %></li>
+              <li class="draggableTrack" url="<%= track.url %>" id="<%= track.id %>" image="<%= category.img %>"><%= track.title %></li>
             <% end %>
           </ul>
       <% end %>
@@ -27,7 +27,7 @@
       </div>
     </div>
 
-      <div class="controller clear debug">Controller</div>
+      <div class="controlPanel col-lg-10 debug">
         Control Panel
           <p> Volume </p>
           <div id = "volume-slider" style="width:260px; margin:15px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">

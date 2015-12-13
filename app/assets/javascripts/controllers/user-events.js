@@ -2,8 +2,25 @@ function setUserEvents(mix){
   startAndStopTrack(mix)
   pauseMix(mix);
   changeTrackVolume(mix);
+  dropTrack(mix);
   moveSlider();
 };
+
+function dropTrack(mix){
+  $(".cell").droppable({
+    drop: function(event, ui) {
+      var draggable = ui.draggable.clone();
+      // console.log("The track with " + draggable.attr("url") + "  ---- " + draggable.attr("id"));
+      var trackId = Number(draggable.attr("id"));
+      var image = draggable.attr("image");
+      var divId = Number($(this).attr("id"));
+      var trackAdded = {src: draggable.attr("url"), id: trackId, name: draggable.html()}
+      sounds.push(trackAdded);
+      loadSound(mix, trackId, divId);
+      loadImage(image, $(this))
+    }
+  });
+}
 
 function returnDivs() {
    return $('div.cell')
