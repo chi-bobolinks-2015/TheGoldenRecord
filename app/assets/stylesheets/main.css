@@ -2,10 +2,6 @@
   border: 1px dashed blue;
 }
 
-li {
-  list-style: none;
-}
-
 .row {
   display: flex;
   justify-content: space-around;
@@ -13,6 +9,10 @@ li {
 
 .cell {
   padding: 4em;
+}
+
+.fl-l {
+  float: left;
 }
 
 .active {
@@ -24,7 +24,6 @@ li {
 }
 
 
-/*Atomic styles*/
-.clear { clear: both; }
-.fl-l { float: left; }
-
+.on-deck {
+  background-color: rgba(200,150,99, .1)
+}
