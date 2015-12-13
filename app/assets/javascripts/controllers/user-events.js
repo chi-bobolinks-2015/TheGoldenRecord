@@ -1,8 +1,10 @@
 function setUserEvents(mix){
   startAndStopTrack(mix)
   pauseMix(mix);
-  changeTrackVolume(mix);
   dropTrack(mix);
+
+  //Put in deck user event file
+  changeTrackVolume(mix);
   moveSlider();
 };
 
@@ -17,7 +19,9 @@ function dropTrack(mix){
       var trackAdded = {src: draggable.attr("url"), id: trackId, name: draggable.html()}
       sounds.push(trackAdded);
       loadSound(mix, trackId, divId);
-      loadImage(image, $(this))
+      loadImage(image, $(this));
+      draggableImage();
+      addToDeck();
     }
   });
 }

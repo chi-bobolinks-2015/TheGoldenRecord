@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   $(".draggableTrack").draggable({
-    containment: "document",
+    containment: ".container",
     cursor: "move",
     snap: ".cell",
     helper: "clone"
