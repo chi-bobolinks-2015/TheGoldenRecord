@@ -1,6 +1,6 @@
 function setUserEvents(mix){
   startAndStopTrack(mix)
-  // pauseMix(mix);
+  globalPause(mix);
 
   dropTrack(mix);
 
@@ -77,26 +77,22 @@ function startAndStopTrack(mix) {
 //   }
 // }
 
-function pauseMix(mix) {
+function globalPause(mix) {
   // console.log( "running pause");
  $(window).on('keyup', function(e) {
   // console.log( "In Keyup");
 
     e.preventDefault();
     if(e.keyCode == 32) {
+      // if Howls playing, pause
+      if(mix.pause === false) {
+        mix.globalPause();
+      } else {
+        mix.globalPlay();
+      }
 
-      if(Wad.audioContext.state === "suspended"){
-        // IF AUDIO HAS STATE PAUSED: TRUE, RESUME SOUND
-        $('div.active').removeClass('paused')
-        console.log("Paused: TRUE; Resuming Sound")
-        Wad.audioContext.resume();
+      //else Howls paused, play
 
-      }else{
-        // IF AUDIO HAS STATE PAUSED: FALSE, SUSPEND SOUND
-        $('div.active').addClass('paused')
-        console.log("Paused: FALSE; Suspending Sound")
-        Wad.audioContext.suspend();
-      };
     };
   });
 }
