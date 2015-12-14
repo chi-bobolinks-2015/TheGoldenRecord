@@ -1,13 +1,51 @@
 function setUserEvents(mix){
   startAndStopTrack(mix)
   pauseMix(mix);
+  dropTrack(mix);
+
+  //Put in deck user event file
   changeTrackVolume(mix);
-  moveSlider();
+
 };
 
+function dropTrack(mix){
+  $(".cell").droppable({
+    accept: ".draggableTrack",
+    drop: function(event, ui) {
+      var draggable = ui.draggable.clone();
+
+      var trackId = Number(draggable.attr("id"));
+      var trackTitle = draggable.text();
+      var image = draggable.attr("image");
+      var divId = Number($(this).attr("id"));
+      var trackAdded = {src: draggable.attr("url"), id: trackId, name: draggable.html()}
+      sounds.push(trackAdded);
+      loadSound(mix, trackId, divId);
+      trackInfoHover($(this), trackTitle);
+      loadImage(image, $(this));
+      draggableImage();
+      removeFromMixer(trackId);
+      addToDeck();
+    }
+  });
+}
+
+function trackInfoHover(cell, trackTitle){
+  $(cell).hover(
+    function() {
+      $(this).append("<span id='track-info'>" + trackTitle + "</span>");
+    },
+    mouseExitCell
+    );
+}
+
+function mouseExitCell(){
+  $(this).find("#track-info").remove();
+}
+
 function returnDivs() {
-   return $('div.cell')
-  };
+  return $('div.cell')
+};
 
 function startAndStopTrack(mix) {
 
@@ -24,7 +62,7 @@ function startAndStopTrack(mix) {
       // IF HTML HAS CLASS "ACTIVE", PLAY SOUND
       var targetSound = _.find(mix.wads, function(wad) { return wad.label === Number(soundId) })
       targetSound.play();
-      // targetSound.addEventListener("complete", changeColor) -- this is for making sounds that have stopped remove class "active"
+      // targetSound.addEventListener("complete", noLongerActive) -- this is for making sounds that have stopped remove class "active"
     }else{
       //IF HTML DOESN'T HAVE CLASS "ACTIVE", STOP SOUND
       var targetSound = _.find(mix.wads, function(wad) { return wad.label === Number(soundId) })
@@ -55,18 +93,6 @@ function pauseMix(mix) {
         Wad.audioContext.suspend();
       };
     };
-  });
-}
-
-function moveSlider(){
-  $(window).load(function(event){
-    console.log("Inside of move slider")
-    $("#volume-slider").slider({
-    value: 60,
-    orientation: "horizontal",
-    range: "min",
-    animate: true
-    });
   });
 }
 
@@ -106,6 +132,19 @@ function changeTrackVolume(mix) {
   });
 }
 
+function removeFromMixer(trackId) {
+  $(".cell").on("click", ".boxclose", function() {
+    var cell = $(this).parent();
+    sounds = _.reject(sounds, function(sound){
+      return sound.id === trackId;
+    });
+    cell.removeClass("on-deck");
+    $(cell.children("p")).remove();
+    $(cell.children("img")).remove();
+    $(cell.children(".boxclose")).remove();
+  });
+}
+
 // ON DRAG -LOAD AND REMOVE FILES FROM MIXER
 function addToMixer(){
 // when dragged to mixer, load sound and assign to div
@@ -123,12 +162,8 @@ function addToDeck(){
 
 
 
-
-
-function changeColor(sound) {
-//    var link = sound.currentTarget.src;
-//    var sound = sounds.filter( function(el){return assetPath + el.src == link});
-//     $("#" + sound[0].id).find("a").removeClass('clicked');
+function noLongerActive(sound) {
+// a function that removes the class "active" when a track finishes playing on its own
 }
 
 

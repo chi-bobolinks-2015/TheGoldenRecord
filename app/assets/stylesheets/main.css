@@ -9,6 +9,13 @@
 
 .cell {
   padding: 4.5em;
+  margin: 1em;
+}
+
+.collapsible {
+  width: 1em;
+  background-color: red;
+  height: 50em;
 }
 
 .active {
@@ -27,6 +34,27 @@
 li {
   list-style: none;
 }
+
+a.boxclose{
+    color: #fff;
+    border: 1px solid red;
+    background: red;
+    font-size: 1em;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 0;
+    padding: 1em .8em 1em .8em;
+    text-decoration: none;
+}
+
+.boxclose:before {
+    content: "×";
+}
+
+
+
 /*Atomic styles*/
 .clear { clear: both; }
 .fl-l { float: left; }
+
+

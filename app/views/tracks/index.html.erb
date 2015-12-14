@@ -1,20 +1,26 @@
-<div class="container">
-  <div class="sidebar col-lg-2 debug">
+<div class="container debug">
+  <div class="nav nav-stacked fl-l col-lg-2 debug" id="sidebar">
     <ul>
       <% @categories.each do |category| %>
-        <li><%= category.name %></li>
-          <ul>
+        <li class="category-name"><%= category.name %>
+          <ul class="hidden">
             <% category.tracks.each do |track| %>
-              <li><%= track.title %></li>
+              <li class="draggableTrack" url="<%= track.url %>" id="<%= track.id %>" image="<%= category.img %>"><%= track.title %></li>
             <% end %>
           </ul>
+        </li>
       <% end %>
     </ul>
   </div>
-  <div class="mix debug fl-l col-lg-10">
+
+  <div class="collapsible col-lg-1 debug"></div>
+
+  <div class="mix debug fl-l col-lg-9">
     <div class="track-divs debug">
       <div class="row">
-        <div id="1" class="cell border debug on-deck">1</div>
+        <div id="1" class="cell border debug">1
+
+        </div>
         <div id="2" class="cell border debug" >2</div>
       </div>
       <div class="row">
@@ -27,15 +33,38 @@
       </div>
     </div>
 
-      <div class="controller clear debug">Controller</div>
+      <div class="deck debug">
         Control Panel
           <p> Volume </p>
           <div id = "volume-slider" style="width:260px; margin:15px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
             <div id= "volume-level" class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="left: 60%;"></div>
             <span id = "volume-button"class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 60%;"></span>
           </div>
-      </div>
+          <p> Pitch </p>
+          <div id = "pitch-slider" style="width:260px; margin:15px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+            <div id= "pitch-level" class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="left: 60%;"></div>
+            <span id = "pitch-button"class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 60%;"></span>
+          </div>
+          <p> Tempo </p>
+          <div id = "tempo-slider" style="width:260px; margin:15px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
+            <div id= "tempo-level" class="ui-slider-range ui-widget-header ui-corner-all ui-slider-range-min" style="left: 60%;"></div>
+            <span id = "tempo-button"class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0" style="left: 60%;"></span>
+          </div>
 
+          <p> Panning - moving the sound from left to right</p>
+            <input id= "panning-dial" type="text" class="dial">
+          <div class= fl-r>
+            <p> High pass and low pass </p>
+            <div class= "nested-dials">
+              <div id= "high-pass" class= "outer-dial">
+                <input id= "high-pass-dial" type="text" class="dial">
+              </div>
+              <div id = "low-pass" class= "inner-dial">
+                <input id= "low-pass-dial" type="text" class="dial">
+              </div>
+            </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
