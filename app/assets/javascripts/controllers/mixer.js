@@ -1,4 +1,3 @@
-// ***************** Basic Mixer Settings ***********************
 function startMixer(){
   var activeMix = new Wad.Poly({
   })
