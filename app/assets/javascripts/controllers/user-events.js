@@ -22,7 +22,7 @@ function dropTrack(mix){
       sounds.push(trackAdded);
       loadSound(mix, trackId, divId);
       trackInfoHover($(this), trackTitle);
-      // loadImage(image, $(this));
+      loadImage(image, $(this));
       draggableImage();
       removeFromMixer(trackId);
       addToDeck();
