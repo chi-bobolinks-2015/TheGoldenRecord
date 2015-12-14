@@ -29,6 +29,7 @@
 .honeycombs .comb {
   position: absolute;
   display: inline-block;
+  /*background-color: red;*/
 }
 
 .honeycombs .hex_l,
@@ -57,9 +58,7 @@
 
   transform: rotate(-120deg);
 }
- img {
-  background-color: green;
- }
+
 .honeycombs .hex_inner{
   display: block;
   visibility: visible;

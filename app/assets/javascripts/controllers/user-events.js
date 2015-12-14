@@ -34,9 +34,9 @@ function dropTrack(mix){
 }
 
 function trackInfoHover(cell, trackTitle){
-  $(cell).hover(
-    function() {
-      $(this).append("<span id='track-info'>" + trackTitle + "</span>");
+  $(cell).hover(function() {
+    var targetComb = $(this).find('.inner-text')
+      $(targetComb).html(trackTitle);
     },
     mouseExitCell
     );

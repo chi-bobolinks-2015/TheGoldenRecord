@@ -16,6 +16,7 @@ function startMixer(){
 //     env: {hold: 9001}
 //   });
 
+
 //   mix.add(trackToAdd);
 //   mostRecent = _.last(mix.wads);
 //   mostRecent.label = divId;
@@ -25,7 +26,8 @@ function startMixer(){
 //   });
 
 //   $(targetDiv).append("<p>" + trackSource.name + "</p>")
-//   $(targetDiv).attr("track-id", trackId)
-// }
+  $(targetDiv).attr("track-id", trackId)
+}
+
 
 // var sounds = [];
