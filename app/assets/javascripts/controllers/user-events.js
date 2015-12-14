@@ -10,6 +10,7 @@ function setUserEvents(mix){
 
 function dropTrack(mix){
   $(".cell").droppable({
+    accept: ".draggableTrack",
     drop: function(event, ui) {
       var draggable = ui.draggable.clone();
       // console.log("The track with " + draggable.attr("url") + "  ---- " + draggable.attr("id"));
