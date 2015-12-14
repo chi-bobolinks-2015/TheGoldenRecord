@@ -15,5 +15,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require wad.min
+//= require howler
 //= require underscore-min
 //= require_tree .
