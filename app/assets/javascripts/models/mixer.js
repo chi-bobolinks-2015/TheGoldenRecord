@@ -1,6 +1,7 @@
 var Mixer = function () {
 	this.mix = []
 	this.target
+	this.pause = false
 }
 
 // ############### TRACK METHODS ##################
@@ -45,6 +46,7 @@ Mixer.prototype.globalPlay = function () {
 			this.mix[i].play()
 		}
 	}
+	this.pause = false
 }
 
 //Pauses all items in mix array
@@ -54,6 +56,7 @@ Mixer.prototype.globalPause = function () {
 			this.mix[i].pause()
 		}
 	}
+	this.pause = true
 }
 
 // ############### TARGET METHODS ##################
