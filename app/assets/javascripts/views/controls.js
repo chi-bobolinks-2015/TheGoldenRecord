@@ -7,6 +7,7 @@ function loadImage(imageUrl, cell){
   $(this).each(function(){
     var css = 'url("'+imageUrl+'") ';
     $(cell).find('.hex_inner').attr('style', 'width: 225px; height: 194.856px; background-image: ' + css);
+    // This is where you add background color.
   });
 }
 
