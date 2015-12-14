@@ -26,8 +26,8 @@ function startMixer(){
 //   });
 
 //   $(targetDiv).append("<p>" + trackSource.name + "</p>")
-  $(targetDiv).attr("track-id", trackId)
-}
+// $(targetDiv).attr("track-id", trackId)
+// }
 
 
 // var sounds = [];
