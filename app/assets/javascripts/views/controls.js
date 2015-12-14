@@ -1,6 +1,13 @@
 function loadImage(imageUrl, cell){
-  $(cell).append("<img src=" + imageUrl + " class='mixer-image'>");
-  $(cell).append("<a class='boxclose'></a>");
+  // $(cell).append("<img src=" + imageUrl + " class='mixer-image'>");
+  // $(cell).append("<a class='boxclose'></a>");
+
+  $(cell).find("img").map(function() {return $(this).attr("src", imageUrl)});
+
+  $(this).each(function(){
+    var css = 'url("'+imageUrl+'") ';
+    $(cell).find('.hex_inner').attr('style', 'width: 225px; height: 194.856px; background-image: ' + css);
+  });
 }
 
 function draggableImage(){

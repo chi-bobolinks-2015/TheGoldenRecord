@@ -25,7 +25,7 @@ function dropTrack(mix){
 
       mix.addTrack({'urls': draggable.attr("url"), 'divId': divId})
       trackInfoHover($(this), trackTitle);
-      // loadImage(image, $(this));
+      loadImage(image, $(this));
       draggableImage();
       removeFromMixer(trackId);
       addToDeck();
