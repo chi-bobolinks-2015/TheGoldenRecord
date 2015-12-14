@@ -25,6 +25,8 @@ someMix.addTrack({'url' : 'https://s3.amazonaws.com/the-golden-record/Birds%2C+H
 someMix.addTrack({'url' : 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Soul+Jazz.mp3', 'divId' : 0})
 someMix.addTrack({'url' : 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Swing.mp3', 'divId' : 2})
 console.log(someMix.mix) 
+someMix.removeTrack(1)
+console.log(someMix.mix) 
 
 })
 
