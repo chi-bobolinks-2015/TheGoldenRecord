@@ -128,6 +128,7 @@ function removeFromMixer(trackId) {
     $(cell.children(".boxclose")).remove();
   });
 }
+
 // ON DRAG -LOAD AND REMOVE FILES FROM MIXER
 function addToMixer(){
 // when dragged to mixer, load sound and assign to div
