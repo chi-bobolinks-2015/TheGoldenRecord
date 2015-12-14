@@ -18,7 +18,7 @@
 }
 
 .active {
-  background-color: rgba(252,150,99, 1)
+  background-color: green;
 }
 
 .paused {
