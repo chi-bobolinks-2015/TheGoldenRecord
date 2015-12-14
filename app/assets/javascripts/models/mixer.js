@@ -40,6 +40,10 @@ Mixer.prototype.globalPause = function () {
 	}
 }
 
+//Assigns target volume
+Mixer.prototype.targetVolume = function (volumeLevel) {
+	this.mix[this.target].volume(volumeLevel)
+}
 
 
 
