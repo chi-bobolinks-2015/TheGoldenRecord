@@ -5,7 +5,7 @@ function setUserEvents(mix){
 
   //Put in deck user event file
   changeTrackVolume(mix);
-  moveSlider();
+
 };
 
 function dropTrack(mix){
@@ -77,18 +77,6 @@ function pauseMix(mix) {
         Wad.audioContext.suspend();
       };
     };
-  });
-}
-
-function moveSlider(){
-  $(window).load(function(event){
-    console.log("Inside of move slider")
-    $("#volume-slider").slider({
-    value: 60,
-    orientation: "horizontal",
-    range: "min",
-    animate: true
-    });
   });
 }
 
