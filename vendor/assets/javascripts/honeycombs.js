@@ -36,6 +36,7 @@
 
                 $(element).find('.comb').each(function(){
                     num = num + 1;
+                    // Sets background of honeycomb without hover.
                     var image = $(this).find('img').attr('src');
                     var css = 'url("'+image+'") ';
 
