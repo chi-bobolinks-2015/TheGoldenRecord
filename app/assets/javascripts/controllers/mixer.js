@@ -24,7 +24,7 @@ function loadSound(mix, trackId, divId) {
     return Number($(div).attr("id")) === divId;
   });
 
-  $(targetDiv).append("<p>" + trackSource.name + "</p>")
+  // $(targetDiv).append("<p>" + trackSource.name + "</p>")
   $(targetDiv).attr("track-id", trackId)
 }
 
