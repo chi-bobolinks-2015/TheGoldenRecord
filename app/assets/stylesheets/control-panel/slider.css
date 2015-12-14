@@ -19,59 +19,25 @@
 }
 
 
-.switch {
-    position: absolute;
-    left: 50%;
-    top: 25%;
-    width: 21px;
-    height: 8px;
-    margin-top: -5px;
-    margin-left: -11px;
-    background: #ddd;
-    border: 1px solid rgba(0,0,0,0.2);
-    border-top: 1px solid rgba(255,255,255,0.75);
-    border-bottom: 1px solid rgba(255,255,255,0.75);
-    border-left: 1px solid rgba(255,255,255,0.4);
-    border-right: 1px solid rgba(255,255,255,0.5);
-    padding: 1px 0px;
-    -webkit-background-clip: padding-box;
-    border-radius: 2px;
-    background-clip: padding-box;
-    cursor: pointer;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
-    z-index: 2;
+.nested-dials{
+position: relative;
+width: 350px;
+height: 350px;
+margin: auto;
 }
 
-.switch-line {
-    position: absolute;
-    top: 50%;
-    left: 0px;
-    width: 100%;
-    border-top: 1px solid rgba(0,0,0,0.33);
-    border-bottom: 1px solid rgba(0,0,0,0.15);
-    margin-top: -1px;
-    -moz-transition: border 0.15s ease-out;
-    -ms-transition: border 0.15s ease-out;
-    -webkit-transition: border 0.15s ease-out;
+.outer-dial{
+position: absolute;
+left: 10px;
+top: 10px;
 }
 
-
-.gain{
-    position: absolute;
-    left: 50%;
-    top: 4px;
-    width: 20px;
-    height: 20px;
-    margin-left: -10px;
-    background: #222 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAJklEQVRIie3NAREAAAQEMGm/fwPUcLYCq7qgV5IWCoVC4aEQgGcG1m1QSpkIHTsAAAAASUVORK5CYII=) no-repeat 50% 50%;
-    border: 1px solid #111;
-    border-radius: 15px;
-    cursor: pointer;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
-    -moz-transition: all 0.15s ease-out;
-    -ms-transition: all 0.15s ease-out;
-    -webkit-transition: all 0.15s ease-out;
+.inner-dial{
+position: absolute;
+left: 60px;
+top: 60px;
 }
+
+.fl-r{
+    float: right;
 }

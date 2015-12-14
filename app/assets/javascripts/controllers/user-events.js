@@ -46,7 +46,7 @@ function startAndStopTrack(mix) {
       // IF HTML HAS CLASS "ACTIVE", PLAY SOUND
       var targetSound = _.find(mix.wads, function(wad) { return wad.label === Number(soundId) })
       targetSound.play();
-      // targetSound.addEventListener("complete", changeColor) -- this is for making sounds that have stopped remove class "active"
+      // targetSound.addEventListener("complete", noLongerActive) -- this is for making sounds that have stopped remove class "active"
     }else{
       //IF HTML DOESN'T HAVE CLASS "ACTIVE", STOP SOUND
       var targetSound = _.find(mix.wads, function(wad) { return wad.label === Number(soundId) })
@@ -133,12 +133,8 @@ function addToDeck(){
 
 
 
-
-
-function changeColor(sound) {
-//    var link = sound.currentTarget.src;
-//    var sound = sounds.filter( function(el){return assetPath + el.src == link});
-//     $("#" + sound[0].id).find("a").removeClass('clicked');
+function noLongerActive(sound) {
+// a function that removes the class "active" when a track finishes playing on its own
 }
 
 
