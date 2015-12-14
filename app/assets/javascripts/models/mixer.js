@@ -1,6 +1,9 @@
 Mixer = function () {
 	this.mix = []
+	this.target
 }
+
+// ############### TRACK METHODS ##################
 
 //Adds a track to the mix. Takes args = {urls: sound.aws.com, divId: 1}
 Mixer.prototype.addTrack = function (args) {
@@ -15,6 +18,8 @@ Mixer.prototype.addTrack = function (args) {
 Mixer.prototype.removeTrack = function (position) {
 	this.mix[position] = null;
 }
+
+// ############### GLOBAL METHODS ##################
 
 //Plays all items in mix array
 Mixer.prototype.globalPlay = function () {
@@ -32,4 +37,26 @@ Mixer.prototype.globalPause = function () {
 			this.mix[i].pause()
 		}
 	}
+}
+
+// ############### TARGET METHODS ##################
+
+//Sets target for later manipulation(ie. volume, filter)
+Mixer.prototype.assignTarget = function (position) {
+	this.target = position
+}
+
+//Assigns target volume
+Mixer.prototype.assignTargetVolume = function (volumeLevel) {
+	this.mix[this.target].volume(volumeLevel)
+}
+
+//Pause target 
+Mixer.prototype.pauseTarget = function () {
+	this.mix[this.target].pause()
+}
+
+//Play target 
+Mixer.prototype.playTarget = function () {
+	this.mix[this.target].play()
 }
