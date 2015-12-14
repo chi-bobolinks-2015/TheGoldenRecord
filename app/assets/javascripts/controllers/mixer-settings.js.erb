@@ -29,11 +29,4 @@ function loadSound(mix, trackId, divId) {
   $(targetDiv).attr("track-id", trackId)
 }
 
-var sounds = [
-    {src: "<%= asset_path('fire.wav') %>", id: 11, name: "Fire"},
-    {src: "<%= asset_path('forest.wav') %>", id: 12, name: "Forest"},
-    {src: "<%= asset_path('lightning.wav') %>", id: 3, name: "Lightning"},
-    {src: "<%= asset_path('nightime.wav') %>", id: 4, name: "Nighttime"} ,
-    {src: "<%= asset_path('beach.wav') %>", id: 5, name: "Beach"} ,
-    {src:  "<%= asset_path('hotlineBling.mp3') %>", id: 6, name: "Drizzy"}
-  ];
+var sounds = [];
