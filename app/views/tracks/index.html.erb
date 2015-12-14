@@ -1,5 +1,5 @@
 <div class="container debug">
-  <div class="nav nav-stacked fl-l col-lg-2 debug">
+  <div class="nav nav-stacked fl-l col-lg-2 debug" id="sidebar">
     <ul>
       <% @categories.each do |category| %>
         <li class="category-name"><%= category.name %>
@@ -33,7 +33,7 @@
       </div>
     </div>
 
-      <div class="deck col-lg-9 debug">
+      <div class="deck debug">
         Control Panel
           <p> Volume </p>
           <div id = "volume-slider" style="width:260px; margin:15px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">
