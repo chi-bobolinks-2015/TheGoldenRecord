@@ -39,5 +39,13 @@ $(document).ready(function(event){
  //  		someMix.globalPause();
  //  	}
  //  })
+
+  var activeMix = startMixer();
+  setUserEvents(activeMix);
+  setControls(activeMix);
+
+  // loadSound(activeMix, 5, 1)
+  // loadSound(activeMix, 6, 2)
+
 })
 

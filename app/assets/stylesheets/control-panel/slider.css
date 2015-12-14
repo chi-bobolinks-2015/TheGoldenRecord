@@ -17,3 +17,27 @@
   border: none;
   outline: none;
 }
+
+
+.nested-dials{
+position: relative;
+width: 350px;
+height: 350px;
+margin: auto;
+}
+
+.outer-dial{
+position: absolute;
+left: 10px;
+top: 10px;
+}
+
+.inner-dial{
+position: absolute;
+left: 60px;
+top: 60px;
+}
+
+.fl-r{
+    float: right;
+}

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
+//= require aterrien-knob
 //= require turbolinks
 //= require wad.min
 //= require howler
