@@ -1,5 +1,11 @@
 Mixer = function () {
 	this.mix = []
+	this.target
+}
+
+//Sets target for later manipulation(ie. volume, filter)
+Mixer.prototype.assignTarget = function (position) {
+	this.target = position
 }
 
 //Adds a track to the mix. Takes args = {urls: sound.aws.com, divId: 1}
@@ -33,3 +39,7 @@ Mixer.prototype.globalPause = function () {
 		}
 	}
 }
+
+
+
+
