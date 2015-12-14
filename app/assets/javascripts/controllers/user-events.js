@@ -99,7 +99,6 @@ function pauseMix(mix) {
 function changeTrackVolume(mix) {
   $(window).on("keyup", function(event) {
     event.preventDefault();
-
     var $targetDiv   = $("div.on-deck")
     var soundId = $targetDiv.attr("id")
 
@@ -108,9 +107,22 @@ function changeTrackVolume(mix) {
     if(event.keyCode == 38 && targetSound.volume < 4) {
       // increase volume
       console.log("Increase Volume")
-      // targetSound.setVolume(targetSound.volume + .5)
-      targetSound.defaultVolume = 4
-      Wad.nodes.push
+
+      targetSound.setVolume(-2)
+      // console
+      // targetSound.defaultEnv.sustain = 0
+      
+      // targetSound.gain[0].gain.defaultValue = 5
+      // targetSound.gain[0].gain.defaultValue = 5
+      // targetSound.gain[0].gain.value = 5
+      // targetSound.volume = 5
+      // targetSound.defaultVolume = 5
+      // console.log(targetSound.nodes[1].gain.value = 5)
+
+      // targetSound.gain[0].gain.value = 5
+
+      console.log(targetSound)
+
     } else if (event.keyCode == 40 && targetSound.volume > 1) {
       // decrease volume
       console.log("Decrease Volume")
