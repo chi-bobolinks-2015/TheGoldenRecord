@@ -27,23 +27,23 @@ someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/ReginaApp-
 someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Swing.mp3', 'divId': 2})
 console.log(someMix.mix)
 // console.log(someMix) 
-someMix.assignTarget(2)
-// console.log(someMix.target.volume)
-someMix.assignTargetVolume(.5)
+someMix.assignTarget(1)
+// someMix.assignTargetVolume(.5)
 console.log(someMix.mix)
 // someMix.removeTrack(1)
 console.log(someMix) 
 
 
- // $(window).on("keyup", function(event) {
- //  	if (event.keyCode == 38) {
- //  		someMix.globalPlay();
- //  		console.log("play")
- //  	}
- //  	else if (event.keyCode == 40) {
- //  		someMix.globalPause();
- //  	}
- //  })
+ $(window).on("keyup", function(event) {
+  	if (event.keyCode == 38) {
+  		someMix.pauseTarget();
+  		console.log("pause")
+  	}
+  	else if (event.keyCode == 40) {
+  		someMix.playTarget();
+      console.log("play")
+  	}
+  })
 
   var activeMix = startMixer();
   setUserEvents(activeMix);
