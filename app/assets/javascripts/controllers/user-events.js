@@ -54,9 +54,10 @@ function startAndStopTrack(mix) {
 
   // ON CLICK - PLAY AND STOP
   // returnDivs().on('click', controlBoard.togglePlay.bind(controlBoard));
-  returnDivs().on('click', function(){
+  returnDivs().on('click', function(e){
     var $targetComb =  $(this).find('.hex_inner')
     $targetComb.toggleClass('active');
+    var divId = Number($(this).attr("id"));
     $targetComb.hasClass("active") ? mix.playTrack(divId) : mix.stopTrack(divId);
   });
 }
