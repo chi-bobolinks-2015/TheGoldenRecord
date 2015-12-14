@@ -22,11 +22,15 @@ $(document).ready(function(event){
   // }).play();
 
 var someMix = new Mixer
-// someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Birds%2C+Hyena%2C+Elephant.wav', 'divId': 1})
-// someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Soul+Jazz.mp3', 'divId': 0})
-// someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Swing.mp3', 'divId': 2})
-console.log(someMix) 
+someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Birds%2C+Hyena%2C+Elephant.wav', 'divId': 1})
+someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Soul+Jazz.mp3', 'divId': 0})
+someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Swing.mp3', 'divId': 2})
+console.log(someMix.mix)
+// console.log(someMix) 
 someMix.assignTarget(2)
+// console.log(someMix.target.volume)
+someMix.assignTargetVolume(.5)
+console.log(someMix.mix)
 // someMix.removeTrack(1)
 console.log(someMix) 
 
