@@ -7,9 +7,21 @@ Mixer.prototype.addTrack = function (args) {
 	var newTrack = new Howl({
 		url : [args['url']]
 	}); 
-	this.mix[args['divId']] = newTrack
+	this.mix[args['divId']] = newTrack;
 }
 
 Mixer.prototype.removeTrack = function (arrayPosition) {
-	this.mix[arrayPosition] = null
+	this.mix[arrayPosition] = null;
+}
+
+Mixer.prototype.globalPlay = function () {
+	for (var i = 0; i< this.mix.length; i++) { 
+		this.mix[i].play()
+	}
+}
+
+Mixer.prototype.globalPause = function () {
+	for (var i = 0; i< this.mix.length; i++) { 
+		this.mix[i].pause()
+	}
 }
