@@ -22,7 +22,7 @@ function dropTrack(mix){
       sounds.push(trackAdded);
       loadSound(mix, trackId, divId);
       trackInfoHover($(this), trackTitle);
-      loadImage(image, $(this));
+      // loadImage(image, $(this));
       draggableImage();
       removeFromMixer(trackId);
       addToDeck();
@@ -111,7 +111,7 @@ function changeTrackVolume(mix) {
       targetSound.setVolume(-2)
       // console
       // targetSound.defaultEnv.sustain = 0
-      
+
       // targetSound.gain[0].gain.defaultValue = 5
       // targetSound.gain[0].gain.defaultValue = 5
       // targetSound.gain[0].gain.value = 5

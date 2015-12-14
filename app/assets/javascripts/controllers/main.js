@@ -1,4 +1,8 @@
 $(document).ready(function(event){
+  $('.honeycombs').honeycombs({
+    combWidth: 225,
+    margin: 10
+  });
   // var activeMix = startMixer();
   // setUserEvents(activeMix);
 
@@ -25,9 +29,9 @@ $(document).ready(function(event){
 // someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Birds%2C+Hyena%2C+Elephant.wav', 'divId': 1})
 // someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Soul+Jazz.mp3', 'divId': 0})
 // someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Swing.mp3', 'divId': 2})
-// console.log(someMix.mix) 
+// console.log(someMix.mix)
 // someMix.removeTrack(1)
-// console.log(someMix.mix) 
+// console.log(someMix.mix)
 
 
  // $(window).on("keyup", function(event) {

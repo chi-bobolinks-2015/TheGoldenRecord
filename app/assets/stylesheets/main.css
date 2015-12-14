@@ -2,14 +2,14 @@
   border: 1px dashed blue;
 }
 
-.row {
+/*.row {
   display: flex;
   justify-content: space-around;
-}
+}*/
 
 .cell {
-  padding: 4.5em;
-  margin: 1em;
+/*  padding: 4.5em;
+  margin: 1em;*/
 }
 
 .collapsible {
