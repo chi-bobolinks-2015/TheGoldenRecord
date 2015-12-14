@@ -1,4 +1,4 @@
-Mixer = function () {
+var Mixer = function () {
 	this.mix = []
 	this.target
 }
@@ -10,7 +10,7 @@ Mixer.prototype.addTrack = function (args) {
 	console.log(args['url'])
 	var newTrack = new Howl({
 		urls: [args['urls']]
-	}); 
+	});
 	this.mix[args['divId']] = newTrack;
 }
 
@@ -23,7 +23,7 @@ Mixer.prototype.removeTrack = function (position) {
 
 //Plays all items in mix array
 Mixer.prototype.globalPlay = function () {
-	for (var i = 0; i < 6; i++) { 
+	for (var i = 0; i < 6; i++) {
 		if (this.mix[i] != null) {
 			this.mix[i].play()
 		}
@@ -32,7 +32,7 @@ Mixer.prototype.globalPlay = function () {
 
 //Pauses all items in mix array
 Mixer.prototype.globalPause = function () {
-	for (var i = 0; i < 6; i++) { 
+	for (var i = 0; i < 6; i++) {
 		if (this.mix[i] != null) {
 			this.mix[i].pause()
 		}
@@ -51,12 +51,12 @@ Mixer.prototype.assignTargetVolume = function (volumeLevel) {
 	this.mix[this.target].volume(volumeLevel)
 }
 
-//Pause target 
+//Pause target
 Mixer.prototype.pauseTarget = function () {
 	this.mix[this.target].pause()
 }
 
-//Play target 
+//Play target
 Mixer.prototype.playTarget = function () {
 	this.mix[this.target].play()
 }
