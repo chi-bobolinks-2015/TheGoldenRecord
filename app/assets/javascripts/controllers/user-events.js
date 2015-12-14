@@ -63,39 +63,27 @@ function startAndStopTrack(mix) {
 }
 
 
-// function ControlBoard() {
-//   this.mix = mix;
-// }
-
-// ControlBoard.prototype.startSound = function(){}
-
-// var controlBoard = {
-//   mix: "foo",
-//   startSound: function() {},
-//   togglePlay: function() {
-//     this.mix;
-//   }
-// }
-
 function globalPause(mix) {
-  // console.log( "running pause");
  $(window).on('keyup', function(e) {
-  // console.log( "In Keyup");
 
     e.preventDefault();
     if(e.keyCode == 32) {
-      // if Howls playing, pause
       if(mix.pause === false) {
         mix.globalPause();
       } else {
         mix.globalPlay();
       }
 
-      //else Howls paused, play
-
     };
   });
 }
+
+function controlPanelHover(cell){
+  $(cell).hover(function() {
+    $(this).toggleClass('on-deck')
+    });
+}
+
 
 function changeTrackVolume(mix) {
   $(window).on("keyup", function(event) {
