@@ -13,13 +13,15 @@ function dropTrack(mix){
     accept: ".draggableTrack",
     drop: function(event, ui) {
       var draggable = ui.draggable.clone();
-      // console.log("The track with " + draggable.attr("url") + "  ---- " + draggable.attr("id"));
+
       var trackId = Number(draggable.attr("id"));
+      var trackTitle = draggable.text();
       var image = draggable.attr("image");
       var divId = Number($(this).attr("id"));
       var trackAdded = {src: draggable.attr("url"), id: trackId, name: draggable.html()}
       sounds.push(trackAdded);
       loadSound(mix, trackId, divId);
+      trackInfoHover($(this), trackTitle);
       loadImage(image, $(this));
       draggableImage();
       removeFromMixer(trackId);
@@ -28,9 +30,22 @@ function dropTrack(mix){
   });
 }
 
+function trackInfoHover(cell, trackTitle){
+  $(cell).hover(
+    function() {
+      $(this).append("<span id='track-info'>" + trackTitle + "</span>");
+    },
+    mouseExitCell
+    );
+}
+
+function mouseExitCell(){
+  $(this).find("#track-info").remove();
+}
+
 function returnDivs() {
-   return $('div.cell')
-  };
+  return $('div.cell')
+};
 
 function startAndStopTrack(mix) {
 
@@ -84,7 +99,6 @@ function pauseMix(mix) {
 function changeTrackVolume(mix) {
   $(window).on("keyup", function(event) {
     event.preventDefault();
-
     var $targetDiv   = $("div.on-deck")
     var soundId = $targetDiv.attr("id")
 
@@ -93,9 +107,22 @@ function changeTrackVolume(mix) {
     if(event.keyCode == 38 && targetSound.volume < 4) {
       // increase volume
       console.log("Increase Volume")
-      // targetSound.setVolume(targetSound.volume + .5)
-      targetSound.defaultVolume = 4
-      Wad.nodes.push
+
+      targetSound.setVolume(-2)
+      // console
+      // targetSound.defaultEnv.sustain = 0
+      
+      // targetSound.gain[0].gain.defaultValue = 5
+      // targetSound.gain[0].gain.defaultValue = 5
+      // targetSound.gain[0].gain.value = 5
+      // targetSound.volume = 5
+      // targetSound.defaultVolume = 5
+      // console.log(targetSound.nodes[1].gain.value = 5)
+
+      // targetSound.gain[0].gain.value = 5
+
+      console.log(targetSound)
+
     } else if (event.keyCode == 40 && targetSound.volume > 1) {
       // decrease volume
       console.log("Decrease Volume")
