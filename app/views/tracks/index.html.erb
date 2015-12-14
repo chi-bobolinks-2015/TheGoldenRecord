@@ -1,17 +1,21 @@
-<div class="container">
-  <div class="sidebar fl-l col-lg-2 debug">
+<div class="container debug">
+  <div class="nav nav-stacked fl-l col-lg-2 debug" id="sidebar">
     <ul>
       <% @categories.each do |category| %>
-        <li><%= category.name %></li>
-          <ul>
+        <li class="category-name"><%= category.name %>
+          <ul class="hidden">
             <% category.tracks.each do |track| %>
               <li class="draggableTrack" url="<%= track.url %>" id="<%= track.id %>" image="<%= category.img %>"><%= track.title %></li>
             <% end %>
           </ul>
+        </li>
       <% end %>
     </ul>
   </div>
-  <div class="mix debug fl-l col-lg-10">
+
+  <div class="collapsible col-lg-1 debug"></div>
+
+  <div class="mix debug fl-l col-lg-9">
     <div class="track-divs debug">
       <div class="row">
         <div id="1" class="cell border debug">1
@@ -29,7 +33,7 @@
       </div>
     </div>
 
-      <div class="deck col-lg-10 debug">
+      <div class="deck debug">
         Control Panel
           <p> Volume </p>
           <div id = "volume-slider" style="width:260px; margin:15px;" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all">

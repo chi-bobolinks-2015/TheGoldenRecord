@@ -12,6 +12,12 @@
   margin: 1em;
 }
 
+.collapsible {
+  width: 1em;
+  background-color: red;
+  height: 50em;
+}
+
 .active {
   background-color: rgba(252,150,99, 1)
 }
@@ -44,6 +50,9 @@ a.boxclose{
 .boxclose:before {
     content: "×";
 }
+
+
+
 /*Atomic styles*/
 .clear { clear: both; }
 .fl-l { float: left; }
