@@ -7,7 +7,6 @@ var Mixer = function () {
 
 //Adds a track to the mix. Takes args = {urls: sound.aws.com, divId: 1}
 Mixer.prototype.addTrack = function (args) {
-	console.log(args['url'])
 	var newTrack = new Howl({
 		urls: [args['urls']]
 	});
@@ -18,6 +17,24 @@ Mixer.prototype.addTrack = function (args) {
 Mixer.prototype.removeTrack = function (position) {
 	this.mix[position] = null;
 }
+
+
+//Plays a track from the mix array
+Mixer.prototype.playTrack = function (trackID) {
+	this.mix[trackID].play();
+}
+
+//Pauses a track from the mix array
+Mixer.prototype.pauseTrack = function (trackID) {
+	this.mix[trackID].pause();
+}
+
+//Stops a track from the mix array
+Mixer.prototype.stopTrack = function (trackID) {
+	this.mix[trackID].stop();
+}
+
+
 
 // ############### GLOBAL METHODS ##################
 

@@ -1,7 +1,8 @@
 function startMixer(){
-  var activeMix = new Mixer
-  return activeMix
+  return new Mixer
 }
+
+
 
 // function loadSound(mix, trackId, divId) {
 //   //var tracktoAdd =  eventually this will look up track from server based on id

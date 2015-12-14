@@ -1,10 +1,11 @@
 function setUserEvents(mix){
   startAndStopTrack(mix)
-  pauseMix(mix);
+  // pauseMix(mix);
+
   dropTrack(mix);
 
   //Put in deck user event file
-  changeTrackVolume(mix);
+  // changeTrackVolume(mix);
 
 };
 
@@ -12,15 +13,17 @@ function dropTrack(mix){
   $(".cell").droppable({
     accept: ".draggableTrack",
     drop: function(event, ui) {
+
       var draggable = ui.draggable.clone();
+      var divId = Number($(this).attr("id"));
+
 
       var trackId = Number(draggable.attr("id"));
       var trackTitle = draggable.text();
       var image = draggable.attr("image");
-      var divId = Number($(this).attr("id"));
       var trackAdded = {src: draggable.attr("url"), id: trackId, name: draggable.html()}
-      sounds.push(trackAdded);
-      loadSound(mix, trackId, divId);
+
+      mix.addTrack({'urls': draggable.attr("url"), 'divId': divId})
       trackInfoHover($(this), trackTitle);
       // loadImage(image, $(this));
       draggableImage();
@@ -50,27 +53,29 @@ function returnDivs() {
 function startAndStopTrack(mix) {
 
   // ON CLICK - PLAY AND STOP
-  returnDivs().on('click', function(e) {
-    e.preventDefault();
-
-    var $targetDiv   = $(this)
-    var soundId = $targetDiv.attr("id")
-
+  // returnDivs().on('click', controlBoard.togglePlay.bind(controlBoard));
+  returnDivs().on('click', function(){
+    var $targetDiv = $(this);
+    var divId =  $targetDiv.attr("id");
     $targetDiv.toggleClass('active');
-
-    if($targetDiv.hasClass('active')){
-      // IF HTML HAS CLASS "ACTIVE", PLAY SOUND
-      var targetSound = _.find(mix.wads, function(wad) { return wad.label === Number(soundId) })
-      targetSound.play();
-      // targetSound.addEventListener("complete", noLongerActive) -- this is for making sounds that have stopped remove class "active"
-    }else{
-      //IF HTML DOESN'T HAVE CLASS "ACTIVE", STOP SOUND
-      var targetSound = _.find(mix.wads, function(wad) { return wad.label === Number(soundId) })
-      targetSound.stop();
-    };
+    $targetDiv.hasClass("active") ? mix.playTrack(divId) : mix.stopTrack(divId);
   });
 }
 
+
+// function ControlBoard() {
+//   this.mix = mix;
+// }
+
+// ControlBoard.prototype.startSound = function(){}
+
+// var controlBoard = {
+//   mix: "foo",
+//   startSound: function() {},
+//   togglePlay: function() {
+//     this.mix;
+//   }
+// }
 
 function pauseMix(mix) {
   // console.log( "running pause");

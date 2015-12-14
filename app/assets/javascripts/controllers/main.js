@@ -4,7 +4,8 @@ $(document).ready(function(event){
     margin: 10
   });
 
-  startMixer();
+  var activeMix = startMixer();
+  setUserEvents(activeMix);
   // var activeMix = startMixer();
   // setUserEvents(activeMix);
 
