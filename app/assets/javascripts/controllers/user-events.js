@@ -1,6 +1,6 @@
 function setUserEvents(mix){
   startAndStopTrack(mix)
-  // pauseMix(mix);
+  globalPause(mix);
 
   dropTrack(mix);
 
@@ -63,43 +63,27 @@ function startAndStopTrack(mix) {
 }
 
 
-// function ControlBoard() {
-//   this.mix = mix;
-// }
-
-// ControlBoard.prototype.startSound = function(){}
-
-// var controlBoard = {
-//   mix: "foo",
-//   startSound: function() {},
-//   togglePlay: function() {
-//     this.mix;
-//   }
-// }
-
-function pauseMix(mix) {
-  // console.log( "running pause");
+function globalPause(mix) {
  $(window).on('keyup', function(e) {
-  // console.log( "In Keyup");
 
     e.preventDefault();
     if(e.keyCode == 32) {
+      if(mix.pause === false) {
+        mix.globalPause();
+      } else {
+        mix.globalPlay();
+      }
 
-      if(Wad.audioContext.state === "suspended"){
-        // IF AUDIO HAS STATE PAUSED: TRUE, RESUME SOUND
-        $('div.active').removeClass('paused')
-        console.log("Paused: TRUE; Resuming Sound")
-        Wad.audioContext.resume();
-
-      }else{
-        // IF AUDIO HAS STATE PAUSED: FALSE, SUSPEND SOUND
-        $('div.active').addClass('paused')
-        console.log("Paused: FALSE; Suspending Sound")
-        Wad.audioContext.suspend();
-      };
     };
   });
 }
+
+function controlPanelHover(cell){
+  $(cell).hover(function() {
+    $(this).toggleClass('on-deck')
+    });
+}
+
 
 function changeTrackVolume(mix) {
   $(window).on("keyup", function(event) {
