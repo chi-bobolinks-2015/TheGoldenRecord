@@ -14,7 +14,7 @@ function draggableImage(){
 
 function moveSlider(htmlId){
   $(window).load(function(event){
-    console.log("Inside of moveSlider")
+    // console.log("Inside of moveSlider")
     $("#" + htmlId).slider({
     value: 60,
     orientation: "horizontal",
@@ -26,7 +26,7 @@ function moveSlider(htmlId){
 
 function movePanningDial(current_value){
   $(window).load(function(event){
-    console.log("Inside of moveDial")
+    // console.log("Inside of moveDial")
 
     $("#panning-dial").val(current_value)
 
@@ -35,8 +35,8 @@ function movePanningDial(current_value){
     'max': 2,
     'step': .5,
     'cursor': 15,
-    'angleOffset': 270,
-    'angleArc': 180,
+    'angleOffset': -125,
+    'angleArc': 250,
     'width': "200",
     'fgColor': "#E18303",
     'skin': "tron",
@@ -50,13 +50,13 @@ function movePanningDial(current_value){
 // get these working with percentages
 function moveHighPassDial(current_value){
   $(window).load(function(event){
-    console.log("Inside of moveDial")
+    // console.log("Inside of moveDial")
     $("#high-pass-dial").val(current_value)
 
     $("#high-pass-dial").knob({
     'min': 0,
     'max': 100,
-    'step': .5,
+    'step': 5,
     'width': 300,
     'height': 300,
     'fgColor': "#E18303",
@@ -70,14 +70,14 @@ function moveHighPassDial(current_value){
 
 function moveLowPassDial(current_value){
   $(window).load(function(event){
-    console.log("Inside of moveDial")
+    // console.log("Inside of moveDial")
 
     $("#low-pass-dial").val(current_value)
 
     $("#low-pass-dial").knob({
     'min': 0,
     'max': 100,
-    'step': .5,
+    'step': 5,
     'width': 200,
     'height': 200,
     'fgColor': "#E18303",
@@ -87,6 +87,7 @@ function moveLowPassDial(current_value){
     'displayInput': false,
     'rotation': -1
     });
+
   });
 }
 
