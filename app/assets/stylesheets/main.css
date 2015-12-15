@@ -76,12 +76,8 @@ a.boxclose{
   height: 100vh;
 }
 
-.category-name {
-  cursor: pointer;
-}
 
 /*Atomic styles*/
 .clear { clear: both; }
 .fl-l { float: left; }
-
-
+.cur { cursor: pointer; }

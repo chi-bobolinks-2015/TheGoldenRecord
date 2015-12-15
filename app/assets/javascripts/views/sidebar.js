@@ -28,8 +28,10 @@ $(document).ready(function() {
     var popupBox = $(".popup-box");
     popupBox.fadeIn(400);
 
-    $(popupBox).prepend("<p>" + trackTitle + "</p>");
-    $(popupBox).prepend("<p>" + trackDescription + "</p>");
+    popupBox.empty();
+    popupBox.append("<p>" + trackTitle + "</p>");
+    popupBox.append("<p>" + trackDescription + "</p>");
+    popupBox.append('<button type="button" class="close">Close</button>');
 
     var popMarginTop = ($(popupBox).height() + 24) / 2;
     var popMarginLeft = ($(popupBox).width() + 24) / 2;

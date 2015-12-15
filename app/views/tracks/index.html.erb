@@ -2,7 +2,7 @@
   <div class="nav nav-stacked fl-l col-lg-2 debug" id="sidebar">
     <ul>
       <% @categories.each do |category| %>
-        <li class="category-name"><%= category.name %>
+        <li class="category-name cur"><%= category.name %>
           <ul class="tracks hidden">
             <% category.tracks.each do |track| %>
               <li class="draggableTrack" url="<%= track.url %>" id="<%= track.id %>" image="<%= category.img %>"><%= track.title %></li>
@@ -16,12 +16,12 @@
     </ul>
   </div>
 
-<div class="popup-info popup-box">
-  <button type="button" class="close">Close</button>
-</div>
+  <div class="popup-info popup-box">
+  </div>
 
   <div class="collapsible col-lg-1 debug"></div>
-<div class="jquery-script-clear"></div>
+
+  <div class="jquery-script-clear"></div>
   <div class="mix debug fl-l col-lg-9">
     <div class="track-divs honeycombs debug">
 
