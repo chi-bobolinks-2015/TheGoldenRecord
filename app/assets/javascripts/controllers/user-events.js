@@ -7,6 +7,7 @@ function setUserEvents(mix){
 
 };
 
+
 function dropTrack(mix){
   $(".cell").droppable({
     accept: ".draggableTrack",
@@ -42,6 +43,7 @@ function removeTrack(mix) {
 
 function setTargetForControlPanel(cellId, currentMixer, event){
    if(event.keyCode === 69) {
+    $(".control-panel").show();
         // If you hover over a track and hit "e" you are setting it as the target
           currentMixer.assignTarget(cellId);
 
