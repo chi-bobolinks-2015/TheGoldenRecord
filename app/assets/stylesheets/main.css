@@ -47,26 +47,26 @@ a.boxclose{
 
 .popup-info {
   display: none;
-  background: gray;
+  background: #FFBB0A;
   padding: 5em;
-  border: 1px solid #1852fd;
+  border: 1px solid #422F00;
   float: left;
   position: fixed;
   top: 50%;
   left: 50%;
   margin: auto 0;
   z-index: 99999;
-  box-shadow: 0px 0px 4px #1852fd;
-  -moz-box-shadow: 0px 0px 4px #1852fd;
-  -webkit-box-shadow: 0px 0px 4px #1852fd;
-  border-radius: 1em;
-  -moz-border-radius: 1em;
-  -webkit-border-radius: 1em;
+  box-shadow: 0px 0px 4px #422F00;
+  -moz-box-shadow: 0px 0px 4px #422F00;
+  -webkit-box-shadow: 0px 0px 4px #422F00;
+  border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  -webkit-border-radius: 0.5em;
 }
 
 #mask {
   /*display: none;*/
-  background-color: yellow;
+  background-color: #686868;
   position: fixed;
   left: 0;
   top: 0;
