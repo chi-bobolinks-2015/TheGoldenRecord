@@ -16,6 +16,7 @@
 //= require honeycombs
 //= require aterrien-knob
 //= require turbolinks
+//= require tuna-min
 //= require wad.min
 //= require howler
 //= require underscore-min
