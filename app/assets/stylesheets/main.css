@@ -80,5 +80,4 @@ a.boxclose{
 /*Atomic styles*/
 .clear { clear: both; }
 .fl-l { float: left; }
-
-
+.cur { cursor: pointer; }

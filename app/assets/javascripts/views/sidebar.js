@@ -4,6 +4,10 @@ $(document).ready(function() {
     $(this).children().toggleClass("hidden");
   });
 
+  $(".tracks").click(function(e) {
+    e.stopPropagation();
+  });
+
   $(".draggableTrack").draggable({
     containment: ".container",
     cursor: "move",
@@ -18,8 +22,16 @@ $(document).ready(function() {
   });
 
   $(".popup-window").on("click", function() {
-    var popupBox = $(this).attr('href');
-    $(popupBox).fadeIn(400);
+    var trackId = $(this).data("track-id")
+    var trackTitle = $(this).data("track-title")
+    var trackDescription = $(this).data("track-description")
+    var popupBox = $(".popup-box");
+    popupBox.fadeIn(400);
+
+    popupBox.empty();
+    popupBox.append("<p>" + trackTitle + "</p>");
+    popupBox.append("<p>" + trackDescription + "</p>");
+    popupBox.append('<button type="button" class="close">Close</button>');
 
     var popMarginTop = ($(popupBox).height() + 24) / 2;
     var popMarginLeft = ($(popupBox).width() + 24) / 2;
@@ -32,12 +44,15 @@ $(document).ready(function() {
     $('body').append('<div class="container" id="mask"></div>');
     $("#mask").fadeIn(400);
 
-    $(".container").on("click", "button.close", function() {
-      console.log("This!");
-      $(".popup-info").hide();
-        $("#mask").remove();
-      });
+  });
 
+  $(".container").on("click", ".close", function(event) {
+    event.preventDefault();
+    console.log("This!");
+    $(".popup-info").hide();
+    // var trackId = $(this).data("track-id")
+    // $(".popup-info[data-track-id="+trackId+"]").hide();
+    $("#mask").remove();
   });
 
 });
