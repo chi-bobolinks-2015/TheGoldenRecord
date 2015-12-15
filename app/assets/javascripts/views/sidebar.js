@@ -3,6 +3,7 @@ $(document).ready(function() {
   $(".category-name").on("click", function () {
     $(this).children().toggleClass("hidden");
   });
+
   $(".tracks").click(function(e) {
     e.stopPropagation();
   });
@@ -21,8 +22,14 @@ $(document).ready(function() {
   });
 
   $(".popup-window").on("click", function() {
-    var popupBox = $(this).attr('href');
-    $(popupBox).fadeIn(400);
+    var trackId = $(this).data("track-id")
+    var trackTitle = $(this).data("track-title")
+    var trackDescription = $(this).data("track-description")
+    var popupBox = $(".popup-box");
+    popupBox.fadeIn(400);
+
+    $(popupBox).prepend("<p>" + trackTitle + "</p>");
+    $(popupBox).prepend("<p>" + trackDescription + "</p>");
 
     var popMarginTop = ($(popupBox).height() + 24) / 2;
     var popMarginLeft = ($(popupBox).width() + 24) / 2;
@@ -37,9 +44,13 @@ $(document).ready(function() {
 
   });
 
-    $(".container").on("click", "button.close", function() {
-      console.log("This!");
-      $(".popup-info").hide();
-      $("#mask").remove();
-      });
+  $(".container").on("click", ".close", function(event) {
+    event.preventDefault();
+    console.log("This!");
+    $(".popup-info").hide();
+    // var trackId = $(this).data("track-id")
+    // $(".popup-info[data-track-id="+trackId+"]").hide();
+    $("#mask").remove();
+  });
+
 });
