@@ -1,4 +1,6 @@
 class AmazonRetrievalJob < ActiveRecord::Base
+
+
   def self.get_amazon_tracks
     # Get objects from inside the the-golden-record bucket
     # Using objects' information, create and save Track objects and clean out old objects
@@ -38,7 +40,40 @@ class AmazonRetrievalJob < ActiveRecord::Base
     space_folder.each do |track|
       Track.create(title: track.key.split(".")[0], url: "https://the-golden-record.s3.amazonaws.com/#{track.key}", category: "Space")
     end
+  end
 
+  def make_client
+    s3 = Aws::S3::Client.new(region: "us-east-1")
+  end
+
+  def get_bucket_contents(client)
+    client.list_objects(bucket: "the-golden-record").contents
+  end
+
+  def make_folders
 
   end
+
+  def add_objects_to_folder(bucket_contents)
+    # needs to take in empty folders
+    # then iterate over bucket_contents
+    # and push to each particular empty folder
+    bucket_contents.each do |object|
+      if object.key.include?("Earth/") && object.key != "Earth/"
+        earth_folder << object
+      elsif object.key.include?("Music/") && object.key != "Music/"
+        music_folder << object
+      elsif object.key.include?("Nature/") && object.key != "Nature/"
+        nature_folder << object
+      elsif object.key.include?("Space/") && object.key != "Space/"
+        space_folder << object
+      end
+    end
+    # return array of populated arrays named after folders
+  end
+
+  def create_tracks_from_folders(folder)
+
+  end
+
 end
