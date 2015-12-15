@@ -7,7 +7,7 @@ $(document).ready(function(event){
   var activeMix = startMixer();
   activeMix.assignTarget
   setUserEvents(activeMix);
-  setControls(activeMix);
+
 
   // var activeMix = startMixer();
   // setUserEvents(activeMix);
@@ -31,6 +31,9 @@ $(document).ready(function(event){
   // var sound2 = new Howl({
   // 	urls: ['https://s3.amazonaws.com/the-golden-record/ReginaApp-+Swing.mp3']
   // }).play();
+
+  setControls(activeMix);
+
 
 var someMix = new Mixer
 // someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Birds%2C+Hyena%2C+Elephant.wav', 'divId': 1})

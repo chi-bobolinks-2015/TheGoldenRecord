@@ -4,7 +4,6 @@ function setUserEvents(mix){
   dropTrack(mix);
   // controlPanelHover(mix)
   //Put in deck user event file
-  // changeTrackVolume(mix);
 
 };
 
@@ -30,17 +29,36 @@ function dropTrack(mix){
   });
 }
 
-function trackInfoHover(cell, mix, trackTitle){
+function removeTrack(mix) {
+  // NEEDS TO BE BUILT
+  // $(".cell").on("click", ".boxclose", function() {
+  //   var cell = $(this).parent();
+  //   // cell.removeClass("on-deck");
+  //   $(cell.children("p")).remove();
+  //   $(cell.children("img")).remove();
+  //   $(cell.children(".boxclose")).remove();
+  // });
+}
+
+function setTargetForControlPanel(cellId, currentMixer, event){
+   if(event.keyCode === 69) {
+        // If you hover over a track and hit "e" you are setting it as the target
+          currentMixer.assignTarget(cellId);
+
+        // Then all the dials need to be updated to reflect the attribute values of the target
+         var $currentVolume= currentMixer.mix[currentMixer.target].volume();
+          $("#volume-dial").val($currentVolume * 10).trigger("change");
+          $("#volume-dial").draw();
+    };
+};
+
+function trackInfoHover(cell, currentMixer, trackTitle){
   $(cell).hover(function() {
     var thisCellId = Number($(this).attr("id"))
     var targetComb = $(this).find('.inner-text')
       $(targetComb).html(trackTitle);
-      $(window).on("keyup", function(e){
-
-        if(e.keyCode === 69) {
-          mix.assignTarget(thisCellId);
-          console.log(mix[target].volume)
-        }
+      $(window).on("keyup", function(event){
+        setTargetForControlPanel(thisCellId, currentMixer, event)
       })
     },
     mouseExitCell
@@ -56,7 +74,6 @@ function returnDivs() {
 };
 
 function startAndStopTrack(mix) {
-
   // ON CLICK - PLAY AND STOP
   // returnDivs().on('click', controlBoard.togglePlay.bind(controlBoard));
   returnDivs().on('click', function(e){
@@ -82,35 +99,6 @@ function globalPause(mix) {
     };
   });
 }
-
-
-function removeFromMixer(trackId) {
-  // NEEDS TO BE BUILT
-  // $(".cell").on("click", ".boxclose", function() {
-  //   var cell = $(this).parent();
-  //   sounds = _.reject(sounds, function(sound){
-  //     return sound.id === trackId;
-  //   });
-  //   // cell.removeClass("on-deck");
-  //   $(cell.children("p")).remove();
-  //   $(cell.children("img")).remove();
-  //   $(cell.children(".boxclose")).remove();
-  // });
-}
-
-// ON DRAG -LOAD AND REMOVE FILES FROM MIXER
-function addToMixer(){
-// when dragged to mixer, load sound and assign to div
-// loadSound(activeMix, trackId, divId)
-};
-
-function addToDeck(){
-// when dragged to deck, enable effects
-// only one item on Deck at a time
-// if there is a track there already
-// replace it
-};
-
 
 
 
