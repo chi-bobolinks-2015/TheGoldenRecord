@@ -12,7 +12,9 @@ Mixer.prototype.addTrack = function (args) {
 		urls: [args['urls']],
 		volume: 0.5
 	});
-	this.mix[args['divId']] = newTrack;
+	var trackID = args['divId']
+	this.mix[trackID] = newTrack;
+	this.buildEffects(trackID);
 }
 
 //Removes a track from the mix array
@@ -35,6 +37,38 @@ Mixer.prototype.pauseTrack = function (trackID) {
 Mixer.prototype.stopTrack = function (trackID) {
 	this.mix[trackID].stop();
 }
+
+Mixer.prototype.trackContext = function (trackID) {
+	return this.mix[trackID]._audioNode[0].context
+}
+
+// ############### BUILD FILTER METHODS ##################
+
+//Build filter structure
+Mixer.prototype.buildEffects = function (trackID) {
+	var context = this.trackContext(trackID)
+	var tuna = new Tuna(context)
+	this.buildEcho({'tuna' : tuna, 'context' : context})
+}
+
+Mixer.prototype.buildEcho = function (params) {
+	var tuna = params['tuna']
+	var context = params['context']
+	var convolver = new tuna.Convolver({
+    highCut: 22050,                         //20 to 22050
+    lowCut: 20,                             //20 to 22050
+    dryLevel: 1,                            //0 to 1+
+    wetLevel: 10,                            //0 to 1+
+    level: 1,                               //0 to 1+, adjusts total output of both wet and dry
+    impulse: "/assets/Musikvereinsaal.wav",    //the path to your impulse response
+    bypass: 0
+	});
+	var input = this.mix[0]._audioNode[0]
+	input.connect(convolver)
+	var output = context.destination
+	convolver.connect(output)
+}
+
 
 
 
@@ -67,9 +101,6 @@ Mixer.prototype.assignTarget = function (position) {
 	this.target = position
 }
 
-Mixer.prototype.targetContext = function () {
-	return this.mix[this.target]._audioNode[0].context
-}
 
 //Assigns target volume
 Mixer.prototype.assignTargetVolume = function (volumeLevel) {
@@ -88,16 +119,6 @@ Mixer.prototype.playTarget = function () {
 
 // ############### TARGET EFFECTS METHODS ##################
 
-Mixer.prototype.applyFilter = function () {
-	var filter = new tuna.Filter({
-    frequency: 440, //20 to 22050
-    Q: 1, //0.001 to 100
-    gain: 0, //-40 to 40
-    filterType: "lowpass", //lowpass, highpass, bandpass, lowshelf, highshelf, peaking, notch, allpass
-    bypass: 0
-	});
-
-}
 
 
 
