@@ -16,4 +16,24 @@ $(document).ready(function() {
     $(".mix").toggleClass("col-lg-9");
     $(".mix").toggleClass("col-lg-11");
   });
+
+  $(".popup-window").on("click", function() {
+    console.log("THIS");
+    var popupBox = $(this).attr('href');
+    console.log(popupBox);
+    $(popupBox).fadeIn(400);
+
+    var popMarginTop = ($(popupBox).height() + 24) / 2;
+    var popMarginLeft = ($(popupBox).width() + 24) / 2;
+
+    $(popupBox).css({
+      "margin-top": -popMarginTop,
+      "margin-left": -popMargLeft
+    });
+
+    $("body").append('<div id="mask"></div>');
+    $("#mask").fadeIn(400);
+    return false;
+  });
+
 });
