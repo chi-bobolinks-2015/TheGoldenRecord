@@ -14,7 +14,7 @@ Mixer.prototype.addTrack = function (args) {
 	});
 	var trackID = args['divId']
 	this.mix[trackID] = newTrack;
-	this.buildEffects(trackID);
+	// this.buildEffects(trackID);
 }
 
 //Removes a track from the mix array
@@ -115,7 +115,7 @@ Mixer.prototype.buildConvolver = function (params) {
     dryLevel: 1,                            //0 to 1+
     wetLevel: 10,                            //0 to 1+
     level: 1,                               //0 to 1+, adjusts total output of both wet and dry
-    impulse: "/assets/Musikvereinsaal.wav",    //the path to your impulse response
+    impulse: "/assets/von\ klitzing\ effect\ 4R.wav",    //the path to your impulse response
     bypass: 0
 	});
 
