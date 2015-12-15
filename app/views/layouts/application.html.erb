@@ -23,13 +23,17 @@
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="#">about</a></li>
-          <li><a href="#">get started</a></li>
-          <li><a href="#">meet the team</a></li>
+          <li><a href="#" id="about">about</a></li>
+          <li><a href="#" id="start">get started</a></li>
+          <li><a href="#" id="meet">meet the team</a></li>
         </ul>
       </div>
     </div>
   </nav>
+
+<%= render "tracks/about" %>
+<%= render "tracks/start" %>
+<%= render "tracks/meet" %>
 
 <%= yield %>
 
