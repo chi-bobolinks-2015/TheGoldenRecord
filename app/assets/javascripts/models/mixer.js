@@ -58,7 +58,7 @@ Mixer.prototype.buildEffects = function (trackID) {
 		this.mix[trackID]._audioNode.push(filter)
 
 	//Build new convolver
-	var convolver = this.buildEcho({'tuna' : tuna, 'context' : context})
+	var convolver = this.buildConvolver({'tuna' : tuna, 'context' : context})
 
 		//Push effect into _audioNode array for future manipulation
 		this.mix[trackID]._audioNode.push(convolver)
@@ -102,7 +102,7 @@ Mixer.prototype.buildFilter = function (params) {
 }
 
 //Create new tuna.convolver(echo)
-Mixer.prototype.buildEcho = function (params) {
+Mixer.prototype.buildConvolver = function (params) {
 
 	//Set variables for new effect from params
 	var tuna = params['tuna']
@@ -172,7 +172,27 @@ Mixer.prototype.playTarget = function () {
 
 // ############### TARGET EFFECTS METHODS ##################
 
+//Assign target echo level
+Mixer.prototype.assignTargetConvolver = function (params) {
 
+	// var highCut = params['highCut']
+	// var lowCut = params['lowCut']
+	// var dryLevel = params['dryLevel']
+	// var wetLevel = params['wetLevel']
+	// var level = params['level']
+	// var impulse = params['impulse']
+	// var bypass = params['bypass']
+
+	return this.mix[this.target]._audioNode[2]
+}
+
+    // highCut: 22050,                         
+    // lowCut: 20,                             
+    // dryLevel: 1,                            
+    // wetLevel: 1,                            
+    // level: 1,                            
+    // impulse: "impulses/impulse_rev.wav",   
+    // bypass: 0
 
 
 

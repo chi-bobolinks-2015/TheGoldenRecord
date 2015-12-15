@@ -16,7 +16,7 @@ var someMix = new Mixer
 someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Soul+Jazz.mp3', 'divId': 0})
 // someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Swing.mp3', 'divId': 2})
 console.log(someMix.mix)
-// someMix.assignTarget(0)
+someMix.assignTarget(0)
 // console.log(someMix.trackContext(0))
 
 
@@ -68,7 +68,7 @@ console.log(someMix.mix)
 // convolver.connect(output);
 
 console.log(someMix.mix)
-console.log(someMix.mix[0])
+console.log(someMix.assignTargetConvolver())
 
 // console.log(window.AudioContext)
 
