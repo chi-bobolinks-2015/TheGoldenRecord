@@ -9,5 +9,5 @@ function setControls(mix){
   moveLowDial();
   moveEchoDial();
   moveTempoDial();
-
+  $(".control-panel").hide();
 }

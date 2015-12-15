@@ -2,11 +2,13 @@
   <div class="nav nav-stacked fl-l col-lg-2 debug" id="sidebar">
     <ul>
       <% @categories.each do |category| %>
-        <li class="category-name"><%= category.name %>
-          <ul class="hidden">
+        <li class="category-name cur"><%= category.name %>
+          <ul class="tracks hidden">
             <% category.tracks.each do |track| %>
               <li class="draggableTrack" url="<%= track.url %>" id="<%= track.id %>" image="<%= category.img %>"><%= track.title %></li>
-              <li><a href="#popup-box" class="popup-window">Learn More</a></li>
+              <li>
+                <a data-track-id="<%= track.id %>" data-track-title="<%= track.title %>" data-track-description="<%= track.description %>" class="popup-window">Learn More</a>
+              </li>
             <% end %>
           </ul>
         </li>
@@ -14,13 +16,12 @@
     </ul>
   </div>
 
-  <div id="popup-box" class="popup-info">
-    <p>Things about music.</p>
-    <button type="button" class="close">Close</button>
+  <div class="popup-info popup-box">
   </div>
 
   <div class="collapsible col-lg-1 debug"></div>
-<div class="jquery-script-clear"></div>
+
+  <div class="jquery-script-clear"></div>
   <div class="mix debug fl-l col-lg-9">
     <div class="track-divs honeycombs debug">
 
@@ -35,34 +36,36 @@
 
     </div>
 
-      <div class="deck debugs">
-        <div class= "controls">
-          <p> Volume </p>
-          <input id= "volume-dial" type="text" class="dial">
-        </div>
-
-        <div class= "controls">
-          <p> Panning</p>
-          <input id= "panning-dial" type="text" class="dial">
-        </div>
-        <div class= "controls">
-          <p> Low Pass </p>
-          <input id= "low-dial" type="text" class="dial">
-        </div>
-         <div class= "controls">
-          <p> High Pass </p>
-          <input id= "high-dial" type="text" class="dial">
-        </div>
-        <div class= "controls">
-          <p> Echo </p>
-          <input id= "echo-dial" type="text" class="dial">
-        </div>
-        <div class= "controls">
-          <p>Tempo </p>
-          <input id= "tempo-dial" type="text" class="dial">
-        </div>
-            </div>
+    <div class="deck debugs">
+        <div class= "control-panel">
+          <div class= "controls">
+            <p> Volume </p>
+            <input id= "volume-dial" type="text" class="dial">
           </div>
+
+          <div class= "controls">
+            <p> Panning</p>
+            <input id= "panning-dial" type="text" class="dial">
+          </div>
+          <div class= "controls">
+            <p> Low Pass </p>
+            <input id= "low-dial" type="text" class="dial">
+          </div>
+           <div class= "controls">
+            <p> High Pass </p>
+            <input id= "high-dial" type="text" class="dial">
+          </div>
+          <div class= "controls">
+            <p> Echo </p>
+            <input id= "echo-dial" type="text" class="dial">
+          </div>
+          <div class= "controls">
+            <p>Tempo </p>
+            <input id= "tempo-dial" type="text" class="dial">
+          </div>
+        </div>
+      </div>
+  </div>
 
 <!--         <p>Start and Stop Recording</p>
         <button onclick="startRecorder(this);">record</button>
