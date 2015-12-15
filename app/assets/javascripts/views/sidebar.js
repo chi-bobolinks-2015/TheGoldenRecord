@@ -3,6 +3,9 @@ $(document).ready(function() {
   $(".category-name").on("click", function () {
     $(this).children().toggleClass("hidden");
   });
+  $(".tracks").click(function(e) {
+    e.stopPropagation();
+  });
 
   $(".draggableTrack").draggable({
     containment: ".container",
@@ -32,12 +35,11 @@ $(document).ready(function() {
     $('body').append('<div class="container" id="mask"></div>');
     $("#mask").fadeIn(400);
 
+  });
+
     $(".container").on("click", "button.close", function() {
       console.log("This!");
       $(".popup-info").hide();
-        $("#mask").remove();
+      $("#mask").remove();
       });
-
-  });
-
 });

@@ -3,10 +3,14 @@
     <ul>
       <% @categories.each do |category| %>
         <li class="category-name"><%= category.name %>
-          <ul class="hidden">
+          <ul class="tracks hidden">
             <% category.tracks.each do |track| %>
               <li class="draggableTrack" url="<%= track.url %>" id="<%= track.id %>" image="<%= category.img %>"><%= track.title %></li>
               <li><a href="#popup-box" class="popup-window">Learn More</a></li>
+              <div id="popup-box" class="popup-info">
+                <p><%= track.description %></p>
+                <button type="button" class="close">Close</button>
+              </div>
             <% end %>
           </ul>
         </li>
@@ -14,10 +18,6 @@
     </ul>
   </div>
 
-  <div id="popup-box" class="popup-info">
-    <p>Things about music.</p>
-    <button type="button" class="close">Close</button>
-  </div>
 
   <div class="collapsible col-lg-1 debug"></div>
 <div class="jquery-script-clear"></div>
