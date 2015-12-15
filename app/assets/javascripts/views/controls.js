@@ -32,37 +32,22 @@ function moveSlider(htmlId){
   });
 }
 
-function moveVolumeDial(mix){
+function moveVolumeDial(currentMixer){
 
   $(window).load(function(event){
-    var currentVolume
-
-    if(mix.target){
-     currentVolume = mix.target.volume
-    }else{
-      currentVolume = 0
-    }
-
-    $("#volume-dial").val(currentVolume);
-
-
+    // starting value of knob set in relation to target in setTargetForControlPanel() method
     $("#volume-dial").knob({
-    'min': 0,
-    'max': 5,
-    'step': .5,
-    'cursor': 15,
-    'angleOffset': -125,
-    'angleArc': 250,
-    'width': 150,
-    'fgColor': "#E18303",
-    'skin': "tron",
-    'thickness': .3,
-    'displayPrevious': true,
-    'displayInput': true,
-    'change': function() {
-        mix.assignTargetVolume(this.$.val() + 1);
-      }
-      });
+      'min': -1,
+      'max': 11,
+      'step': 1,
+      'width': 75,
+      'fgColor': "#222222",
+      'skin': "tron",
+      'thickness': .2,
+      'displayPrevious': true,
+      'displayInput': false,
+      'change': function() { currentMixer.assignTargetVolume((this.$.val()/10)); }
+    });
 
   });
 }
@@ -76,13 +61,12 @@ function movePanningDial(current_value){
     'min': -2,
     'max': 2,
     'step': .5,
-    'cursor': 15,
     'angleOffset': -125,
     'angleArc': 250,
-    'width': 200,
-    'fgColor': "#E18303",
+    'width': 75,
+    'fgColor':  "#222222",
     'skin': "tron",
-    'thickness': .3,
+    'thickness': .2,
     'displayPrevious': true,
     'displayInput': true
     });
