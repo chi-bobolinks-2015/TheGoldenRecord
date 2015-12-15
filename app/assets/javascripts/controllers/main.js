@@ -37,7 +37,7 @@ $(document).ready(function(event){
 
 var someMix = new Mixer
 // someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Birds%2C+Hyena%2C+Elephant.wav', 'divId': 1})
-someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Soul+Jazz.mp3', 'divId': 0})
+someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Music/ReginaApp-+Soul+Jazz.mp3', 'divId': 0})
 // someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Swing.mp3', 'divId': 2})
 console.log(someMix.mix)
 someMix.assignTarget(0)
@@ -92,7 +92,7 @@ someMix.assignTarget(0)
 // convolver.connect(output);
 
 console.log(someMix.mix)
-console.log(someMix.assignTargetConvolver())
+// console.log(someMix.assignTargetConvolver())
 
 // console.log(window.AudioContext)
 
@@ -103,7 +103,9 @@ console.log(someMix.assignTargetConvolver())
   		console.log("play")
   	}
   	else if (event.keyCode == 40) {
-      someMix.globalPause();
+      // someMix.globalPause();
+      someMix.toggleConvolver();
+
       console.log("pause")
   	}
   })

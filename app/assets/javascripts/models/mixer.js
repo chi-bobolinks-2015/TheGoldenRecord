@@ -172,6 +172,11 @@ Mixer.prototype.playTarget = function () {
 
 // ############### TARGET EFFECTS METHODS ##################
 
+//Turn target convolver on and off
+Mixer.prototype.toggleConvolver = function () {
+		this.mix[this.target]._audioNode[2].bypass = !this.mix[this.target]._audioNode[2].bypass
+}
+
 //Assign target echo level
 Mixer.prototype.assignTargetConvolver = function (params) {
 
@@ -183,7 +188,6 @@ Mixer.prototype.assignTargetConvolver = function (params) {
 	// var impulse = params['impulse']
 	// var bypass = params['bypass']
 
-	return this.mix[this.target]._audioNode[2]
 }
 
     // highCut: 22050,                         
