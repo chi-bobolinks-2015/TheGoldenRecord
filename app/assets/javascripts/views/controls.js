@@ -32,9 +32,43 @@ function moveSlider(htmlId){
   });
 }
 
+function moveVolumeDial(mix){
+
+  $(window).load(function(event){
+    var currentVolume
+
+    if(mix.target){
+     currentVolume = mix.target.volume
+    }else{
+      currentVolume = 0
+    }
+
+    $("#volume-dial").val(currentVolume);
+
+
+    $("#volume-dial").knob({
+    'min': 0,
+    'max': 5,
+    'step': .5,
+    'cursor': 15,
+    'angleOffset': -125,
+    'angleArc': 250,
+    'width': 150,
+    'fgColor': "#E18303",
+    'skin': "tron",
+    'thickness': .3,
+    'displayPrevious': true,
+    'displayInput': true,
+    'change': function() {
+        mix.assignTargetVolume(this.$.val() + 1);
+      }
+      });
+
+  });
+}
+
 function movePanningDial(current_value){
   $(window).load(function(event){
-    // console.log("Inside of moveDial")
 
     $("#panning-dial").val(current_value)
 
@@ -45,10 +79,10 @@ function movePanningDial(current_value){
     'cursor': 15,
     'angleOffset': -125,
     'angleArc': 250,
-    'width': "200",
+    'width': 200,
     'fgColor': "#E18303",
     'skin': "tron",
-    'thickness': ".3",
+    'thickness': .3,
     'displayPrevious': true,
     'displayInput': true
     });
@@ -99,5 +133,5 @@ function moveLowPassDial(current_value){
   });
 }
 
-// 'change' : function (v) { console.log(Change the Panning); }
+
 // 'release' : function (v) { /*make something*/ }
