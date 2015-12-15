@@ -38,6 +38,8 @@ left: 60px;
 top: 60px;
 }
 
-.fl-r{
-    float: right;
+.controls{
+    display: inline-block;
+    margin: 1em;
+    text-align: center;
 }
