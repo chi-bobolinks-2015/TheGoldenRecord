@@ -46,12 +46,8 @@ $(document).ready(function() {
 
   });
 
-  $(".container").on("click", ".close", function(event) {
-    event.preventDefault();
-    console.log("This!");
+  $("body").on("click", ".close", function() {
     $(".popup-info").hide();
-    // var trackId = $(this).data("track-id")
-    // $(".popup-info[data-track-id="+trackId+"]").hide();
     $("#mask").remove();
   });
 
