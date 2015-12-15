@@ -41,7 +41,9 @@ someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Music/Soul
 // someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Swing.mp3', 'divId': 2})
 console.log(someMix.mix)
 someMix.assignTarget(0)
-// console.log(someMix.trackContext(0))
+var context = someMix.trackContext(0)
+console.log(context)
+
 
 
 //setting context

@@ -63,7 +63,6 @@ Mixer.prototype.buildEffects = function (trackID) {
 		//Push effect into _audioNode array for future manipulation
 		this.mix[trackID]._audioNode.push(convolver)
 
-
 	//Build new reverb
 	var reverb = this.buildReverb({'tuna' : tuna, 'context' : context})
 
@@ -76,16 +75,10 @@ Mixer.prototype.buildEffects = function (trackID) {
 	//Set output destination to our context destination(speakers)
 	var output = context.destination
 
-	//Connect our input to our filter
+	//Connect the nodes
 	input.connect(filter)	
-
-	//Connect our filter to our convolver
 	filter.connect(convolver)
-
-	//Connect our convolver to our reverb
 	convolver.connect(reverb)
-
-	//Connect our convolver to the context's destination
 	reverb.connect(output)
 
 }
@@ -103,7 +96,7 @@ Mixer.prototype.buildFilter = function (params) {
     Q: 1, //0.001 to 100
     gain: 0, //-40 to 40
     filterType: "highpass", //lowpass, highpass, bandpass, lowshelf, highshelf, peaking, notch, allpass
-    bypass: 0
+    bypass: 1
 	});
 
 	//Return the filter
@@ -125,7 +118,7 @@ Mixer.prototype.buildConvolver = function (params) {
     wetLevel: 1,                            //0 to 1+
     level: 1,                               //0 to 1+, adjusts total output of both wet and dry
     impulse: "/assets/von\ klitzing\ effect\ 4R.wav",    //the path to your impulse response
-    bypass: 0
+    bypass: 1
 	});
 
 	//Return the convolver
@@ -146,13 +139,11 @@ Mixer.prototype.buildReverb = function (params) {
 	  wetLevel: .9,    //0 to 1+
 	  dryLevel: 1,       //0 to 1+
 	  cutoff: 2000,      //cutoff frequency of the built in lowpass-filter. 20 to 22050
-	  bypass: 0
+	  bypass: 1
 	});
 	//Return the convolver
 	return delay
 }
-
-
 
 // ############### GLOBAL METHODS ##################
 
@@ -201,7 +192,7 @@ Mixer.prototype.playTarget = function () {
 
 // ############### TARGET EFFECTS METHODS ##################
 
-//Turn target convolver on and off
+//Toggle target convolver on and off
 Mixer.prototype.toggleEcho = function () {
 	this.mix[this.target]._audioNode[2].bypass = !this.mix[this.target]._audioNode[2].bypass
 	this.mix[this.target]._audioNode[3].bypass = !this.mix[this.target]._audioNode[3].bypass
@@ -213,7 +204,11 @@ Mixer.prototype.assignDelayTime = function (value) {
 	this.mix[this.target]._audioNode[3].delayTime.value = value
 }
 
+//Toggle filter on and off
+Mixer.prototype.toggleFilter = function () {
+	this.mix[this.target]._audioNode[1].bypass = !this.mix[this.target]._audioNode[1].bypass
 
+}
 
 
 
