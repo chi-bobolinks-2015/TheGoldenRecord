@@ -9,7 +9,8 @@ var Mixer = function () {
 //Adds a track to the mix. Takes args = {urls: sound.aws.com, divId: 1}
 Mixer.prototype.addTrack = function (args) {
 	var newTrack = new Howl({
-		urls: [args['urls']]
+		urls: [args['urls']],
+		volume: 0.5
 	});
 	this.mix[args['divId']] = newTrack;
 }
@@ -95,7 +96,7 @@ Mixer.prototype.applyFilter = function () {
     filterType: "lowpass", //lowpass, highpass, bandpass, lowshelf, highshelf, peaking, notch, allpass
     bypass: 0
 	});
-	
+
 }
 
 
