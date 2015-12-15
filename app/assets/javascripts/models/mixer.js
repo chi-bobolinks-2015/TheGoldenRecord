@@ -14,7 +14,7 @@ Mixer.prototype.addTrack = function (args) {
 	});
 	var trackID = args['divId']
 	this.mix[trackID] = newTrack;
-	// this.buildEffects(trackID);
+	this.buildEffects(trackID);
 }
 
 //Removes a track from the mix array
@@ -64,6 +64,12 @@ Mixer.prototype.buildEffects = function (trackID) {
 		this.mix[trackID]._audioNode.push(convolver)
 
 
+	//Build new reverb
+	var reverb = this.buildReverb({'tuna' : tuna, 'context' : context})
+
+		//Push effect into _audioNode array for future manipulation
+		this.mix[trackID]._audioNode.push(reverb)
+
 	//Point at the gainNode created in our new Howl
 	var input = this.mix[0]._audioNode[0]
 
@@ -76,8 +82,11 @@ Mixer.prototype.buildEffects = function (trackID) {
 	//Connect our filter to our convolver
 	filter.connect(convolver)
 
+	//Connect our convolver to our reverb
+	convolver.connect(reverb)
+
 	//Connect our convolver to the context's destination
-	convolver.connect(output)
+	reverb.connect(output)
 
 }
 
@@ -113,7 +122,7 @@ Mixer.prototype.buildConvolver = function (params) {
     highCut: 22050,                         //20 to 22050
     lowCut: 20,                             //20 to 22050
     dryLevel: 1,                            //0 to 1+
-    wetLevel: 10,                            //0 to 1+
+    wetLevel: 1,                            //0 to 1+
     level: 1,                               //0 to 1+, adjusts total output of both wet and dry
     impulse: "/assets/von\ klitzing\ effect\ 4R.wav",    //the path to your impulse response
     bypass: 0
@@ -121,6 +130,26 @@ Mixer.prototype.buildConvolver = function (params) {
 
 	//Return the convolver
 	return convolver
+}
+
+//Create new tuna.convolver(echo)
+Mixer.prototype.buildReverb = function (params) {
+
+	//Set variables for new effect from params
+	var tuna = params['tuna']
+	var context = params['context']
+
+	//Call Convolver method on tuna
+	var delay = new tuna.Delay({
+	  feedback: 0.5,    //0 to 1+
+	  delayTime: 150,    //how many milliseconds should the wet signal be delayed?
+	  wetLevel: .9,    //0 to 1+
+	  dryLevel: 1,       //0 to 1+
+	  cutoff: 2000,      //cutoff frequency of the built in lowpass-filter. 20 to 22050
+	  bypass: 0
+	});
+	//Return the convolver
+	return delay
 }
 
 
@@ -173,30 +202,17 @@ Mixer.prototype.playTarget = function () {
 // ############### TARGET EFFECTS METHODS ##################
 
 //Turn target convolver on and off
-Mixer.prototype.toggleConvolver = function () {
-		this.mix[this.target]._audioNode[2].bypass = !this.mix[this.target]._audioNode[2].bypass
+Mixer.prototype.toggleEcho = function () {
+	this.mix[this.target]._audioNode[2].bypass = !this.mix[this.target]._audioNode[2].bypass
+	this.mix[this.target]._audioNode[3].bypass = !this.mix[this.target]._audioNode[3].bypass
+
 }
 
 //Assign target echo level
-Mixer.prototype.assignTargetConvolver = function (params) {
-
-	// var highCut = params['highCut']
-	// var lowCut = params['lowCut']
-	// var dryLevel = params['dryLevel']
-	// var wetLevel = params['wetLevel']
-	// var level = params['level']
-	// var impulse = params['impulse']
-	// var bypass = params['bypass']
-
+Mixer.prototype.assignDelayTime = function (value) {
+	this.mix[this.target]._audioNode[3].delayTime.value = value
 }
 
-    // highCut: 22050,                         
-    // lowCut: 20,                             
-    // dryLevel: 1,                            
-    // wetLevel: 1,                            
-    // level: 1,                            
-    // impulse: "impulses/impulse_rev.wav",   
-    // bypass: 0
 
 
 
