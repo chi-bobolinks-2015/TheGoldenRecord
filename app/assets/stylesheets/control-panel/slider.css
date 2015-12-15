@@ -43,3 +43,7 @@ top: 60px;
     margin: 1em;
     text-align: center;
 }
+
+.control-panel{
+    float: right;
+}
