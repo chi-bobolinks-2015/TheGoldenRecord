@@ -5,10 +5,23 @@ class AmazonRetrievalJob < ActiveRecord::Base
     s3 = Aws::S3::Client.new(region: "us-east-1")
     bucket_contents = s3.list_objects(bucket: "the-golden-record").contents
 
-    bucket_contents.each do |track|
-      Track.create(title: track.key.split(".")[0..2].join, url: "https://the-golden-record.s3.amazonaws.com/#{track.key}")
-      # https://the-golden-record.s3.amazonaws.com/#{track.key}
+    nature_folder = []
+
+    bucket_contents.each do |object|
+      if thing.key.include?("Nature/") && thing.key != "Nature/"
+        nature_folder << object
+      end
     end
+
+    nature_folder.each do |track|
+      Track.create(title: track.key.split(".")[0..-2].join, url: "https://the-golden-record.s3.amazonaws.com/Nature/#{track.key}", category: "Nature")
+    end
+
+    # bucket_contents.each do |track|
+    #   # Tracks need a category
+    #   Track.create(title: track.key.split(".")[0..-2].join, url: "https://the-golden-record.s3.amazonaws.com/#{track.key}")
+    #   # https://the-golden-record.s3.amazonaws.com/#{track.key}
+    # end
 
   end
 end
