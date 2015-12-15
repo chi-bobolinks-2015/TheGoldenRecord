@@ -68,7 +68,6 @@ console.log(someMix.trackContext(0))
 // convolver.connect(output);
 
 console.log(someMix.mix)
-// console.log(convolver)
 // console.log(context)
 
 // console.log(window.AudioContext)

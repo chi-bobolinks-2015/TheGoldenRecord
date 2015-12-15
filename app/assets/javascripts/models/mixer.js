@@ -44,16 +44,44 @@ Mixer.prototype.trackContext = function (trackID) {
 
 // ############### BUILD FILTER METHODS ##################
 
-//Build filter structure
+//Build effects structure
 Mixer.prototype.buildEffects = function (trackID) {
+
+	//Set context and Tuna object for the track
 	var context = this.trackContext(trackID)
 	var tuna = new Tuna(context)
-	this.buildEcho({'tuna' : tuna, 'context' : context})
+
+	//Point at the gainNode created in our new Howl
+	var input = this.mix[0]._audioNode[0]
+
+	//Set output destination to our context destination(speakers)
+	var output = context.destination
+
+	//Build new convolver
+	var convolver = this.buildEcho({'tuna' : tuna, 'context' : context})
+
+		//Connect that gainNode to our new convolver
+		input.connect(convolver)
+
+	//Build new filter
+	var filter = this.buildFilter({'tuna' : tuna, 'context' : context})
+
+		//Connect our convolver to our filter
+		convolver.connect(filter)
+
+
+	//Connect our filter to the context's destination
+	filter.connect(output)
 }
 
+//Create new tuna.convolver(echo)
 Mixer.prototype.buildEcho = function (params) {
+
+	//Set variables for new effect from params
 	var tuna = params['tuna']
 	var context = params['context']
+
+	//Call Convolver method on tuna
 	var convolver = new tuna.Convolver({
     highCut: 22050,                         //20 to 22050
     lowCut: 20,                             //20 to 22050
@@ -63,13 +91,36 @@ Mixer.prototype.buildEcho = function (params) {
     impulse: "/assets/Musikvereinsaal.wav",    //the path to your impulse response
     bypass: 0
 	});
-	var input = this.mix[0]._audioNode[0]
-	input.connect(convolver)
-	var output = context.destination
-	convolver.connect(output)
+
+	//Push node into ._AudioNode for future reference
+	this.mix[0]._audioNode.push(convolver)
+
+	//Return the convolver
+	return convolver
 }
 
 
+Mixer.prototype.buildFilter = function (params) {
+
+	//Set variables for new effect from params
+	var tuna = params['tuna']
+	var context = params['context']
+
+	//Create new filter effect
+	var filter = new tuna.Filter({
+    frequency: 440, //20 to 22050
+    Q: 1, //0.001 to 100
+    gain: 0, //-40 to 40
+    filterType: "lowpass", //lowpass, highpass, bandpass, lowshelf, highshelf, peaking, notch, allpass
+    bypass: 0
+	});
+
+	//Push node into ._AudioNode for future reference
+	this.mix[0]._audioNode.push(filter)
+
+	//Return the filter
+	return filter
+}
 
 
 // ############### GLOBAL METHODS ##################
