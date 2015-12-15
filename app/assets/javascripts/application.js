@@ -17,6 +17,7 @@
 //= require aterrien-knob
 //= require jquery_kontrol
 //= require turbolinks
+//= require tuna-min
 //= require howler
 //= require underscore-min
 //= require_tree .
