@@ -1,6 +1,6 @@
 function setUserEvents(mix){
   startAndStopTrack(mix)
-  // pauseMix(mix);
+  globalPause(mix);
 
   dropTrack(mix);
 
@@ -54,52 +54,36 @@ function startAndStopTrack(mix) {
 
   // ON CLICK - PLAY AND STOP
   // returnDivs().on('click', controlBoard.togglePlay.bind(controlBoard));
-  returnDivs().on('click', function(){
-    var $targetDiv = $(this);
-    var divId =  $targetDiv.attr("id");
-    $targetDiv.toggleClass('active');
-    $targetDiv.hasClass("active") ? mix.playTrack(divId) : mix.stopTrack(divId);
+  returnDivs().on('click', function(e){
+    var $targetComb =  $(this).find('.hex_inner')
+    $targetComb.toggleClass('active');
+    var divId = Number($(this).attr("id"));
+    $targetComb.hasClass("active") ? mix.playTrack(divId) : mix.stopTrack(divId);
   });
 }
 
 
-// function ControlBoard() {
-//   this.mix = mix;
-// }
-
-// ControlBoard.prototype.startSound = function(){}
-
-// var controlBoard = {
-//   mix: "foo",
-//   startSound: function() {},
-//   togglePlay: function() {
-//     this.mix;
-//   }
-// }
-
-function pauseMix(mix) {
-  // console.log( "running pause");
+function globalPause(mix) {
  $(window).on('keyup', function(e) {
-  // console.log( "In Keyup");
 
     e.preventDefault();
     if(e.keyCode == 32) {
+      if(mix.pause === false) {
+        mix.globalPause();
+      } else {
+        mix.globalPlay();
+      }
 
-      if(Wad.audioContext.state === "suspended"){
-        // IF AUDIO HAS STATE PAUSED: TRUE, RESUME SOUND
-        $('div.active').removeClass('paused')
-        console.log("Paused: TRUE; Resuming Sound")
-        Wad.audioContext.resume();
-
-      }else{
-        // IF AUDIO HAS STATE PAUSED: FALSE, SUSPEND SOUND
-        $('div.active').addClass('paused')
-        console.log("Paused: FALSE; Suspending Sound")
-        Wad.audioContext.suspend();
-      };
     };
   });
 }
+
+function controlPanelHover(cell){
+  $(cell).hover(function() {
+    $(this).toggleClass('on-deck')
+    });
+}
+
 
 function changeTrackVolume(mix) {
   $(window).on("keyup", function(event) {
