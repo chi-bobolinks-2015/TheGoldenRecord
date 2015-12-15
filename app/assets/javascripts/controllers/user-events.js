@@ -8,6 +8,7 @@ function setUserEvents(mix){
 };
 
 
+
 function dropTrack(mix){
   $(".cell").droppable({
     accept: ".draggableTrack",
@@ -42,15 +43,18 @@ function removeTrack(mix) {
 }
 
 function setTargetForControlPanel(cellId, currentMixer, event){
-   if(event.keyCode === 69) {
-    $(".control-panel").show();
-        // If you hover over a track and hit "e" you are setting it as the target
-          currentMixer.assignTarget(cellId);
-
-        // Then all the dials need to be updated to reflect the attribute values of the target
-         var $currentVolume= currentMixer.mix[currentMixer.target].volume();
-          $("#volume-dial").val($currentVolume * 10).trigger("change");
-          $("#volume-dial").draw();
+   if( event.keyCode === 13 && $(".control-panel").is(":hidden") ){
+    // show control panel, assign target
+      $(".control-panel").show();
+      currentMixer.assignTarget(cellId);
+    // Then all the dials need to be updated to reflect the attribute values of the target
+        var $currentVolume= currentMixer.mix[currentMixer.target].volume();
+        $("#volume-dial").val($currentVolume * 10).trigger("change");
+    }else if( event.keyCode === 13 && $(".control-panel").is(":visible") ){
+      $(".control-panel").hide();
+      currentMixer.assignTarget(null);
+    }else{
+      console.log("Check setTargetForControlPanel method, you aren't hitting the right conditions")
     };
 };
 
