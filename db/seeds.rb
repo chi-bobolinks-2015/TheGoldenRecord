@@ -1,6 +1,6 @@
-Category.create(name: "Earth", img: "https://cdn4.iconfinder.com/data/icons/ibrandify-basic-essentials-icon-set/512/pen_stroke_sketch_doodle_lineart_212-128.png")
-Category.create(name: "Nature", img: "https://cdn4.iconfinder.com/data/icons/ibrandify-basic-essentials-icon-set/512/pen_stroke_sketch_doodle_lineart_19-128.png")
-Category.create(name: "Music", img: "https://cdn4.iconfinder.com/data/icons/ibrandify-basic-essentials-icon-set/512/pen_stroke_sketch_doodle_lineart_111-128.png")
+Category.create(name: "Earth", img: 'https://d30y9cdsu7xlg0.cloudfront.net/png/123599-200.png')
+Category.create(name: "Nature", img: 'https://d30y9cdsu7xlg0.cloudfront.net/png/119825-200.png')
+Category.create(name: "Music", img: 'https://d30y9cdsu7xlg0.cloudfront.net/png/123337-200.png')
 
 Track.create(title: "Elephants", artist: "Jeff Courwin", description: "A one of a kind recording of an elephant singing. You may think it sounds a lot like an elephant proper, but that's really just your opinion.", category_id: 2, url: "https://s3.amazonaws.com/the-golden-record/Birds%2C+Hyena%2C+Elephant.wav", length: nil, composer: nil)
 
