@@ -59,11 +59,15 @@ Mixer.prototype.globalPause = function () {
 	this.pause = true
 }
 
-// ############### TARGET METHODS ##################
+// ############### BASIC TARGET METHODS ##################
 
 //Sets target for later manipulation(ie. volume, filter)
 Mixer.prototype.assignTarget = function (position) {
 	this.target = position
+}
+
+Mixer.prototype.targetContext = function () {
+	return this.mix[this.target]._audioNode[0].context
 }
 
 //Assigns target volume
@@ -80,3 +84,31 @@ Mixer.prototype.pauseTarget = function () {
 Mixer.prototype.playTarget = function () {
 	this.mix[this.target].play()
 }
+
+// ############### TARGET EFFECTS METHODS ##################
+
+Mixer.prototype.applyFilter = function () {
+	var filter = new tuna.Filter({
+    frequency: 440, //20 to 22050
+    Q: 1, //0.001 to 100
+    gain: 0, //-40 to 40
+    filterType: "lowpass", //lowpass, highpass, bandpass, lowshelf, highshelf, peaking, notch, allpass
+    bypass: 0
+	});
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
