@@ -208,7 +208,7 @@ Mixer.prototype.toggleEcho = function () {
 
 }
 
-//Assign target echo level
+//Assign target echo level (Between 0 and 1)
 Mixer.prototype.assignDelayTime = function (value) {
 	this.mix[this.target]._audioNode[3].delayTime.value = value
 }
