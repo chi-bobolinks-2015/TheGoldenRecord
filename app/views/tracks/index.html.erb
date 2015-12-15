@@ -1,6 +1,7 @@
 <div class="container debug">
-  <div class="nav nav-stacked fl-l col-lg-2 debug" id="sidebar">
+  <div class="nav nav-stacked sidebar fl-l col-lg-2 debug">
     <ul>
+      <div class="collapsible"><%= image_tag("navigation-bar/space-ship.png", height: '50', width: '50') %></div>
       <% @categories.each do |category| %>
         <li class="category-name cur"><%= category.name %>
           <ul class="tracks hidden">
@@ -19,10 +20,10 @@
   <div class="popup-info popup-box">
   </div>
 
-  <div class="collapsible col-lg-1 debug"></div>
+  <div class="sidebar collapsible col-lg-1 hidden debug"><%= image_tag("navigation-bar/space-ship.png", height: '50', width: '50') %></div>
 
   <div class="jquery-script-clear"></div>
-  <div class="mix debug fl-l col-lg-9">
+  <div class="mix debug fl-l col-lg-10">
     <div class="track-divs honeycombs debug">
 
         <div id="0" class="cell comb border debug" ><img src="/assets/sound-categories/plus.jpg"/><span></span></div>
