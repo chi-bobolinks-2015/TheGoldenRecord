@@ -15,8 +15,8 @@
 //= require jquery_ujs
 //= require honeycombs
 //= require aterrien-knob
+//= require jquery_kontrol
 //= require turbolinks
-//= require wad.min
 //= require howler
 //= require underscore-min
 //= require_tree .

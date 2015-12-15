@@ -5,7 +5,10 @@ $(document).ready(function(event){
   });
 
   var activeMix = startMixer();
+  activeMix.assignTarget
   setUserEvents(activeMix);
+  setControls(activeMix);
+
   // var activeMix = startMixer();
   // setUserEvents(activeMix);
 

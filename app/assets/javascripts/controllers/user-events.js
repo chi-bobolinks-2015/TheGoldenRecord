@@ -1,9 +1,8 @@
 function setUserEvents(mix){
   startAndStopTrack(mix)
   globalPause(mix);
-
   dropTrack(mix);
-
+  // controlPanelHover(mix)
   //Put in deck user event file
   // changeTrackVolume(mix);
 
@@ -24,19 +23,25 @@ function dropTrack(mix){
       var trackAdded = {src: draggable.attr("url"), id: trackId, name: draggable.html()}
 
       mix.addTrack({'urls': draggable.attr("url"), 'divId': divId})
-      trackInfoHover($(this), trackTitle);
+      trackInfoHover($(this), mix, trackTitle);
       loadImage(image, $(this));
       draggableImage();
-      removeFromMixer(trackId);
-      addToDeck();
     }
   });
 }
 
-function trackInfoHover(cell, trackTitle){
+function trackInfoHover(cell, mix, trackTitle){
   $(cell).hover(function() {
+    var thisCellId = Number($(this).attr("id"))
     var targetComb = $(this).find('.inner-text')
       $(targetComb).html(trackTitle);
+      $(window).on("keyup", function(e){
+
+        if(e.keyCode === 69) {
+          mix.assignTarget(thisCellId);
+          console.log(mix[target].volume)
+        }
+      })
     },
     mouseExitCell
     );
@@ -78,60 +83,19 @@ function globalPause(mix) {
   });
 }
 
-function controlPanelHover(cell){
-  $(cell).hover(function() {
-    $(this).toggleClass('on-deck')
-    });
-}
-
-
-function changeTrackVolume(mix) {
-  $(window).on("keyup", function(event) {
-    event.preventDefault();
-    var $targetDiv   = $("div.on-deck")
-    var soundId = $targetDiv.attr("id")
-
-    var targetSound = _.find(mix.wads, function(wad) { return wad.label === Number(soundId) })
-
-    if(event.keyCode == 38 && targetSound.volume < 4) {
-      // increase volume
-      console.log("Increase Volume")
-
-      targetSound.setVolume(-2)
-      // console
-      // targetSound.defaultEnv.sustain = 0
-
-      // targetSound.gain[0].gain.defaultValue = 5
-      // targetSound.gain[0].gain.defaultValue = 5
-      // targetSound.gain[0].gain.value = 5
-      // targetSound.volume = 5
-      // targetSound.defaultVolume = 5
-      // console.log(targetSound.nodes[1].gain.value = 5)
-
-      // targetSound.gain[0].gain.value = 5
-
-      console.log(targetSound)
-
-    } else if (event.keyCode == 40 && targetSound.volume > 1) {
-      // decrease volume
-      console.log("Decrease Volume")
-      targetSound.setVolume(targetSound.volume - .5)
-    }
-
-  });
-}
 
 function removeFromMixer(trackId) {
-  $(".cell").on("click", ".boxclose", function() {
-    var cell = $(this).parent();
-    sounds = _.reject(sounds, function(sound){
-      return sound.id === trackId;
-    });
-    cell.removeClass("on-deck");
-    $(cell.children("p")).remove();
-    $(cell.children("img")).remove();
-    $(cell.children(".boxclose")).remove();
-  });
+  // NEEDS TO BE BUILT
+  // $(".cell").on("click", ".boxclose", function() {
+  //   var cell = $(this).parent();
+  //   sounds = _.reject(sounds, function(sound){
+  //     return sound.id === trackId;
+  //   });
+  //   // cell.removeClass("on-deck");
+  //   $(cell.children("p")).remove();
+  //   $(cell.children("img")).remove();
+  //   $(cell.children(".boxclose")).remove();
+  // });
 }
 
 // ON DRAG -LOAD AND REMOVE FILES FROM MIXER
