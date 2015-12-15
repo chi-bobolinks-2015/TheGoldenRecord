@@ -16,8 +16,8 @@ $(document).ready(function() {
   });
 
   $(".collapsible").on("click", function(){
-    $("#sidebar").toggleClass("hidden");
-    $(".mix").toggleClass("col-lg-9");
+    $(".sidebar").toggleClass("hidden");
+    $(".mix").toggleClass("col-lg-10");
     $(".mix").toggleClass("col-lg-11");
   });
 

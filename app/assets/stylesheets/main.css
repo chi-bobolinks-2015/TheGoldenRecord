@@ -6,12 +6,6 @@
   text-align: center;
 }
 
-.collapsible {
-  width: 1em;
-  background-color: red;
-  height: 50em;
-}
-
 .active {
   background-color: green;
 }
@@ -81,3 +75,5 @@ a.boxclose{
 .clear { clear: both; }
 .fl-l { float: left; }
 .cur { cursor: pointer; }
+.p-std { padding: 1em; }
+.pr-m { padding-right: 2.5em; }
