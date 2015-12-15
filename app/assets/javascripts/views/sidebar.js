@@ -46,7 +46,7 @@ $(document).ready(function() {
 
   });
 
-  $(".container").on("click", ".close", function() {
+  $("body").on("click", ".close", function() {
     $(".popup-info").hide();
     $("#mask").remove();
   });
