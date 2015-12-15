@@ -28,10 +28,10 @@ $(document).ready(function() {
 
     $(popupBox).css({
       "margin-top": -popMarginTop,
-      "margin-left": -popMargLeft
+      "margin-left": -popMarginLeft
     });
 
-    $("body").append('<div id="mask"></div>');
+    $('body').append('<div class="container" id="mask"></div>');
     $("#mask").fadeIn(400);
     return false;
   });

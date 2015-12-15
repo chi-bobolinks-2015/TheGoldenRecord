@@ -65,14 +65,15 @@ a.boxclose{
 }
 
 #mask {
-  display: none;
-  background: #000;
+  /*display: none;*/
+  background-color: yellow;
   position: fixed;
   left: 0;
   top: 0;
   z-index: 88888;
   width: 100%;
   opacity: 0.5;
+  height: 100vh;
 }
 
 
