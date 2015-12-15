@@ -20,18 +20,6 @@ function draggableImage(){
 }
 
 
-function moveSlider(htmlId){
-  $(window).load(function(event){
-    // console.log("Inside of moveSlider")
-    $("#" + htmlId).slider({
-    value: 60,
-    orientation: "horizontal",
-    range: "min",
-    animate: true
-    });
-  });
-}
-
 function moveVolumeDial(currentMixer){
 
   $(window).load(function(event){
@@ -55,12 +43,11 @@ function moveVolumeDial(currentMixer){
 function movePanningDial(current_value){
   $(window).load(function(event){
 
-    $("#panning-dial").val(current_value)
-
     $("#panning-dial").knob({
     'min': -2,
     'max': 2,
     'step': .5,
+    'cursor': 13,
     'angleOffset': -125,
     'angleArc': 250,
     'width': 75,
@@ -69,53 +56,89 @@ function movePanningDial(current_value){
     'thickness': .2,
     'displayPrevious': true,
     'displayInput': true
+    // 'change': function() { currentMixer.assignTargetVolume((this.$.val()/10)); }
     });
   });
 }
 
-// get these working with percentages
-function moveHighPassDial(current_value){
+
+function moveHighDial(current_value){
   $(window).load(function(event){
     // console.log("Inside of moveDial")
-    $("#high-pass-dial").val(current_value)
 
-    $("#high-pass-dial").knob({
-    'min': 0,
-    'max': 100,
-    'step': 5,
-    'width': 300,
-    'height': 300,
-    'fgColor': "#E18303",
+    $("#high-dial").knob({
+    'min': -1,
+    'max': 11,
+    'step': 1,
+    'width': 75,
+    'fgColor': "#222222",
     'skin': "tron",
-    'thickness': .3,
-    'displayPrevious': false,
+    'thickness': .2,
+    'displayPrevious': true,
     'displayInput': false
+    // 'change': function() { currentMixer.assignTargetVolume((this.$.val()/10)); }
     });
   });
 }
 
-function moveLowPassDial(current_value){
+function moveLowDial(current_value){
   $(window).load(function(event){
     // console.log("Inside of moveDial")
 
-    $("#low-pass-dial").val(current_value)
-
-    $("#low-pass-dial").knob({
-    'min': 0,
-    'max': 100,
-    'step': 5,
-    'width': 200,
-    'height': 200,
-    'fgColor': "#E18303",
+    $("#low-dial").knob({
+    'min': -1,
+    'max': 11,
+    'step': 1,
+    'width': 75,
+    'fgColor': "#222222",
     'skin': "tron",
-    'thickness': .45,
-    'displayPrevious': false,
-    'displayInput': false,
-    'rotation': -1
+    'thickness': .2,
+    'displayPrevious': true,
+    'displayInput': false
+    // 'change': function() { currentMixer.assignTargetVolume((this.$.val()/10)); }
     });
 
   });
 }
+
+function moveEchoDial(current_value){
+  $(window).load(function(event){
+    // console.log("Inside of moveDial")
+
+    $("#echo-dial").knob({
+    'min': -1,
+    'max': 11,
+    'step': 1,
+    'width': 75,
+    'fgColor': "#222222",
+    'skin': "tron",
+    'thickness': .2,
+    'displayPrevious': true,
+    'displayInput': false
+    // 'change': function() { currentMixer.assignTargetVolume((this.$.val()/10)); }
+    });
+  });
+}
+
+function moveTempoDial(current_value){
+  $(window).load(function(event){
+    // console.log("Inside of moveDial")
+
+    $("#tempo-dial").knob({
+    'min': -1,
+    'max': 11,
+    'step': 1,
+    'width': 75,
+    'fgColor': "#222222",
+    'skin': "tron",
+    'thickness': .2,
+    'displayPrevious': true,
+    'displayInput': false
+    // 'change': function() { currentMixer.assignTargetVolume((this.$.val()/10)); }
+    });
+  });
+}
+
 
 
 // 'release' : function (v) { /*make something*/ }
