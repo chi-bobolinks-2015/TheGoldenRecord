@@ -26,19 +26,19 @@ class AmazonRetrievalJob < ActiveRecord::Base
     end
 
     earth_folder.each do |track|
-      Track.create(title: track.key.split(".")[0], url: "https://the-golden-record.s3.amazonaws.com/#{track.key}", category: "Earth")
+      Track.create(title: track.key.split(".")[0], artist: "", url: "https://the-golden-record.s3.amazonaws.com/#{track.key}", category: "Earth")
     end
 
     music_folder.each do |track|
-      Track.create(title: track.key.split(".")[0], url: "https://the-golden-record.s3.amazonaws.com/#{track.key}", category: "Music")
+      Track.create(title: track.key.split("-")[0], artist: track.key.split("-")[1].split(".")[0], url: "https://the-golden-record.s3.amazonaws.com/#{track.key}", category: "Music")
     end
 
     nature_folder.each do |track|
-      Track.create(title: track.key.split(".")[0], url: "https://the-golden-record.s3.amazonaws.com/#{track.key}", category: "Nature")
+      Track.create(title: track.key.split(".")[0], artist: "", url: "https://the-golden-record.s3.amazonaws.com/#{track.key}", category: "Nature")
     end
 
     space_folder.each do |track|
-      Track.create(title: track.key.split(".")[0], url: "https://the-golden-record.s3.amazonaws.com/#{track.key}", category: "Space")
+      Track.create(title: track.key.split(".")[0], artist: "", url: "https://the-golden-record.s3.amazonaws.com/#{track.key}", category: "Space")
     end
   end
 
