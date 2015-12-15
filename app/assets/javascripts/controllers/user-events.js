@@ -30,6 +30,20 @@ function dropTrack(mix){
   });
 }
 
+function removeTrack(mix) {
+  // NEEDS TO BE BUILT
+  // $(".cell").on("click", ".boxclose", function() {
+  //   var cell = $(this).parent();
+  //   sounds = _.reject(sounds, function(sound){
+  //     return sound.id === trackId;
+  //   });
+  //   // cell.removeClass("on-deck");
+  //   $(cell.children("p")).remove();
+  //   $(cell.children("img")).remove();
+  //   $(cell.children(".boxclose")).remove();
+  // });
+}
+
 function trackInfoHover(cell, mix, trackTitle){
   $(cell).hover(function() {
     var thisCellId = Number($(this).attr("id"))
@@ -56,7 +70,6 @@ function returnDivs() {
 };
 
 function startAndStopTrack(mix) {
-
   // ON CLICK - PLAY AND STOP
   // returnDivs().on('click', controlBoard.togglePlay.bind(controlBoard));
   returnDivs().on('click', function(e){
@@ -82,35 +95,6 @@ function globalPause(mix) {
     };
   });
 }
-
-
-function removeFromMixer(trackId) {
-  // NEEDS TO BE BUILT
-  // $(".cell").on("click", ".boxclose", function() {
-  //   var cell = $(this).parent();
-  //   sounds = _.reject(sounds, function(sound){
-  //     return sound.id === trackId;
-  //   });
-  //   // cell.removeClass("on-deck");
-  //   $(cell.children("p")).remove();
-  //   $(cell.children("img")).remove();
-  //   $(cell.children(".boxclose")).remove();
-  // });
-}
-
-// ON DRAG -LOAD AND REMOVE FILES FROM MIXER
-function addToMixer(){
-// when dragged to mixer, load sound and assign to div
-// loadSound(activeMix, trackId, divId)
-};
-
-function addToDeck(){
-// when dragged to deck, enable effects
-// only one item on Deck at a time
-// if there is a track there already
-// replace it
-};
-
 
 
 
