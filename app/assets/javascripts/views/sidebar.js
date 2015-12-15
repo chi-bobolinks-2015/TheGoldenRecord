@@ -18,9 +18,7 @@ $(document).ready(function() {
   });
 
   $(".popup-window").on("click", function() {
-    console.log("THIS");
     var popupBox = $(this).attr('href');
-    console.log(popupBox);
     $(popupBox).fadeIn(400);
 
     var popMarginTop = ($(popupBox).height() + 24) / 2;
@@ -33,7 +31,13 @@ $(document).ready(function() {
 
     $('body').append('<div class="container" id="mask"></div>');
     $("#mask").fadeIn(400);
-    return false;
+
+    $(".container").on("click", "button.close", function() {
+      console.log("This!");
+      $(".popup-info").hide();
+        $("#mask").remove();
+      });
+
   });
 
 });
