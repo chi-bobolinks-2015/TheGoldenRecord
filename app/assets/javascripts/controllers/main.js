@@ -105,25 +105,25 @@ $(document).ready(function(event){
 // overdrive.connect(output);
 // delay.connect(output);
 
-console.log(someMix.mix)
+// console.log(someMix.mix)
 // console.log(delay)
 
 // console.log(window.AudioContext)
 
 
- $(window).on("keyup", function(event) {
-    if (event.keyCode == 38) {
-      someMix.globalPlay();
-      console.log("play")
-    }
-    else if (event.keyCode == 40) {
-      // someMix.globalPause();
-      someMix.toggleLoop();
-      console.log(someMix.mix)
+ // $(window).on("keyup", function(event) {
+ //    if (event.keyCode == 38) {
+ //      someMix.globalPlay();
+ //      console.log("play")
+ //    }
+ //    else if (event.keyCode == 40) {
+ //      // someMix.globalPause();
+ //      someMix.toggleLoop();
+ //      console.log(someMix.mix)
 
-      console.log("pause")
-  	}
-  })
+ //      console.log("pause")
+ //  	}
+ //  })
 
 })
 

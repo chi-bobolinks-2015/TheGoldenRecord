@@ -107,7 +107,7 @@ function moveEchoDial(currentMixer){
 
     $("#echo-dial").knob({
     'min': 0,
-    'max': 5,
+    'max': 10,
     'step': 1,
     'cursor': 30,
     'angleOffset': -125,
@@ -118,7 +118,7 @@ function moveEchoDial(currentMixer){
     'thickness': .2,
     'displayPrevious': true,
     'displayInput': false,
-    'change': function() { currentMixer.assignDelayTime((this.$.val()/5 + 1)); }
+    'change': function() { currentMixer.assignDelayTime((this.$.val()/50 + 1)); }
     });
   });
 }
