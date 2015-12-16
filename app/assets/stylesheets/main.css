@@ -82,6 +82,11 @@ a.boxclose{
   z-index: 99999;
 }
 
+.welcome {
+  background-color: white;
+  margin-top: 0;
+}
+
 
 /*Atomic styles*/
 .clear { clear: both; }
@@ -89,3 +94,4 @@ a.boxclose{
 .cur { cursor: pointer; }
 .p-std { padding: 1em; }
 .pr-m { padding-right: 2.5em; }
+
