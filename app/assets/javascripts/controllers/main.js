@@ -36,23 +36,22 @@ $(document).ready(function(event){
 
 
 // DRIVER CODE
-// var someMix = new Mixer
-// // someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Birds%2C+Hyena%2C+Elephant.wav', 'divId': 1})
-// someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Music/Soul+Jazz-Mike+Frederick.mp3', 'divId': 0})
-// // someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Swing.mp3', 'divId': 2})
-// console.log(someMix.mix)
-// someMix.assignTarget(0)
-// var context = someMix.trackContext(0)
-// console.log(context)
-
-
-
-
-//setting context
-// var context = someMix.mix[0]._audioNode[0].context
+var someMix = new Mixer
+someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Music/Soul+Jazz-Mike+Frederick.mp3', 'divId': 0})
+console.log(someMix.mix)
+someMix.assignTarget(0)
+var context = someMix.trackContext(0)
+console.log(context)
 
 //creating new Tuna object
-// var tuna = new Tuna(context)
+var tuna = new Tuna(context)
+
+var moog = new tuna.MoogFilter({
+    cutoff: 0.065,    //0 to 1
+    resonance: 3.5,   //0 to 4
+    bufferSize: 2048  //256 to 16384
+});
+
 
 //creating a new overdrive node
 // var overdrive = new tuna.Overdrive({
@@ -92,18 +91,18 @@ $(document).ready(function(event){
 // });
 
 //assigning an input source for the overdrive node
-// var input = someMix.mix[0]._audioNode[0]
+var input = someMix.mix[0]._audioNode[0]
 
 //setting input
 // input.connect(overdrive);
-// input.connect(delay);
+input.connect(moog);
 
 //assigning an output for the overdrive node
-// var output = context.destination;
+var output = context.destination;
 
 //setting output
 // overdrive.connect(output);
-// delay.connect(output);
+moog.connect(output);
 
 // console.log(someMix.mix)
 // console.log(delay)
@@ -111,19 +110,17 @@ $(document).ready(function(event){
 // console.log(window.AudioContext)
 
 
- // $(window).on("keyup", function(event) {
- //    if (event.keyCode == 38) {
- //      someMix.globalPlay();
- //      console.log("play")
- //    }
- //    else if (event.keyCode == 40) {
- //      // someMix.globalPause();
- //      someMix.toggleLoop();
- //      console.log(someMix.mix)
+ $(window).on("keyup", function(event) {
+  
+    if (event.keyCode == 38) {
+      console.log("play")
+      someMix.globalPlay();
+    }
+    else if (event.keyCode == 40) {
 
- //      console.log("pause")
- //  	}
- //  })
+      console.log("effect")
+  	}
+  })
 
 })
 
