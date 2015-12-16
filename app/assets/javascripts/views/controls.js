@@ -43,20 +43,8 @@ function moveVolumeDial(currentMixer){
 function movePanningDial(currentMixer){
   $(window).load(function(event){
 
-    $("#panning-dial").knob({
-    'min': -2,
-    'max': 2,
-    'step': .5,
-    'cursor': 13,
-    'angleOffset': -125,
-    'angleArc': 250,
-    'width': 75,
-    'fgColor':  "#222222",
-    'skin': "tron",
-    'thickness': .2,
-    'displayPrevious': true,
-    'displayInput': true,
-    'change': function() { currentMixer.assignPanning((this.$.val())); }
+    $("#panning-dial").Segment({
+       'change': function() { currentMixer.assignPanning( Number($(this).val() )); }
     });
   });
 }
