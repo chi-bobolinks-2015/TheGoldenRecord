@@ -103,7 +103,6 @@ function moveLowDial(current_value){
 
 function moveEchoDial(currentMixer){
   $(window).load(function(event){
-    // console.log("Inside of moveDial")
 
     $("#echo-dial").knob({
     'min': 0,
@@ -118,7 +117,7 @@ function moveEchoDial(currentMixer){
     'thickness': .2,
     'displayPrevious': true,
     'displayInput': false,
-    'change': function() { currentMixer.assignDelayTime((this.$.val()/50 + 1)); }
+    'change': function() { console.log(this.$.val()/10 ); } //currentMixer.assignDelayTime((this.$.val()/50 + 1)); }
     });
   });
 }

@@ -1,12 +1,9 @@
-function setUserEvents(mix){
-  startAndStopTrack(mix)
-  globalPause(mix);
-  dropTrack(mix);
-  // controlPanelHover(mix)
-  //Put in deck user event file
+function setUserEvents(activeMixer){
+  startAndStopTrack(activeMixer)
+  globalPause(activeMixer);
+  dropTrack(activeMixer);
 
 };
-
 
 
 function dropTrack(mix){
@@ -40,44 +37,53 @@ function removeTrack(mix) {
   //   $(cell.children("img")).remove();
   //   $(cell.children(".boxclose")).remove();
   // });
-}
+};
 
 function setTargetForControlPanel(cellId, currentMixer, event){
-   if( event.keyCode === 13 && $(".control-panel").is(":hidden") ){
-    // show control panel, assign target
-      $(".control-panel").show();
+   if(event.keyCode === 13){
+          console.log(" Panel should be hidden/ target assigned at " + cellId + "position")
+    if( $(".control-panel").is(":visible") ){
+      $(".control-panel").hide();
+      currentMixer.assignTarget(null)
+
+    }else{
+      // assign target, show control panel
+      console.log("Panel should show/ target assigned at " + cellId + "position")
       currentMixer.assignTarget(cellId);
-    // Then all the dials need to be updated to reflect the attribute values of the target
+      $(".control-panel").show();
+
+      // Then all the dials need to be updated to reflect the attribute values of the target
         var $currentVolume= currentMixer.mix[currentMixer.target].volume();
         $("#volume-dial").val($currentVolume * 10).trigger("change");
 
         var $currentDelay= currentMixer.mix[currentMixer.target]._audioNode[3].delayTime.value
-        $("#echo-dial").val($currentDelay * 50).trigger("change");
-
-    }else if( event.keyCode === 13 && $(".control-panel").is(":visible") ){
-      $(".control-panel").hide();
-      currentMixer.assignTarget(null);
-    }else{
-      console.log("Check setTargetForControlPanel method, you aren't hitting the right conditions")
+        $("#echo-dial").val($currentDelay *10).trigger("change");
+      };
     };
 };
 
 function trackInfoHover(cell, currentMixer, trackTitle){
   $(cell).hover(function() {
     var thisCellId = Number($(this).attr("id"))
-    var targetComb = $(this).find('.inner-text')
-      $(targetComb).html(trackTitle);
+    var targetComb = $(this).find('.hex_inner')
+    var targetCombInfo = $(this).find('.inner-text')
+      $(targetCombInfo).html(trackTitle);
       $(window).on("keyup", function(event){
         setTargetForControlPanel(thisCellId, currentMixer, event)
       })
     },
-    mouseExitCell
+    function() {
+      console.log("Inside Mouse Exit")
+      $(window).unbind("keyup");
+      $(this).find("#track-info").remove();
+      }
     );
 }
 
-function mouseExitCell(){
-  $(this).find("#track-info").remove();
-}
+// function mouseExitCell(){
+//   $(this).find("#track-info").remove();
+
+// }
 
 function returnDivs() {
   return $('div.cell')
@@ -90,6 +96,7 @@ function startAndStopTrack(mix) {
     var $targetComb =  $(this).find('.hex_inner')
     $targetComb.toggleClass('active');
     var divId = Number($(this).attr("id"));
+    console.log(divId)
     $targetComb.hasClass("active") ? mix.playTrack(divId) : mix.stopTrack(divId);
   });
 }
