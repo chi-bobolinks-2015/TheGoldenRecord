@@ -117,7 +117,7 @@ console.log(someMix.mix)
     }
     else if (event.keyCode == 40) {
       // someMix.globalPause();
-      someMix.assignPlaybackRate(.9);
+      someMix.toggleLoop();
       console.log(someMix.mix)
 
       console.log("pause")

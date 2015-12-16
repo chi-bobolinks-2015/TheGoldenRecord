@@ -197,9 +197,14 @@ Mixer.prototype.assignDelayTime = function (value) {
 	this.mix[this.target]._audioNode[3].delayTime.value = value
 }
 
-//Assign playback rate on target
+//Assign playback rate on target (takes 0 to whatever, 1 being actual speed)
 Mixer.prototype.assignPlaybackRate = function (value) {
 	this.mix[this.target]._audioNode[0].bufferSource.playbackRate.value = value
+}
+
+//Toggle track loop
+Mixer.prototype.toggleLoop = function () {
+	this.mix[this.target]._audioNode[0].bufferSource.loop = !this.mix[this.target]._audioNode[0].bufferSource.loop
 }
 
 
