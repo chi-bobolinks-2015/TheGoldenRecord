@@ -8,6 +8,6 @@ function setControls(mix){
   moveHighDial();
   moveLowDial();
   moveEchoDial(mix);
-  moveTempoDial();
+  moveTempoDial(mix);
   $(".control-panel").hide();
 }

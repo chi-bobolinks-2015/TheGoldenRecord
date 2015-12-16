@@ -123,7 +123,7 @@ function moveEchoDial(currentMixer){
   });
 }
 
-function moveTempoDial(current_value){
+function moveTempoDial(currentMixer){
   $(window).load(function(event){
     // console.log("Inside of moveDial")
 
@@ -136,8 +136,8 @@ function moveTempoDial(current_value){
     'skin': "tron",
     'thickness': .2,
     'displayPrevious': true,
-    'displayInput': false
-    // 'change': function() { currentMixer.assignTargetVolume((this.$.val()/10)); }
+    'displayInput': false,
+    'change': function() { currentMixer.assignPlaybackRate((this.$.val()/10)); }
     });
   });
 }
