@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+  // $("#")
+
   $("#about").on("click", function() {
     var popupBox = $(".popup-about");
     popupBox.fadeIn(400);
