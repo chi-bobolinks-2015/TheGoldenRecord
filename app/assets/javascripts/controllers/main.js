@@ -46,6 +46,7 @@ console.log(context)
 
 
 
+
 //setting context
 // var context = someMix.mix[0]._audioNode[0].context
 
@@ -110,13 +111,14 @@ console.log(someMix.mix)
 
 
  $(window).on("keyup", function(event) {
-  	if (event.keyCode == 38) {
-  		someMix.globalPlay();
-  		console.log("play")
-  	}
-  	else if (event.keyCode == 40) {
+    if (event.keyCode == 38) {
+      someMix.globalPlay();
+      console.log("play")
+    }
+    else if (event.keyCode == 40) {
       // someMix.globalPause();
-      someMix.toggleEcho();
+      someMix.mix[0]._audioNode[0].bufferSource.playbackRate.value = 2;
+      console.log(someMix.mix)
 
       console.log("pause")
   	}

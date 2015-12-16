@@ -192,22 +192,14 @@ Mixer.prototype.playTarget = function () {
 
 // ############### TARGET EFFECTS METHODS ##################
 
-//Toggle target convolver on and off
-Mixer.prototype.toggleEcho = function () {
-	this.mix[this.target]._audioNode[2].bypass = !this.mix[this.target]._audioNode[2].bypass
-	this.mix[this.target]._audioNode[3].bypass = !this.mix[this.target]._audioNode[3].bypass
-
-}
-
 //Assign target echo level (Between 0 and 1)
 Mixer.prototype.assignDelayTime = function (value) {
 	this.mix[this.target]._audioNode[3].delayTime.value = value
 }
 
-//Toggle filter on and off
-Mixer.prototype.toggleFilter = function () {
-	this.mix[this.target]._audioNode[1].bypass = !this.mix[this.target]._audioNode[1].bypass
-
+//Assign playback rate on target
+Mixer.prototype.assignPlaybackRate = function (value) {
+	this.mix[this.target]._audioNode.bufferSource.playbackRate.value = value
 }
 
 
