@@ -75,8 +75,8 @@ function moveHighDial(current_value){
     'skin': "tron",
     'thickness': .2,
     'displayPrevious': true,
-    'displayInput': false
-    // 'change': function() { currentMixer.assignTargetVolume((this.$.val()/10)); }
+    'displayInput': false,
+    'change': function() { currentMixer.assignDelayTime((this.$.val()/5)); }
     });
   });
 }
@@ -106,16 +106,19 @@ function moveEchoDial(currentMixer){
     // console.log("Inside of moveDial")
 
     $("#echo-dial").knob({
-    'min': -1,
-    'max': 11,
+    'min': 0,
+    'max': 5,
     'step': 1,
+    'cursor': 30,
+    'angleOffset': -125,
+    'angleArc': 250,
     'width': 75,
     'fgColor': "#222222",
     'skin': "tron",
     'thickness': .2,
     'displayPrevious': true,
-    'displayInput': false
-    // 'change': function() { currentMixer.assignDelayTime((this.$.val() + 1)); }
+    'displayInput': false,
+    'change': function() { currentMixer.assignDelayTime((this.$.val()/5 + 1)); }
     });
   });
 }

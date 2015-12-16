@@ -35,15 +35,15 @@ $(document).ready(function(event){
   setControls(activeMix);
 
 
-
-var someMix = new Mixer
-// someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Birds%2C+Hyena%2C+Elephant.wav', 'divId': 1})
-someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Music/Soul+Jazz-Mike+Frederick.mp3', 'divId': 0})
-// someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Swing.mp3', 'divId': 2})
-console.log(someMix.mix)
-someMix.assignTarget(0)
-var context = someMix.trackContext(0)
-console.log(context)
+// DRIVER CODE
+// var someMix = new Mixer
+// // someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Birds%2C+Hyena%2C+Elephant.wav', 'divId': 1})
+// someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Music/Soul+Jazz-Mike+Frederick.mp3', 'divId': 0})
+// // someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Swing.mp3', 'divId': 2})
+// console.log(someMix.mix)
+// someMix.assignTarget(0)
+// var context = someMix.trackContext(0)
+// console.log(context)
 
 
 

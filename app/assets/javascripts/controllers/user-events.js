@@ -50,6 +50,10 @@ function setTargetForControlPanel(cellId, currentMixer, event){
     // Then all the dials need to be updated to reflect the attribute values of the target
         var $currentVolume= currentMixer.mix[currentMixer.target].volume();
         $("#volume-dial").val($currentVolume * 10).trigger("change");
+
+        var $currentDelay= currentMixer.mix[currentMixer.target]._audioNode[3].delayTime.value
+        $("#echo-dial").val($currentDelay * 5).trigger("change");
+
     }else if( event.keyCode === 13 && $(".control-panel").is(":visible") ){
       $(".control-panel").hide();
       currentMixer.assignTarget(null);
