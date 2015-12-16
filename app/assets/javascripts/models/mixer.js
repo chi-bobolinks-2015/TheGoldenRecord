@@ -146,6 +146,7 @@ Mixer.prototype.buildReverb = function (params) {
 Mixer.prototype.globalPlay = function () {
 	for (var i = 0; i < 6; i++) {
 		if (this.mix[i] != null) {
+			this.mix[i].pause()
 			this.mix[i].play()
 		}
 	}
