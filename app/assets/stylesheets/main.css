@@ -71,9 +71,9 @@ a.boxclose{
   opacity: 0.5;
   height: 100vh;
 }
-/*
+
 .launch {
-  background-image: asset-data-url("stars.jpg");
+  background-image: url("navigation-bar/stars.jpg");
   position: fixed;
   left: 0;
   top: 0;
@@ -81,7 +81,7 @@ a.boxclose{
   width: 100%;
   z-index: 99999;
 }
-*/
+
 
 /*Atomic styles*/
 .clear { clear: both; }
