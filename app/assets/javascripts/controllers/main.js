@@ -37,9 +37,7 @@ $(document).ready(function(event){
 
 // DRIVER CODE
 // var someMix = new Mixer
-// // someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Birds%2C+Hyena%2C+Elephant.wav', 'divId': 1})
 // someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Music/Soul+Jazz-Mike+Frederick.mp3', 'divId': 0})
-// // someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/ReginaApp-+Swing.mp3', 'divId': 2})
 // console.log(someMix.mix)
 // someMix.assignTarget(0)
 // var context = someMix.trackContext(0)
@@ -118,7 +116,8 @@ $(document).ready(function(event){
  //    }
  //    else if (event.keyCode == 40) {
  //      // someMix.globalPause();
- //      someMix.toggleLoop();
+ //      var pan = someMix.assignPanning(1);
+ //      console.log(pan)
  //      console.log(someMix.mix)
 
  //      console.log("pause")

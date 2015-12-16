@@ -202,6 +202,11 @@ Mixer.prototype.assignPlaybackRate = function (value) {
 	this.mix[this.target]._audioNode[0].bufferSource.playbackRate.value = value
 }
 
+//Assign panning (-1(left) to 1(right))
+Mixer.prototype.assignPanning = function (value) {
+	this.mix[this.target]._audioNode[0].panner.setPosition(value, 0, 0)
+}
+
 //Toggle track loop
 Mixer.prototype.toggleLoop = function () {
 	this.mix[this.target]._audioNode[0].bufferSource.loop = !this.mix[this.target]._audioNode[0].bufferSource.loop
