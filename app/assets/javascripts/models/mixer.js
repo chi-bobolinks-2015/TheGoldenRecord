@@ -47,27 +47,16 @@ Mixer.prototype.trackContext = function (trackID) {
 //Build effects structure
 Mixer.prototype.buildEffects = function (trackID) {
 
-	//Set context and Tuna object for the track
+	//Set context 
 	var context = this.trackContext(trackID)
+
+	//create Tuna object for the track
 	var tuna = new Tuna(context)
 
-	//Build new filter
+	//Build Tuna effect nodes
 	var filter = this.buildFilter({'tuna' : tuna, 'context' : context})
-
-		//Push effect into _audioNode array for future manipulation
-		this.mix[trackID]._audioNode.push(filter)
-
-	//Build new convolver
 	var convolver = this.buildConvolver({'tuna' : tuna, 'context' : context})
-
-		//Push effect into _audioNode array for future manipulation
-		this.mix[trackID]._audioNode.push(convolver)
-
-	//Build new reverb
 	var reverb = this.buildReverb({'tuna' : tuna, 'context' : context})
-
-		//Push effect into _audioNode array for future manipulation
-		this.mix[trackID]._audioNode.push(reverb)
 
 	//Point at the gainNode created in our new Howl
 	var input = this.mix[0]._audioNode[0]
@@ -80,6 +69,11 @@ Mixer.prototype.buildEffects = function (trackID) {
 	filter.connect(convolver)
 	convolver.connect(reverb)
 	reverb.connect(output)
+		
+	//Push effects into _audioNode array for future manipulation
+	this.mix[trackID]._audioNode.push(filter)
+	this.mix[trackID]._audioNode.push(convolver)
+	this.mix[trackID]._audioNode.push(reverb)
 
 }
 
@@ -93,10 +87,10 @@ Mixer.prototype.buildFilter = function (params) {
 	//Create new filter effect
 	var filter = new tuna.Filter({
     frequency: 440, //20 to 22050
-    Q: 1, //0.001 to 100
-    gain: 0, //-40 to 40
+    Q: 20, //0.001 to 100
+    gain: 20, //-40 to 40
     filterType: "highpass", //lowpass, highpass, bandpass, lowshelf, highshelf, peaking, notch, allpass
-    bypass: 1
+    bypass: 0
 	});
 
 	//Return the filter
@@ -141,6 +135,7 @@ Mixer.prototype.buildReverb = function (params) {
 	  cutoff: 2000,      //cutoff frequency of the built in lowpass-filter. 20 to 22050
 	  bypass: 0
 	});
+
 	//Return the convolver
 	return delay
 }
@@ -197,9 +192,19 @@ Mixer.prototype.assignDelayTime = function (value) {
 	this.mix[this.target]._audioNode[3].delayTime.value = value
 }
 
+//Assign target filter type
+Mixer.prototype.assignFilter = function (filterType) {
+	this.mix[this.target]._audioNode[1].filter.type = filterType
+}
+
 //Assign playback rate on target (takes 0 to whatever, 1 being actual speed)
 Mixer.prototype.assignPlaybackRate = function (value) {
 	this.mix[this.target]._audioNode[0].bufferSource.playbackRate.value = value
+}
+
+//Assign panning (-1(left) to 1(right))
+Mixer.prototype.assignPanning = function (value) {
+	this.mix[this.target]._audioNode[0].panner.setPosition(value, 0, 0)
 }
 
 //Toggle track loop
