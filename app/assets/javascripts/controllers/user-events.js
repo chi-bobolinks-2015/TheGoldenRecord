@@ -51,8 +51,11 @@ function setTargetForControlPanel(cellId, currentMixer, event){
         var $currentVolume= currentMixer.mix[currentMixer.target].volume();
         $("#volume-dial").val($currentVolume * 10).trigger("change");
 
+        // var $currentPanning = currentMixer.mix[currentMixer.target]._audioNode[0].panner.setPosition(0, 0, 0);
+        $("#panning-dial").val("0") //.trigger("change");
+
         var $currentDelay= currentMixer.mix[currentMixer.target]._audioNode[3].delayTime.value
-        $("#echo-dial").val($currentDelay * 50).trigger("change");
+        $("#echo-dial").val($currentDelay * 10).trigger("change");
 
     }else if( event.keyCode === 13 && $(".control-panel").is(":visible") ){
       $(".control-panel").hide();
