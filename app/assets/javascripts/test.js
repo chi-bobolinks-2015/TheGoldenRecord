@@ -1,8 +1,8 @@
-// test.js
+$(document).ready(function () {
 
 
 // // DRIVER CODE
-// var someMix = new Mixer
+var someMix = new Mixer
 // someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Music/Soul+Jazz-Mike+Frederick.mp3', 'divId': 0})
 // console.log(someMix.mix)
 // someMix.assignTarget(0)
@@ -154,16 +154,21 @@
 // // console.log(window.AudioContext)
 
 
-//  $(window).on("keyup", function(event) {
+ $(window).on("keyup", function(event) {
 
-//     if (event.keyCode == 38) {
-//       console.log("play")
-//       someMix.globalPlay();
-//     }
-//     else if (event.keyCode == 40) {
-//       someMix.assignFilter("lowpass")
-//       console.log("effect")
-//     }
-//   })
+ 	for (var i = 1; i < 25; i++) {
+ 		var log = someMix.adjustPlayback(i); 
+ 		console.log(i + ": " + log)
+ 	}
 
-// })
+    if (event.keyCode == 38) {
+      console.log("play")
+      someMix.globalPlay();
+    }
+    else if (event.keyCode == 40) {
+      console.log(someMix.adjustPlayback(20))
+      console.log("effect")
+    }
+  })
+
+})
