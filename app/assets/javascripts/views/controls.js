@@ -101,7 +101,7 @@ function moveLowDial(current_value){
   });
 }
 
-function moveEchoDial(current_value){
+function moveEchoDial(currentMixer){
   $(window).load(function(event){
     // console.log("Inside of moveDial")
 
@@ -115,7 +115,7 @@ function moveEchoDial(current_value){
     'thickness': .2,
     'displayPrevious': true,
     'displayInput': false
-    // 'change': function() { currentMixer.assignTargetVolume((this.$.val()/10)); }
+    // 'change': function() { currentMixer.assignDelayTime((this.$.val() + 1)); }
     });
   });
 }
