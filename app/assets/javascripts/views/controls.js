@@ -106,8 +106,8 @@ function moveEchoDial(currentMixer){
     // console.log("Inside of moveDial")
 
     $("#echo-dial").knob({
-    'min': 0,
-    'max': 10,
+    'min': -1,
+    'max': 11,
     'step': 1,
     'cursor': 30,
     'angleOffset': -125,
@@ -118,7 +118,11 @@ function moveEchoDial(currentMixer){
     'thickness': .2,
     'displayPrevious': true,
     'displayInput': false,
-    'change': function() { currentMixer.assignDelayTime((this.$.val()/50 + 1)); }
+    'change': function() {
+      console.log(currentMixer.mix[currentMixer.target]._audioNode[3].delayTime.value);
+      currentMixer.assignDelayTime((this.$.val()/10));
+      console.log("After: " + (this.$.val()/10));
+    }
     });
   });
 }
