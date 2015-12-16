@@ -1,7 +1,7 @@
-Category.create(name: "Animals", img: '/assets/sound-categories/elephant.png')
-Category.create(name: "Nature", img: '/assets/sound-categories/nature.png')
-Category.create(name: "Music", img: '/assets/sound-categories/guitar.png')
-Category.create(name: "Space", img: '/assets/sound-categories/space.png')
+Category.create(name: "Animals", img: 'sound-categories/elephant.png')
+Category.create(name: "Nature", img: 'sound-categories/nature.png')
+Category.create(name: "Music", img: 'sound-categories/guitar.png')
+Category.create(name: "Space", img: 'sound-categories/space.png')
 
 # The below tracks are seeded with excelllent, unbeatable descriptions.
 Track.create(title: "Elephants", artist: "Jeff Courwin", description: "This authentic field recording contains the sounds of the African landscape: birds chirp, insects hum, and an elephant sings.", category_id: 2, url: "https://s3.amazonaws.com/the-golden-record/Nature/Birds%2C+Hyena%2C+Elephant.wav", length: nil, composer: nil)
