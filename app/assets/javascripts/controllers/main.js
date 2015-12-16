@@ -46,11 +46,6 @@ console.log(context)
 //creating new Tuna object
 var tuna = new Tuna(context)
 
-var moog = new tuna.MoogFilter({
-    cutoff: 0.065,    //0 to 1
-    resonance: 3.5,   //0 to 4
-    bufferSize: 2048  //256 to 16384
-});
 
 
 //creating a new overdrive node
@@ -95,14 +90,14 @@ var input = someMix.mix[0]._audioNode[0]
 
 //setting input
 // input.connect(overdrive);
-input.connect(moog);
+// input.connect(moog);
 
 //assigning an output for the overdrive node
 var output = context.destination;
 
 //setting output
 // overdrive.connect(output);
-moog.connect(output);
+// moog.connect(output);
 
 // console.log(someMix.mix)
 // console.log(delay)
@@ -117,7 +112,7 @@ moog.connect(output);
       someMix.globalPlay();
     }
     else if (event.keyCode == 40) {
-
+      someMix.assignFilter("lowpass")
       console.log("effect")
   	}
   })
