@@ -3,6 +3,7 @@ Category.create(name: "Nature", img: '/assets/sound-categories/nature.png')
 Category.create(name: "Music", img: '/assets/sound-categories/guitar.png')
 Category.create(name: "Space", img: '/assets/sound-categories/space.png')
 
+# The below tracks are seeded with excelllent, unbeatable descriptions.
 Track.create(title: "Elephants", artist: "Jeff Courwin", description: "This authentic field recording contains the sounds of the African landscape: birds chirp, insects hum, and an elephant sings.", category_id: 2, url: "https://s3.amazonaws.com/the-golden-record/Nature/Birds%2C+Hyena%2C+Elephant.wav", length: nil, composer: nil)
 
 Track.create(title: "Soul Jazz", artist: "Michael Frederick", description: "American guitarist Michael Frederick enjoys a diverse career as a free-lance artist. Michael performs with award-winning ensembles throughout America, including the Po Boys Brass Band, Mrs. Skannotto, and The Mighty High and Dry, and he holds an advanced degree in music performance from the Eastman School of Music. Michael composed 'Soul Jazz' specifically for The Golden Record.", category_id: 3, url: "https://s3.amazonaws.com/the-golden-record/Music/Soul+Jazz-Mike+Frederick.mp3", length: nil, composer: nil)
@@ -19,6 +20,7 @@ Track.create(title: "Image, by Eugene Bozza (1905-1991)", artist: "Alice Jones",
 
 Track.create(title: "Selat Segara", artist: "Gamelan Lila Muni", description: 'A traditional Indonesian percussion instrument, the gamelan consists of metal bars, hit with mallets by an ensemble of performers, producing a metallic, engergized sound. Members of the Gamelan Lila Muni (Heavenly Sound), a student-run group at the Eastman School of Music, perform on this recording.', category_id: 3, url: "https://s3.amazonaws.com/the-golden-record/Music/Selat+Segara-Eastman+Gamelan+Ensemble.mp3", length: nil, composer: nil)
 
+# These need descriptions. Add more files, too.
 Track.create(title: "Earth's Atmosphere Radio Emissions", artist: "NASA", description: "tbd", category_id: 4, url: "https://s3.amazonaws.com/the-golden-record/Space/RadioWavesonEarth%27sAtmosphere.mp3", length: nil, composer: nil)
 
 Track.create(title: "Passing through Stardust", artist: "NASA", description: "tbd", category_id: 4, url: "https://s3.amazonaws.com/the-golden-record/Space/598980main_stardust_tempel1.mp3", length: nil, composer: nil)
