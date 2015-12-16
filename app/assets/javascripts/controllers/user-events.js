@@ -40,25 +40,26 @@ function removeTrack(mix) {
   //   $(cell.children("img")).remove();
   //   $(cell.children(".boxclose")).remove();
   // });
-}
+};
 
 function setTargetForControlPanel(cellId, currentMixer, event){
-   if( event.keyCode === 13 && $(".control-panel").is(":hidden") ){
-    // show control panel, assign target
-      $(".control-panel").show();
+  if(event.keyCode === 13){
+    if( $(".control-panel").is(":visible") ){
+      $(".control-panel").hide();
+      currentMixer.assignTarget(null)
+
+    }else{
+      // assign target, show control panel
+      console.log("target assigned at" + cellId + "position")
       currentMixer.assignTarget(cellId);
-    // Then all the dials need to be updated to reflect the attribute values of the target
+      $(".control-panel").show();
+      // Then all the dials need to be updated to reflect the attribute values of the target
         var $currentVolume= currentMixer.mix[currentMixer.target].volume();
         $("#volume-dial").val($currentVolume * 10).trigger("change");
 
         var $currentDelay= currentMixer.mix[currentMixer.target]._audioNode[3].delayTime.value
-        $("#echo-dial").val($currentDelay * 50).trigger("change");
-
-    }else if( event.keyCode === 13 && $(".control-panel").is(":visible") ){
-      $(".control-panel").hide();
-      currentMixer.assignTarget(null);
-    }else{
-      console.log("Check setTargetForControlPanel method, you aren't hitting the right conditions")
+        $("#echo-dial").val($currentDelay *10).trigger("change");
+      };
     };
 };
 
