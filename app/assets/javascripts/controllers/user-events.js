@@ -43,16 +43,19 @@ function removeTrack(mix) {
 };
 
 function setTargetForControlPanel(cellId, currentMixer, event){
+  console.log(event)
   if(event.keyCode === 13){
+          console.log(" Panel should be hidden/ target assigned at " + cellId + "position")
     if( $(".control-panel").is(":visible") ){
       $(".control-panel").hide();
       currentMixer.assignTarget(null)
 
     }else{
       // assign target, show control panel
-      console.log("target assigned at" + cellId + "position")
+      console.log("Panel should show/ target assigned at " + cellId + "position")
       currentMixer.assignTarget(cellId);
       $(".control-panel").show();
+
       // Then all the dials need to be updated to reflect the attribute values of the target
         var $currentVolume= currentMixer.mix[currentMixer.target].volume();
         $("#volume-dial").val($currentVolume * 10).trigger("change");
@@ -66,19 +69,25 @@ function setTargetForControlPanel(cellId, currentMixer, event){
 function trackInfoHover(cell, currentMixer, trackTitle){
   $(cell).hover(function() {
     var thisCellId = Number($(this).attr("id"))
-    var targetComb = $(this).find('.inner-text')
-      $(targetComb).html(trackTitle);
+    var targetComb = $(this).find('.hex_inner')
+    var targetCombInfo = $(this).find('.inner-text')
+      $(targetCombInfo).html(trackTitle);
       $(window).on("keyup", function(event){
         setTargetForControlPanel(thisCellId, currentMixer, event)
       })
     },
-    mouseExitCell
+    function() {
+      console.log("Inside Mouse Exit")
+      $(window).unbind("keyup");
+      $(this).find("#track-info").remove();
+      }
     );
 }
 
-function mouseExitCell(){
-  $(this).find("#track-info").remove();
-}
+// function mouseExitCell(){
+//   $(this).find("#track-info").remove();
+
+// }
 
 function returnDivs() {
   return $('div.cell')
