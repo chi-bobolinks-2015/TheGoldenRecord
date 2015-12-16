@@ -40,7 +40,7 @@ function moveVolumeDial(currentMixer){
   });
 }
 
-function movePanningDial(current_value){
+function movePanningDial(currentMixer){
   $(window).load(function(event){
 
     $("#panning-dial").knob({
@@ -55,8 +55,8 @@ function movePanningDial(current_value){
     'skin': "tron",
     'thickness': .2,
     'displayPrevious': true,
-    'displayInput': true
-    // 'change': function() { currentMixer.assignTargetVolume((this.$.val()/10)); }
+    'displayInput': true,
+    'change': function() { currentMixer.assignPanning((this.$.val())); }
     });
   });
 }
