@@ -118,11 +118,7 @@ function moveEchoDial(currentMixer){
     'thickness': .2,
     'displayPrevious': true,
     'displayInput': false,
-    'change': function() {
-      console.log(currentMixer.mix[currentMixer.target]._audioNode[3].delayTime.value);
-      currentMixer.assignDelayTime((this.$.val()/10));
-      console.log("After: " + (this.$.val()/10));
-    }
+    'change': function() { currentMixer.assignDelayTime((this.$.val()/10));}
     });
   });
 }
