@@ -112,7 +112,9 @@ var output = context.destination;
       someMix.globalPlay();
     }
     else if (event.keyCode == 40) {
-      someMix.assignFilter("lowpass")
+      someMix.assignPanning(.1)
+      // console.log(someMix.mix[0]._audioNode[0].panner.panningModel)
+      console.log(someMix)
       console.log("effect")
   	}
   })
