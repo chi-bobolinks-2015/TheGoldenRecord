@@ -1,12 +1,9 @@
-function setUserEvents(mix){
-  startAndStopTrack(mix)
-  globalPause(mix);
-  dropTrack(mix);
-  // controlPanelHover(mix)
-  //Put in deck user event file
+function setUserEvents(activeMixer){
+  startAndStopTrack(activeMixer)
+  globalPause(activeMixer);
+  dropTrack(activeMixer);
 
 };
-
 
 
 function dropTrack(mix){
@@ -43,8 +40,7 @@ function removeTrack(mix) {
 };
 
 function setTargetForControlPanel(cellId, currentMixer, event){
-  console.log(event)
-  if(event.keyCode === 13){
+   if(event.keyCode === 13){
           console.log(" Panel should be hidden/ target assigned at " + cellId + "position")
     if( $(".control-panel").is(":visible") ){
       $(".control-panel").hide();
@@ -100,6 +96,7 @@ function startAndStopTrack(mix) {
     var $targetComb =  $(this).find('.hex_inner')
     $targetComb.toggleClass('active');
     var divId = Number($(this).attr("id"));
+    console.log(divId)
     $targetComb.hasClass("active") ? mix.playTrack(divId) : mix.stopTrack(divId);
   });
 }
