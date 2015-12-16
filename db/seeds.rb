@@ -1,7 +1,7 @@
 Category.create(name: "Animals", img: '/assets/sound-categories/elephant.png')
 Category.create(name: "Nature", img: '/assets/sound-categories/nature.png')
 Category.create(name: "Music", img: '/assets/sound-categories/guitar.png')
-Category.create(name: "Space", img: '/assets/sound-categories/saturn.png')
+Category.create(name: "Space", img: '/assets/sound-categories/space.png')
 
 Track.create(title: "Elephants", artist: "Jeff Courwin", description: "A one of a kind recording of an elephant singing. You may think it sounds a lot like an elephant proper, but that's really just your opinion.", category_id: 2, url: "https://s3.amazonaws.com/the-golden-record/Nature/Birds%2C+Hyena%2C+Elephant.wav", length: nil, composer: nil)
 
