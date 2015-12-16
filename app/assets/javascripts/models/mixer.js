@@ -199,7 +199,7 @@ Mixer.prototype.assignDelayTime = function (value) {
 
 //Assign playback rate on target
 Mixer.prototype.assignPlaybackRate = function (value) {
-	this.mix[this.target]._audioNode.bufferSource.playbackRate.value = value
+	this.mix[this.target]._audioNode[0].bufferSource.playbackRate.value = value
 }
 
 

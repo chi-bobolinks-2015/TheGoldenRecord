@@ -117,7 +117,7 @@ console.log(someMix.mix)
     }
     else if (event.keyCode == 40) {
       // someMix.globalPause();
-      someMix.mix[0]._audioNode[0].bufferSource.playbackRate.value = 2;
+      someMix.assignPlaybackRate(.9);
       console.log(someMix.mix)
 
       console.log("pause")
