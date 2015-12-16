@@ -16,8 +16,8 @@ $(document).ready(function() {
   });
 
   $(".collapsible").on("click", function(){
-    $("#sidebar").toggleClass("hidden");
-    $(".mix").toggleClass("col-lg-9");
+    $(".sidebar").toggleClass("hidden");
+    $(".mix").toggleClass("col-lg-10");
     $(".mix").toggleClass("col-lg-11");
   });
 
@@ -32,14 +32,6 @@ $(document).ready(function() {
     popupBox.append("<p>" + trackTitle + "</p>");
     popupBox.append("<p>" + trackDescription + "</p>");
     popupBox.append('<button type="button" class="close">Close</button>');
-
-    var popMarginTop = ($(popupBox).height() + 24) / 2;
-    var popMarginLeft = ($(popupBox).width() + 24) / 2;
-
-    $(popupBox).css({
-      "margin-top": -popMarginTop,
-      "margin-left": -popMarginLeft
-    });
 
     $('body').append('<div class="container" id="mask"></div>');
     $("#mask").fadeIn(400);

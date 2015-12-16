@@ -6,12 +6,6 @@
   text-align: center;
 }
 
-.collapsible {
-  width: 1em;
-  background-color: red;
-  height: 50em;
-}
-
 .active {
   background-color: green;
 }
@@ -48,17 +42,19 @@ a.boxclose{
 .popup-info {
   display: none;
   background: #FFBB0A;
-  padding: 5em;
+  padding: 3em;
   border: 1px solid #422F00;
   float: left;
   position: fixed;
-  top: 50%;
-  left: 50%;
+  top: 25%;
+  left: 25%;
+  right: 25%;
+  bottom: 25%;
   margin: auto 0;
   z-index: 99999;
-  box-shadow: 0px 0px 4px #422F00;
-  -moz-box-shadow: 0px 0px 4px #422F00;
-  -webkit-box-shadow: 0px 0px 4px #422F00;
+  box-shadow: 0px 0px 35px #422F00;
+  -moz-box-shadow: 0px 0px 35px #422F00;
+  -webkit-box-shadow: 0px 0px 35px #422F00;
   border-radius: 0.5em;
   -moz-border-radius: 0.5em;
   -webkit-border-radius: 0.5em;
@@ -81,3 +77,5 @@ a.boxclose{
 .clear { clear: both; }
 .fl-l { float: left; }
 .cur { cursor: pointer; }
+.p-std { padding: 1em; }
+.pr-m { padding-right: 2.5em; }
