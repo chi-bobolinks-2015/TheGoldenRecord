@@ -1,3 +1,3 @@
-class MyRecord < Aws::Record::Base
-  string_attr :name
-end
+# class MyRecord < Aws::Record::Base
+#   string_attr :name
+# end
