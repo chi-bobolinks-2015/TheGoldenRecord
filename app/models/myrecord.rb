@@ -1,3 +1,3 @@
-class MyRecord < AWS::Record::Base
+class MyRecord < Aws::Record::Base
   string_attr :name
 end
