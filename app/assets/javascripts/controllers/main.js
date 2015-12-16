@@ -112,13 +112,14 @@ console.log(someMix.mix)
 
 
  $(window).on("keyup", function(event) {
-  	if (event.keyCode == 38) {
-  		someMix.globalPlay();
-  		console.log("play")
-  	}
-  	else if (event.keyCode == 40) {
+    if (event.keyCode == 38) {
+      someMix.globalPlay();
+      console.log("play")
+    }
+    else if (event.keyCode == 40) {
       // someMix.globalPause();
-      someMix.toggleEcho();
+      someMix.toggleLoop();
+      console.log(someMix.mix)
 
       console.log("pause")
   	}
