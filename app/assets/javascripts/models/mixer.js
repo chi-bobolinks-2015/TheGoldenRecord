@@ -182,6 +182,7 @@ Mixer.prototype.pauseTarget = function () {
 
 //Play target
 Mixer.prototype.playTarget = function () {
+	this.mix[this.target].pause()
 	this.mix[this.target].play()
 }
 
@@ -199,7 +200,7 @@ Mixer.prototype.assignFilter = function (filterType) {
 
 //Assign playback rate on target (takes 0 to whatever, 1 being actual speed)
 Mixer.prototype.assignPlaybackRate = function (value) {
-	this.mix[this.target]._audioNode[0].bufferSource.playbackRate.value = value
+	this.mix[this.target]._audioNode[0].bufferSource.playbackRate.value = this.adjustPlayback(value)
 }
 
 //Assign panning (-1(left) to 1(right))
@@ -212,7 +213,15 @@ Mixer.prototype.toggleLoop = function () {
 	this.mix[this.target]._audioNode[0].bufferSource.loop = !this.mix[this.target]._audioNode[0].bufferSource.loop
 }
 
+// ################# MISC METHODS ######################
 
+Mixer.prototype.adjustPlayback = function (integer) {
+	if (integer >= 50) {
+		return ((integer / 25) - 1)
+	} else {
+		return ((integer / 25) / 2)
+	}
+}
 
 
 

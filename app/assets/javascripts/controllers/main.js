@@ -41,8 +41,9 @@ someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Music/Soul
 console.log(someMix.mix)
 someMix.assignTarget(0)
 var context = someMix.trackContext(0)
-console.log(context)
-
+// for (var i = 1; i <= 100; i++) {
+//   console.log(i + ": " + someMix.adjustPlayback(i))
+// }
 //creating new Tuna object
 var tuna = new Tuna(context)
 
@@ -108,14 +109,16 @@ var output = context.destination;
  $(window).on("keyup", function(event) {
   
     if (event.keyCode == 38) {
-      console.log("play")
-      someMix.globalPlay();
+      someMix.playTarget();
+      console.log(someMix.mix)
+      console.log(context)
     }
     else if (event.keyCode == 40) {
-      someMix.assignPanning(.1)
+      // someMix.assignPanning(.1)
       // console.log(someMix.mix[0]._audioNode[0].panner.panningModel)
-      console.log(someMix)
-      console.log("effect")
+      someMix.globalPause();
+      console.log(someMix.mix)
+      console.log(context)
   	}
   })
 
