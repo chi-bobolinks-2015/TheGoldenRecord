@@ -86,10 +86,10 @@ Mixer.prototype.buildFilter = function (params) {
 
 	//Create new filter effect
 	var filter = new tuna.Filter({
-    frequency: 440, //20 to 22050
+    frequency: 20, //20 to 22050
     Q: 20, //0.001 to 100
-    gain: 20, //-40 to 40
-    filterType: "highpass", //lowpass, highpass, bandpass, lowshelf, highshelf, peaking, notch, allpass
+    gain: 0, //-40 to 40
+    filterType: "allpass", //lowpass, highpass, bandpass, lowshelf, highshelf, peaking, notch, allpass
     bypass: 0
 	});
 
