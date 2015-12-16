@@ -200,7 +200,7 @@ Mixer.prototype.assignFilter = function (filterType) {
 
 //Assign playback rate on target (takes 0 to whatever, 1 being actual speed)
 Mixer.prototype.assignPlaybackRate = function (value) {
-	this.mix[this.target]._audioNode[0].bufferSource.playbackRate.value = this.adjustPlayback(value)
+	this.mix[this.target]._audioNode[0].bufferSource.playbackRate.value = value
 }
 
 //Assign panning (-1(left) to 1(right))
