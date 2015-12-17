@@ -48,3 +48,18 @@ Track.create(title: "In 2016", artist: "Steve Combs", description: "Free Music A
 Track.create(title: "Background Radiation.", artist: "TylerTwombly", description: "Free Music Archive Artist", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/Tyler_Twombly_-_06_-_Background_Radiation.mp3", length: nil, composer: nil)
 
 
+Track.create(title: "Epic Song", artist: "BoxCat Games", description: "Free Music Archive Artist", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/BoxCat_Games_-_10_-_Epic_Song.mp3", length: nil, composer: nil)
+
+Track.create(title: "Budding", artist: "Broke For Free", description: "Free Music Archive Artist", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/Broke_For_Free_-_01_-_Budding.mp3", length: nil, composer: nil)
+
+Track.create(title: "Something Elated", artist: "Broke For Free", description: "Free Music Archive Artist", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/Broke_For_Free_-_05_-_Something_Elated.mp3", length: nil, composer: nil)
+
+Track.create(title: "Cylinder Nine", artist: "Chris Zabriskie", description: "Free Music Archive Artist", category_id: 3, url: "https://s3.amazonaws.com/the-golden-record/Beats/Chris_Zabriskie_-_09_-_Cylinder_Nine.mp3", length: nil, composer: nil)
+
+Track.create(title: "Sorry", artist: "Comfort Fit", description: "Free Music Archive Artist", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/Comfort_Fit_-_03_-_Sorry.mp3", length: nil, composer: nil)
+
+Track.create(title: "Seeing the Future", artist: "Dexter Britain", description: "Free Music Archive Artist", category_id: 3, url: "https://s3.amazonaws.com/the-golden-record/Beats/Dexter_Britain_-_05_-_Seeing_The_Future.mp3", length: nil, composer: nil)
+
+Track.create(title: "Take Me Higher", artist: "Jahzzar", description: "Free Music Archive Artist", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/Jahzzar_-_10_-_Take_Me_Higher.mp3", length: nil, composer: nil)
+
+
