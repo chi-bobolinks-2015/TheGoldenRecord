@@ -9,5 +9,5 @@ $(document).ready(function(event){
   setUserEvents(activeMix);
   setControls(activeMix);
 
-}
+});
 
