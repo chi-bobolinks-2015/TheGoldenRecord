@@ -10,7 +10,8 @@ var Mixer = function () {
 Mixer.prototype.addTrack = function (args) {
 	var newTrack = new Howl({
 		urls: [args['urls']],
-		volume: 0.5
+		volume: 0.5,
+		loop: true
 	});
 	var trackID = args['divId']
 	newTrack.on("end", function(){
@@ -63,7 +64,7 @@ Mixer.prototype.buildEffects = function (trackID) {
 
 	//Put context/tuna into an object
 	var tunaParams = {'tuna' : tuna, 'context' : context}
-	
+
 	//Build Tuna effect nodes
 	var filter = this.buildFilter(tunaParams)
 	var convolver = this.buildConvolver(tunaParams)

@@ -55,11 +55,13 @@ function removeTrack(mixer) {
     $('.mix').droppable({
     accept: drag,
     drop: function(event, ui) {
-      console.log("track dropped");
+      var innerHex = $(drag).parent().parent();
       mixer.stopTrack(targetId);
       mixer.mix[targetId] = null;
       $(drag).addClass("emptied");
       $(drag).empty();
+      $(innerHex).removeClass("active");
+      unloadImage(innerHex);
      }
     });
   });
@@ -82,6 +84,9 @@ function setTargetForControlPanel(cellId, currentMixer, event){
 
         var $currentTempo = currentMixer.mix[currentMixer.target]._audioNode[0].bufferSource.playbackRate.value
         $("#tempo-dial").val($currentTempo).trigger("change");
+
+        // var $currentLoopValue = currentMixer.mix[currentMixer.target].loop
+        // $("#loop-toggle").val($currentLoopValue).trigger("change");
 
     }else if( event.keyCode === 13 && $(".control-panel").is(":visible") ){
       $(".control-panel").hide();
@@ -144,11 +149,6 @@ function globalPause(mix) {
 }
 
 
-
-
-function noLongerActive(sound) {
-// a function that removes the class "active" when a track finishes playing on its own
-}
 
 
 

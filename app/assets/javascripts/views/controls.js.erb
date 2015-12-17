@@ -10,6 +10,13 @@ function loadImage(imageUrl, cell){
   });
 }
 
+function unloadImage(hex) {
+    var image = "/assets/sound-categories/plus-e91e2af8c8332fcbca611da7a3344dad5398ce0916f96f453399ea730aefc11a.jpg";
+    console.log(image);
+   $(hex).attr('style', 'width: 225px; height: 194.856px; background-image: url(' + image + ')');
+   $(hex).parent().parent().parent().find('img').attr('src', image);
+}
+
 // To drag image onto deck.
 // function draggableImage(){
 //   $(".mixer-image").draggable({
@@ -61,13 +68,22 @@ function loopToggle(currentMixer){
     var looper = $("#loop-toggle");
     var selectedValue;
       looper.Segment();
+
       // selectedValue = looper.children(".option.active"))
-    $(document).on("click", looper, function(){
+    // $(document).on("click", looper, function(){
+
+      selectedValue = looper.children(".option.active");
+
+    $(".container").change("#loop-toggle", function(){
+
       // selectedValue = $(".option.active").attr("value");
       // console.log("This")
       // console.log(selectedValue);
       // event.preventDefault();
       currentMixer.toggleLoop();
+      // console.log(looper);
+      // console.log(looper.children());
+      // console.log(looper.children(".option.active"));
       console.log(currentMixer.mix[currentMixer.target]._audioNode[0].bufferSource.loop)
     })
   });
