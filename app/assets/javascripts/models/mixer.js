@@ -18,6 +18,9 @@ Mixer.prototype.addTrack = function (args) {
 		var targetComb = $("div#" + trackID + " div.hex_l div.hex_r div.hex_inner.active");
 		targetComb.toggleClass("active");
 	})
+	if (typeof this.mix[trackID] !== 'undefined') {
+		this.mix[trackID].unload()
+	}
 	this.mix[trackID] = newTrack;
 	this.buildEffects(trackID);
 }
@@ -43,6 +46,7 @@ Mixer.prototype.stopTrack = function (trackID) {
 	this.mix[trackID].stop();
 }
 
+//Pulls context from a track
 Mixer.prototype.trackContext = function (trackID) {
 	return this.mix[trackID]._audioNode[0].context
 }
@@ -214,7 +218,7 @@ Mixer.prototype.assignPlaybackRate = function (value) {
 
 //Assign panning (-1(left) to 1(right))
 Mixer.prototype.assignPanning = function (value) {
-	this.trackContext([this.target]).listener.setPosition(value, 0, 0)
+	this.mix[this.target].pos3d(value, 0, 0)
 }
 
 //Toggle track loop
