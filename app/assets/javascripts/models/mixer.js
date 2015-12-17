@@ -206,7 +206,8 @@ Mixer.prototype.assignPlaybackRate = function (value) {
 
 //Assign panning (-1(left) to 1(right))
 Mixer.prototype.assignPanning = function (value) {
-	this.mix[this.target]._audioNode[0].panner.setPosition(value, 0, 0)
+	this.trackContext([this.target]).listener.setPosition(value, 0, 0)
+	// this.mix[this.target]._audioNode[0].panner.setPosition(0, 0, 0)
 }
 
 //Toggle track loop
@@ -216,11 +217,14 @@ Mixer.prototype.toggleLoop = function () {
 
 // ################# MISC METHODS ######################
 
+//Adjusts dial input to valid playback level.. NEEDS REFACTOR
 Mixer.prototype.adjustPlayback = function (integer) {
 	if (integer >= 50) {
 		return ((integer / 25) - 1)
-	} else {
+	} else if (integer >= 25){
 		return ((integer / 25) / 2)
+	} else {
+		return ((integer / 25) /(Math.log(integer) * 1.75)) + .2
 	}
 }
 
