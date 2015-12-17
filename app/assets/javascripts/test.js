@@ -1,13 +1,13 @@
-// test.js
+$(document).ready(function () {
 
 
 // // DRIVER CODE
-// var someMix = new Mixer
-// someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Music/Soul+Jazz-Mike+Frederick.mp3', 'divId': 0})
+var someMix = new Mixer
+someMix.addTrack({'urls': 'https://s3.amazonaws.com/the-golden-record/Music/Soul+Jazz-Mike+Frederick.mp3', 'divId': 0})
 // console.log(someMix.mix)
-// someMix.assignTarget(0)
-// var context = someMix.trackContext(0)
-// console.log(context)
+someMix.assignTarget(0)
+var context = someMix.trackContext(0)
+console.log(context)
 
 // //creating new Tuna object
 // var tuna = new Tuna(context)
@@ -154,16 +154,22 @@
 // // console.log(window.AudioContext)
 
 
-//  $(window).on("keyup", function(event) {
+ $(window).on("keyup", function(event) {
 
-//     if (event.keyCode == 38) {
-//       console.log("play")
-//       someMix.globalPlay();
-//     }
-//     else if (event.keyCode == 40) {
-//       someMix.assignFilter("lowpass")
-//       console.log("effect")
-//     }
-//   })
+ 	// for (var i = 1; i < 25; i++) {
+ 	// 	var log = someMix.adjustPlayback(i); 
+ 	// 	console.log(i + ": " + log)
+ 	// }
 
-// })
+    if (event.keyCode == 38) {
+      console.log("play")
+      someMix.globalPlay();
+      console.log(someMix.assignPanning(1))
+    }
+    else if (event.keyCode == 40) {
+      console.log(someMix.assignPanning(0))
+      console.log("effect")
+    }
+  })
+
+})
