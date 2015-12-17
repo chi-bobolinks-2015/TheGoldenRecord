@@ -156,12 +156,10 @@ var context = someMix.trackContext(0)
 
  // $(window).on("keyup", function(event) {
 
-
  	// for (var i = 1; i < 100; i++) {
  	// 	var log = someMix.adjustPlayback(i);
  	// 	console.log(i + ": " + log)
  	// }
-
 
  //    if (event.keyCode == 38) {
  //      console.log("play")

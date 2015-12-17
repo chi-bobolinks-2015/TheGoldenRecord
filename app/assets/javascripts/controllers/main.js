@@ -4,9 +4,11 @@ $(document).ready(function(event){
     margin: 10
   });
 
-  var activeMix = startMixer();
-  activeMix.assignTarget
-  setUserEvents(activeMix);
-  setControls(activeMix);
+  var activeMixer = startMixer();
+  activeMixer.assignTarget
+  setUserEvents(activeMixer);
+  setControls(activeMixer);
+  hideControls();
+  onHoverOptions(activeMixer)
 })
 
