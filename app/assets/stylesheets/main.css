@@ -133,6 +133,21 @@ p {
   padding-top: 1.8em;
 }
 
+li {
+  font-family: 'PT Mono';
+}
+
+ul {
+    display: block;
+    list-style: none;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+}
+
+
 h1, h2 {
     display: block;
     padding-bottom: 0.5em;
@@ -161,4 +176,7 @@ a:hover {
 .p-none { padding: 0; }
 
 .f-header { font-family: 'Droid Sans Mono'; }
+
+.fz-s { font-size: 0.6em; }
+.fz-l { font-size: 1.8em; }
 
