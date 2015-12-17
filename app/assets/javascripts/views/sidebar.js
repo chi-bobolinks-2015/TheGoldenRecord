@@ -29,9 +29,9 @@ $(document).ready(function() {
     popupBox.fadeIn(400);
 
     popupBox.empty();
-    popupBox.append("<p>" + trackTitle + "</p>");
+    popupBox.append("<h3 class='f-header'>" + trackTitle + "</h3>");
     popupBox.append("<p>" + trackDescription + "</p>");
-    popupBox.append('<button type="button" class="close">Close</button>');
+    popupBox.append('<button type="button" class="close f-header">close</button>');
 
     $('body').append('<div class="container" id="mask"></div>');
     $("#mask").fadeIn(400);

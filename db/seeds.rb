@@ -1,7 +1,8 @@
-Category.create(name: "Animals", img: "<%= sound-categories/elephant.png %>")
-Category.create(name: "Nature", img: "<%= sound-categories/nature.png %>")
-Category.create(name: "Music", img: "<%= sound-categories/guitar.png %>")
-Category.create(name: "Space", img: "<%= sound-categories/space.png %>")
+Category.create(name: "Beats", img: "assets/sound-categories/boombox.png")
+Category.create(name: "Nature", img: "assets/sound-categories/nature.png")
+Category.create(name: "Music", img: "assets/sound-categories/guitar.png")
+Category.create(name: "Space", img: "assets/sound-categories/space.png")
+Category.create(name: "Animals", img: "assets/sound-categories/elephant.png")
 
 # The below tracks are seeded with excelllent, unbeatable descriptions.
 Track.create(title: "Elephants", artist: "Jeff Courwin", description: "This authentic field recording contains the sounds of the African landscape: birds chirp, insects hum, and an elephant sings.", category_id: 2, url: "https://s3.amazonaws.com/the-golden-record/Nature/Birds%2C+Hyena%2C+Elephant.wav", length: nil, composer: nil)
@@ -27,5 +28,38 @@ Track.create(title: "Passing through Stardust", artist: "NASA", description: "tb
 
 Track.create(title: "Saturn's Radio Emissions", artist: "NASA", description: "tbd", category_id: 4, url: "https://s3.amazonaws.com/the-golden-record/Space/Cassini_Saturn_Radio_Emissions.mp3", length: nil, composer: nil)
 
+Track.create(title: "A.P. Class Beats", artist: "Julian Fairbanks", description: "Beats from Minneapolis Public Schools.", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/05+Track+05.mp3", length: nil, composer: nil)
+
+Track.create(title: "Dreta", artist: "Julian Fairbanks", description: "Beats from Minneapolis Public Schools.", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/Dreta.mp3", length: nil, composer: nil)
+
+Track.create(title: "Happy Digital", artist: "Cory Grindberg", description: "AudioPerm sample tracks", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/25+Track+25-+Happy+Digital+(Prod.+Cory+Grindberg).mp3", length: nil, composer: nil)
+
+Track.create(title: "Sunny Day", artist: "Julian Fairbanks", description: "AudioPerm sample tracks", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/14+Track+14+(Prod.+Julian+Fairbanks).mp3", length: nil, composer: nil)
+
+
+Track.create(title: "Vampire Diaries", artist: "Julian Fairbanks", description: "AudioPerm sample tracks", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/11+Track+11+(Prod.+Julian+Fairbanks).mp3", length: nil, composer: nil)
+
+Track.create(title: "Readers, Do You Read?", artist: "Chris Zabriskie", description: "Free Music Archive Artist", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/Chris_Zabriskie_-_02_-_Readers_Do_You_Read.mp3", length: nil, composer: nil)
+
+Track.create(title: "Shooting Star", artist: "Dexter Britain", description: "Free Music Archive Artist", category_id: 3, url: "https://s3.amazonaws.com/the-golden-record/Beats/Dexter_Britain_-_01_-_Shooting_Star.mp3", length: nil, composer: nil)
+
+Track.create(title: "In 2016", artist: "Steve Combs", description: "Free Music Archive Artist", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/Steve_Combs_-_12_-_In_2016.mp3", length: nil, composer: nil)
+
+Track.create(title: "Background Radiation.", artist: "TylerTwombly", description: "Free Music Archive Artist", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/Tyler_Twombly_-_06_-_Background_Radiation.mp3", length: nil, composer: nil)
+
+
+Track.create(title: "Epic Song", artist: "BoxCat Games", description: "Free Music Archive Artist", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/BoxCat_Games_-_10_-_Epic_Song.mp3", length: nil, composer: nil)
+
+Track.create(title: "Budding", artist: "Broke For Free", description: "Free Music Archive Artist", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/Broke_For_Free_-_01_-_Budding.mp3", length: nil, composer: nil)
+
+Track.create(title: "Something Elated", artist: "Broke For Free", description: "Free Music Archive Artist", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/Broke_For_Free_-_05_-_Something_Elated.mp3", length: nil, composer: nil)
+
+Track.create(title: "Cylinder Nine", artist: "Chris Zabriskie", description: "Free Music Archive Artist", category_id: 3, url: "https://s3.amazonaws.com/the-golden-record/Beats/Chris_Zabriskie_-_09_-_Cylinder_Nine.mp3", length: nil, composer: nil)
+
+Track.create(title: "Sorry", artist: "Comfort Fit", description: "Free Music Archive Artist", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/Comfort_Fit_-_03_-_Sorry.mp3", length: nil, composer: nil)
+
+Track.create(title: "Seeing the Future", artist: "Dexter Britain", description: "Free Music Archive Artist", category_id: 3, url: "https://s3.amazonaws.com/the-golden-record/Beats/Dexter_Britain_-_05_-_Seeing_The_Future.mp3", length: nil, composer: nil)
+
+Track.create(title: "Take Me Higher", artist: "Jahzzar", description: "Free Music Archive Artist", category_id: 1, url: "https://s3.amazonaws.com/the-golden-record/Beats/Jahzzar_-_10_-_Take_Me_Higher.mp3", length: nil, composer: nil)
 
 
