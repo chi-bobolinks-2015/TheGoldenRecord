@@ -57,6 +57,17 @@ function movePanningDial(currentMixer){
   });
 }
 
+function loopToggle(currentMixer){
+  $(window).load(function(event){
+    var loopToggle = $("#loop");
+
+    $(".container").on("click", "#loop", function(event){
+      event.preventDefault();
+      currentMixer.toggleLoop();
+      console.log(currentMixer.mix[currentMixer.target]._audioNode[0].bufferSource.loop)
+    })
+  });
+}
 
 // function moveHighDial(current_value){
 //   $(window).load(function(event){
