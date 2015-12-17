@@ -217,7 +217,7 @@ Mixer.prototype.assignPlaybackRate = function (value) {
 
 //Assign panning (-1(left) to 1(right))
 Mixer.prototype.assignPanning = function (value) {
-	this.trackContext([this.target]).listener.setPosition(value, 0, 0)
+	this.mix[this.target].pos3d(value, 0, 0)
 }
 
 //Toggle track loop
