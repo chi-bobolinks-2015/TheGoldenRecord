@@ -57,13 +57,15 @@ Mixer.prototype.buildEffects = function (trackID) {
 	//create Tuna object for the track
 	var tuna = new Tuna(context)
 
+	//Put context/tuna into an object
+	var tunaParams = {'tuna' : tuna, 'context' : context}
+	
 	//Build Tuna effect nodes
-	var filter = this.buildFilter({'tuna' : tuna, 'context' : context})
-	var convolver = this.buildConvolver({'tuna' : tuna, 'context' : context})
-	var reverb = this.buildReverb({'tuna' : tuna, 'context' : context})
+	var filter = this.buildFilter(tunaParams)
+	var convolver = this.buildConvolver(tunaParams)
+	var reverb = this.buildReverb(tunaParams)
 
 	//Point at the gainNode created in our new Howl
-	//Where trackID is on ln63, it used to be '0'
 	var input = this.mix[trackID]._audioNode[0]
 
 	//Set output destination to our context destination(speakers)
