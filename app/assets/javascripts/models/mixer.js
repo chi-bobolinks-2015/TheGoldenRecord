@@ -207,7 +207,6 @@ Mixer.prototype.assignPlaybackRate = function (value) {
 //Assign panning (-1(left) to 1(right))
 Mixer.prototype.assignPanning = function (value) {
 	this.trackContext([this.target]).listener.setPosition(value, 0, 0)
-	// this.mix[this.target]._audioNode[0].panner.setPosition(0, 0, 0)
 }
 
 //Toggle track loop
@@ -224,7 +223,7 @@ Mixer.prototype.adjustPlayback = function (integer) {
 	} else if (integer >= 25){
 		return ((integer / 25) / 2)
 	} else {
-		return ((integer / 25) /(Math.log(integer) * 1.75)) + .2
+		return ((integer / 25) /(Math.log(integer) * .5)) - .1
 	}
 }
 
