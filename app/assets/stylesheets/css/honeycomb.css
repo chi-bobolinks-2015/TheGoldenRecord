@@ -9,13 +9,16 @@
   display: block;
   height: 100%;
   width: 100%;
-  background-color: #f7cd07;
+  background-color: #574A51;
   font-family: sans-serif;
   color: #000;
 }
 
 .honeycombs .inner-text{
   padding-top: 30%;
+  font-size: 1.5em;
+  font-family: 'PT Mono';
+  color: white;
 }
 
 .honeycombs .honeycombs-inner-wrapper{
