@@ -7,6 +7,18 @@ function setControls(mix){
   movePanningDial(mix);
   moveEchoDial(mix);
   moveTempoDial(mix);
-  loopToggle(mix);
+  // loopToggle(mix);
   $(".control-panel").hide();
+}
+
+function hideControls(){
+  $(document).mouseup(function (e){
+    var container = $(".control-panel");
+
+    if (!container.is(e.target) // if the target of the click isn't the container...
+        && container.has(e.target).length === 0) // ... nor a descendant of the container
+    {
+        container.hide();
+    }
+  });
 }
