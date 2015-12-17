@@ -46,8 +46,7 @@ function movePanningDial(currentMixer){
     var selectedValue;
     panningDial.Segment();
     $(document).on("click", panningDial, function() {
-      console.log("In here");
-      console.log($(".option.active").attr("value"));
+
       selectedValue = $(".option.active").attr("value");
 
       // currentMixer.mix[currentMixer.target].listener.setPosition(Number(selectedValue), 0, 0)
@@ -124,16 +123,16 @@ function moveTempoDial(currentMixer){
     // console.log("Inside of moveDial")
 
     $("#tempo-dial").knob({
-    'min': -1,
-    'max': 11,
-    'step': 1,
+    'min': 2,
+    'max': 100,
+    'step': 10,
     'width': 75,
     'fgColor': "#222222",
     'skin': "tron",
     'thickness': .2,
     'displayPrevious': true,
     'displayInput': false,
-    'change': function() { currentMixer.assignPlaybackRate((this.$.val()/10)); }
+    'change': function() { currentMixer.assignPlaybackRate(currentMixer.adjustPlayback((this.$.val()))); }
     });
   });
 }
