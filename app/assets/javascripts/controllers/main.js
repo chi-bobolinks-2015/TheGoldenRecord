@@ -10,4 +10,3 @@ $(document).ready(function(event){
   setControls(activeMix);
 })
 
-
