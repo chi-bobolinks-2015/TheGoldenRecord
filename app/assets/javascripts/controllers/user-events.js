@@ -69,8 +69,7 @@ function removeTrack(mixer) {
 
 function setTargetForControlPanel(cellId, currentMixer, event){
   console.log(cellId)
-  console.log(currentMixer.mix)
-   if( event.keyCode === 13 && currentMixer.mix[cellId] != 'undefined'){
+   if( event.keyCode === 13 ){
     //  assign target, show control panel
     console.log("show control panel")
     currentMixer.assignTarget(cellId);
@@ -103,7 +102,9 @@ function assignTrackInfoHover(cell, currentMixer, trackTitle){
 
 function onHoverOptions(currentMixer){
   $(".cell").hover(function() {
+
     var thisCellId = Number($(this).attr("id"))
+    console.log(thisCellId)
     var $targetComb =  $(this).find('.hex_inner')
     var targetCombText = $(this).find('.inner-text')
 
@@ -112,6 +113,8 @@ function onHoverOptions(currentMixer){
     } else {
       $(window).on("keyup", function(event){
         if ( ($targetComb).hasClass("active") ){
+          console.log($targetComb)
+            console.log(thisCellId)
           setTargetForControlPanel(thisCellId, currentMixer, event)
         };
       });
