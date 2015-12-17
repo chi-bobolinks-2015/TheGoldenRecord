@@ -2,10 +2,9 @@ Category.create(name: "Beats", img: "assets/sound-categories/boombox.png")
 Category.create(name: "Nature", img: "assets/sound-categories/nature.png")
 Category.create(name: "Music", img: "assets/sound-categories/guitar.png")
 Category.create(name: "Space", img: "assets/sound-categories/space.png")
-Category.create(name: "Animals", img: "assets/sound-categories/elephant.png")
 
 # The below tracks are seeded with excelllent, unbeatable descriptions.
-Track.create(title: "Elephants", artist: "Jeff Courwin", description: "This authentic field recording contains the sounds of the African landscape: birds chirp, insects hum, and an elephant sings.", category_id: 2, url: "https://s3.amazonaws.com/the-golden-record/Nature/Birds%2C+Hyena%2C+Elephant.wav", length: nil, composer: nil)
+Track.create(title: "African Soundscape", artist: "Jeff Courwin", description: "This authentic field recording contains the sounds of the African landscape: birds chirp, insects hum, and an elephant sings.", category_id: 2, url: "https://s3.amazonaws.com/the-golden-record/Nature/Birds%2C+Hyena%2C+Elephant.wav", length: nil, composer: nil)
 
 Track.create(title: "Soul Jazz", artist: "Michael Frederick", description: "American guitarist Michael Frederick enjoys a diverse career as a free-lance artist. Recipient of an advanced degree from the Eastman School of Music, Michael performs with award-winning ensembles throughout America, including the Po Boys Brass Band, Mrs. Skannotto, and The Mighty High and Dry. Michael composed 'Soul Jazz' specifically for The Golden Record.", category_id: 3, url: "https://s3.amazonaws.com/the-golden-record/Music/Soul+Jazz-Mike+Frederick.mp3", length: nil, composer: nil)
 

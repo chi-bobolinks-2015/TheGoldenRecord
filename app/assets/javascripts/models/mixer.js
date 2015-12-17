@@ -10,13 +10,17 @@ var Mixer = function () {
 Mixer.prototype.addTrack = function (args) {
 	var newTrack = new Howl({
 		urls: [args['urls']],
-		volume: 0.5
+		volume: 0.5,
+		loop: true
 	});
 	var trackID = args['divId']
 	newTrack.on("end", function(){
 		var targetComb = $("div#" + trackID + " div.hex_l div.hex_r div.hex_inner.active");
 		targetComb.toggleClass("active");
 	})
+	if (typeof this.mix[trackID] !== 'undefined') {
+		this.mix[trackID].unload()
+	}
 	this.mix[trackID] = newTrack;
 	this.buildEffects(trackID);
 }
@@ -42,6 +46,7 @@ Mixer.prototype.stopTrack = function (trackID) {
 	this.mix[trackID].stop();
 }
 
+//Pulls context from a track
 Mixer.prototype.trackContext = function (trackID) {
 	return this.mix[trackID]._audioNode[0].context
 }
@@ -59,7 +64,7 @@ Mixer.prototype.buildEffects = function (trackID) {
 
 	//Put context/tuna into an object
 	var tunaParams = {'tuna' : tuna, 'context' : context}
-	
+
 	//Build Tuna effect nodes
 	var filter = this.buildFilter(tunaParams)
 	var convolver = this.buildConvolver(tunaParams)
@@ -213,7 +218,7 @@ Mixer.prototype.assignPlaybackRate = function (value) {
 
 //Assign panning (-1(left) to 1(right))
 Mixer.prototype.assignPanning = function (value) {
-	this.trackContext([this.target]).listener.setPosition(value, 0, 0)
+	this.mix[this.target].pos3d(value, 0, 0)
 }
 
 //Toggle track loop
