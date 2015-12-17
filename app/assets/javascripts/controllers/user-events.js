@@ -85,6 +85,9 @@ function setTargetForControlPanel(cellId, currentMixer, event){
         var $currentTempo = currentMixer.mix[currentMixer.target]._audioNode[0].bufferSource.playbackRate.value
         $("#tempo-dial").val($currentTempo).trigger("change");
 
+        // var $currentLoopValue = currentMixer.mix[currentMixer.target].loop
+        // $("#loop-toggle").val($currentLoopValue).trigger("change");
+
     }else if( event.keyCode === 13 && $(".control-panel").is(":visible") ){
       $(".control-panel").hide();
       currentMixer.assignTarget(null);
