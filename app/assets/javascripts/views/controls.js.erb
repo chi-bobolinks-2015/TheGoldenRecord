@@ -62,12 +62,16 @@ function loopToggle(currentMixer){
     var selectedValue;
       looper.Segment();
       selectedValue = looper.children(".option.active");
-    $(document).on("click", looper, function(){
+
+    $(".container").change("#loop-toggle", function(){
       // selectedValue = $(".option.active").attr("value");
       // console.log("This")
       // console.log(selectedValue);
       // event.preventDefault();
       currentMixer.toggleLoop();
+      // console.log(looper);
+      // console.log(looper.children());
+      // console.log(looper.children(".option.active"));
       console.log(currentMixer.mix[currentMixer.target]._audioNode[0].bufferSource.loop)
     })
   });
