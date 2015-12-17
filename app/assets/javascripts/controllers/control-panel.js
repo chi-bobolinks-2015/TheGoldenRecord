@@ -7,7 +7,7 @@ function setControls(mix){
   movePanningDial(mix);
   moveEchoDial(mix);
   moveTempoDial(mix);
-  loopToggle(mix);
+  // loopToggle(mix);
   $(".control-panel").hide();
 }
 
