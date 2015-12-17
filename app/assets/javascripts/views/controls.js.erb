@@ -4,8 +4,7 @@ function loadImage(imageUrl, cell){
   $(cell).find("img").map(function() {return $(this).attr("src", imageUrl)});
 
   $(this).each(function(){
-
-    var css = 'url("'+ imageUrl + '") ';
+    var css = 'url("'+imageUrl+'") ';
     $(cell).find('.hex_inner').attr('style', 'width: 225px; height: 194.856px; background-image: ' + css);
     // This is where you add background color.
   });
@@ -59,10 +58,15 @@ function movePanningDial(currentMixer){
 
 function loopToggle(currentMixer){
   $(window).load(function(event){
-    var loopToggle = $("#loop");
-
-    $(".container").on("click", "#loop", function(event){
-      event.preventDefault();
+    var looper = $("#loop-toggle");
+    var selectedValue;
+      looper.Segment();
+      selectedValue = looper.chi÷ldren(".option.active"))
+    $(document).on("click", looper, function(){
+      // selectedValue = $(".option.active").attr("value");
+      // console.log("This")
+      // console.log(selectedValue);
+      // event.preventDefault();
       currentMixer.toggleLoop();
       console.log(currentMixer.mix[currentMixer.target]._audioNode[0].bufferSource.loop)
     })
@@ -137,7 +141,7 @@ function moveTempoDial(currentMixer){
     $("#tempo-dial").knob({
     'min': 2,
     'max': 100,
-    'step': 10,
+    'step': 1,
     'width': 75,
     'fgColor': "#222222",
     'skin': "tron",
