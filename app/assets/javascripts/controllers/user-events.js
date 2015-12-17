@@ -70,6 +70,10 @@ function setTargetForControlPanel(cellId, currentMixer, event){
     // show control panel, assign target
       $(".control-panel").show();
       currentMixer.assignTarget(cellId);
+      var divId = cellId.toString();
+      var trackTitle = $("div#" + divId).find(".inner-text").text();
+        $(".control-panel").append("<p id='track-title'>" + trackTitle + "</p>");
+
     // Then all the dials need to be updated to reflect the attribute values of the target
         var $currentVolume= currentMixer.mix[currentMixer.target].volume();
         $("#volume-dial").val($currentVolume * 10).trigger("change");
@@ -86,6 +90,7 @@ function setTargetForControlPanel(cellId, currentMixer, event){
     }else if( event.keyCode === 13 && $(".control-panel").is(":visible") ){
       $(".control-panel").hide();
       currentMixer.assignTarget(null);
+      $("p#track-title").remove();
     }else{
       console.log("Check setTargetForControlPanel method, you aren't hitting the right conditions")
     };
