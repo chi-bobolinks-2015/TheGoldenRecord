@@ -112,7 +112,7 @@ Mixer.prototype.buildConvolver = function (params) {
     dryLevel: 1,                            //0 to 1+
     wetLevel: 1,                            //0 to 1+
     level: 1,                               //0 to 1+, adjusts total output of both wet and dry
-    impulse: "/assets/von\ klitzing\ effect\ 4R.wav",    //the path to your impulse response
+    impulse: "/assets/impulseResponse.wav",    //the path to your impulse response
     bypass: 0
 	});
 
@@ -147,6 +147,7 @@ Mixer.prototype.buildReverb = function (params) {
 Mixer.prototype.globalPlay = function () {
 	for (var i = 0; i < 6; i++) {
 		if (this.mix[i] != null) {
+			this.mix[i].pause()
 			this.mix[i].play()
 		}
 	}
@@ -183,6 +184,7 @@ Mixer.prototype.pauseTarget = function () {
 
 //Play target
 Mixer.prototype.playTarget = function () {
+	this.mix[this.target].pause()
 	this.mix[this.target].play()
 }
 
@@ -205,7 +207,7 @@ Mixer.prototype.assignPlaybackRate = function (value) {
 
 //Assign panning (-1(left) to 1(right))
 Mixer.prototype.assignPanning = function (value) {
-	this.mix[this.target]._audioNode[0].panner.setPosition(value, 0, 0)
+	this.trackContext([this.target]).listener.setPosition(value, 0, 0)
 }
 
 //Toggle track loop
@@ -213,7 +215,18 @@ Mixer.prototype.toggleLoop = function () {
 	this.mix[this.target]._audioNode[0].bufferSource.loop = !this.mix[this.target]._audioNode[0].bufferSource.loop
 }
 
+// ################# MISC METHODS ######################
 
+//Adjusts dial input to valid playback level.. NEEDS REFACTOR
+Mixer.prototype.adjustPlayback = function (integer) {
+	if (integer >= 50) {
+		return ((integer / 25) - 1)
+	} else if (integer >= 25){
+		return ((integer / 25) / 2)
+	} else {
+		return ((integer / 25) /(Math.log(integer) * .5)) - .1
+	}
+}
 
 
 

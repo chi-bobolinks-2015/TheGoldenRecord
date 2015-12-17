@@ -45,18 +45,15 @@
             <input id= "volume-dial" type="text" class="dial">
           </div>
 
-          <div class= "controls">
-            <p> Panning</p>
-            <input id= "panning-dial" type="text" class="dial">
-          </div>
-          <div class= "controls">
+
+          <!-- <div class= "controls">
             <p> Low Pass </p>
             <input id= "low-dial" type="text" class="dial">
           </div>
            <div class= "controls">
             <p> High Pass </p>
             <input id= "high-dial" type="text" class="dial">
-          </div>
+          </div> -->
           <div class= "controls">
             <p> Echo </p>
             <input id= "echo-dial" type="text" class="dial">
@@ -64,6 +61,26 @@
           <div class= "controls">
             <p>Tempo </p>
             <input id= "tempo-dial" type="text" class="dial">
+          </div>
+
+          <div class= "controls">
+            <p> Panning</p>
+            <select id="panning-dial">
+              <option value="1">Left</option>
+              <option selected="selected" value="0">None</option>
+              <option value="-1">Right</option>
+            </select>
+
+          </div>
+
+          <div class= "controls">
+            <div id="loop">
+              <label for="flip-2">Loop</label>
+              <select name="flip-2" id="flip-2" data-role="flipswitch" data-theme="b">
+                  <option value="off">Off</option>
+                  <option value="on">On</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>

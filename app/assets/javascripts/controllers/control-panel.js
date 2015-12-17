@@ -5,9 +5,8 @@ function setControls(mix){
   // eventually each of the moveSlider methods could take in 2 parameters, the first is the divID, the second would be the soundID
   moveVolumeDial(mix);
   movePanningDial(mix);
-  moveHighDial();
-  moveLowDial();
   moveEchoDial(mix);
   moveTempoDial(mix);
+  loopToggle(mix);
   $(".control-panel").hide();
 }

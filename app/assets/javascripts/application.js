@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
+//= require segment
 //= require honeycombs
 //= require aterrien-knob
 //= require jquery_kontrol
