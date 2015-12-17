@@ -42,6 +42,7 @@ Mixer.prototype.stopTrack = function (trackID) {
 	this.mix[trackID].stop();
 }
 
+//Pulls context from a track
 Mixer.prototype.trackContext = function (trackID) {
 	return this.mix[trackID]._audioNode[0].context
 }
