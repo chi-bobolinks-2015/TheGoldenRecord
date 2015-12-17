@@ -137,7 +137,7 @@ function moveTempoDial(currentMixer){
     $("#tempo-dial").knob({
     'min': 2,
     'max': 100,
-    'step': 10,
+    'step': 1,
     'width': 75,
     'fgColor': "#222222",
     'skin': "tron",
