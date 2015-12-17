@@ -60,14 +60,18 @@ a.boxclose{
 
 /*Refactor to make DRY*/
 #mask {
-  background-image: url("backgrounds/golden-record.jpg");
+  background-image: url("backgrounds/mars.jpg");
   position: fixed;
   left: 0;
   top: 0;
   z-index: 77777;
   width: 100%;
-  /*opacity: 0.7;*/
+  opacity: 0.4;
   height: 100vh;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 #bg-about {
@@ -77,7 +81,7 @@ a.boxclose{
   top: 0;
   z-index: 77777;
   width: 100%;
-  /*opacity: 0.7;*/
+  opacity: 0.7;
   height: 100vh;
 }
 
@@ -88,7 +92,7 @@ a.boxclose{
   top: 0;
   z-index: 77777;
   width: 100%;
-  /*opacity: 0.7;*/
+  opacity: 0.7;
   height: 100vh;
 }
 
@@ -99,7 +103,7 @@ a.boxclose{
   top: 0;
   z-index: 77777;
   width: 100%;
-  /*opacity: 0.7;*/
+  opacity: 0.7;
   height: 100vh;
 }
 
