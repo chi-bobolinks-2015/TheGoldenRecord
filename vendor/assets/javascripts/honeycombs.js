@@ -38,8 +38,6 @@
                     num = num + 1;
                     // Sets background of honeycomb without hover.
                     var image = $(this).find('img').attr('src');
-                    console.log(image);
-                    console.log("THIS!");
                     var css = 'url("'+image+'") ';
 
                     $(this).find('.hex_inner').attr('style', 'background-image: '+css);

@@ -1,11 +1,8 @@
 $(document).ready(function() {
 
   $(".welcome").on("click", function() {
-    console.log("YES");
     $(this).fadeOut(1400);
     $(this).parent().slideUp(1800);
-    // $(this).slideUp(1200);
-    // $(this).parent().animate({ height: 'toggle', opacity: 0.5 }, 1500);
   });
 
   $("#about").on("click", function() {

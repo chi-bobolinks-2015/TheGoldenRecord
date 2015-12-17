@@ -2,6 +2,7 @@ function setUserEvents(mix){
   startAndStopTrack(mix)
   globalPause(mix);
   dropTrack(mix);
+  removeTrack(mix);
   // controlPanelHover(mix)
   //Put in deck user event file
 
@@ -13,10 +14,9 @@ function dropTrack(mix){
   $(".cell").droppable({
     accept: ".draggableTrack",
     drop: function(event, ui) {
-
+      console.log("New track dropped in honeycomb")
       var draggable = ui.draggable.clone();
       var divId = Number($(this).attr("id"));
-
 
       var trackId = Number(draggable.attr("id"));
       var trackTitle = draggable.text();
@@ -26,20 +26,42 @@ function dropTrack(mix){
       mix.addTrack({'urls': draggable.attr("url"), 'divId': divId})
       trackInfoHover($(this), mix, trackTitle);
       loadImage(image, $(this));
-      draggableImage();
+      // draggableImage();
+
     }
   });
 }
+function draggableMixText(cell) {
+  var text = $(cell).find(".inner-text");
+  console.log(text)
+  $(text).draggable({
+    containment: ".container",
+    cursor: "move",
+    snap: ".sidebar"
+  });
+}
 
-function removeTrack(mix) {
-  // NEEDS TO BE BUILT
-  // $(".cell").on("click", ".boxclose", function() {
-  //   var cell = $(this).parent();
-  //   // cell.removeClass("on-deck");
-  //   $(cell.children("p")).remove();
-  //   $(cell.children("img")).remove();
-  //   $(cell.children(".boxclose")).remove();
-  // });
+function removeTrack(mixer) {
+  $(".cell").on("click", function() {
+    var $targetCell = $(this);
+    var targetId = $targetCell.attr("id")
+    var drag = $targetCell.find(".inner-text");
+    drag.draggable( {
+      containment: ".container",
+      cursor: "move"
+    });
+
+    $('.mix').droppable({
+    accept: drag,
+    drop: function(event, ui) {
+      console.log("track dropped");
+      mixer.stopTrack(targetId);
+      mixer.mix[targetId] = null;
+      $(drag).addClass("emptied");
+      $(drag).empty();
+     }
+    });
+  });
 }
 
 function setTargetForControlPanel(cellId, currentMixer, event){
@@ -65,14 +87,18 @@ function setTargetForControlPanel(cellId, currentMixer, event){
 function trackInfoHover(cell, currentMixer, trackTitle){
   $(cell).hover(function() {
     var thisCellId = Number($(this).attr("id"))
+    console.log ("in trackInfoHover assign inner text: " + trackTitle)
     var targetComb = $(this).find('.inner-text')
-      $(targetComb).html(trackTitle);
-      $(window).on("keyup", function(event){
-        setTargetForControlPanel(thisCellId, currentMixer, event)
-      })
-    },
-    mouseExitCell
-    );
+    $(targetComb).html(trackTitle);
+      if (!$(targetComb).hasClass("emptied")) {
+        $(targetComb).attr('style', "position: relative;");
+      }
+    $(window).on("keyup", function(event){
+      setTargetForControlPanel(thisCellId, currentMixer, event)
+    })
+  },
+  mouseExitCell
+  );
 }
 
 function mouseExitCell(){
