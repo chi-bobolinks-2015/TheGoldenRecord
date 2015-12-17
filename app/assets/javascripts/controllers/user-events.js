@@ -59,6 +59,8 @@ function removeTrack(mixer) {
       mixer.stopTrack(targetId);
       mixer.mix[targetId] = null;
       $(drag).addClass("emptied");
+      $(drag).parent().parent().removeClass("active");
+
       $(drag).empty();
      }
     });
@@ -141,13 +143,6 @@ function globalPause(mix) {
 
     };
   });
-}
-
-
-
-
-function noLongerActive(sound) {
-// a function that removes the class "active" when a track finishes playing on its own
 }
 
 
