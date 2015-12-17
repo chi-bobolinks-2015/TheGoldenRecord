@@ -17,6 +17,9 @@ Mixer.prototype.addTrack = function (args) {
 		var targetComb = $("div#" + trackID + " div.hex_l div.hex_r div.hex_inner.active");
 		targetComb.toggleClass("active");
 	})
+	if (typeof this.mix[trackID] !== 'undefined') {
+		this.mix[trackID].unload()
+	}
 	this.mix[trackID] = newTrack;
 	this.buildEffects(trackID);
 }
