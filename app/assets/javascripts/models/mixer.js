@@ -59,7 +59,8 @@ Mixer.prototype.buildEffects = function (trackID) {
 	var reverb = this.buildReverb({'tuna' : tuna, 'context' : context})
 
 	//Point at the gainNode created in our new Howl
-	var input = this.mix[0]._audioNode[0]
+	//Where trackID is on ln63, it used to be '0'
+	var input = this.mix[trackID]._audioNode[0]
 
 	//Set output destination to our context destination(speakers)
 	var output = context.destination

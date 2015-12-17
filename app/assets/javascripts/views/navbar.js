@@ -1,5 +1,10 @@
 $(document).ready(function() {
 
+  $(".welcome").on("click", function() {
+    $(this).fadeOut(1400);
+    $(this).parent().slideUp(1800);
+  });
+
   $("#about").on("click", function() {
     var popupBox = $(".popup-about");
     popupBox.fadeIn(400);

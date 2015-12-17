@@ -1,6 +1,5 @@
 function loadImage(imageUrl, cell){
   // $(cell).append("<img src=" + imageUrl + " class='mixer-image'>");
-  // $(cell).append("<a class='boxclose'></a>");
 
   $(cell).find("img").map(function() {return $(this).attr("src", imageUrl)});
 
@@ -11,13 +10,14 @@ function loadImage(imageUrl, cell){
   });
 }
 
-function draggableImage(){
-  $(".mixer-image").draggable({
-    containment: ".container",
-    snap: ".deck",
-    helper: "clone"
-  });
-}
+// To drag image onto deck.
+// function draggableImage(){
+//   $(".mixer-image").draggable({
+//     containment: ".container",
+//     snap: ".deck",
+//     helper: "clone"
+//   });
+// }
 
 
 function moveVolumeDial(currentMixer){
