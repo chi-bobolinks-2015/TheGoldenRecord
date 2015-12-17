@@ -59,10 +59,15 @@ function movePanningDial(currentMixer){
 
 function loopToggle(currentMixer){
   $(window).load(function(event){
-    var loopToggle = $("#loop");
-
-    $(".container").on("click", "#loop", function(event){
-      event.preventDefault();
+    var looper = $("#loop-toggle");
+    var selectedValue;
+      looper.Segment();
+      selectedValue = looper.chi÷ldren(".option.active"))
+    $(document).on("click", looper, function(){
+      // selectedValue = $(".option.active").attr("value");
+      // console.log("This")
+      // console.log(selectedValue);
+      // event.preventDefault();
       currentMixer.toggleLoop();
       console.log(currentMixer.mix[currentMixer.target]._audioNode[0].bufferSource.loop)
     })
