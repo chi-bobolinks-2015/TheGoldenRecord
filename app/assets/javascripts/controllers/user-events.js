@@ -55,11 +55,13 @@ function removeTrack(mixer) {
     $('.mix').droppable({
     accept: drag,
     drop: function(event, ui) {
-      console.log("track dropped");
+      var innerHex = $(drag).parent().parent();
       mixer.stopTrack(targetId);
       mixer.mix[targetId] = null;
       $(drag).addClass("emptied");
       $(drag).empty();
+      $(innerHex).removeClass("active");
+      unloadImage(innerHex);
      }
     });
   });
@@ -147,11 +149,6 @@ function globalPause(mix) {
 }
 
 
-
-
-function noLongerActive(sound) {
-// a function that removes the class "active" when a track finishes playing on its own
-}
 
 
 
