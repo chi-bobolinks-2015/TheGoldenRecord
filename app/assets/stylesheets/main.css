@@ -178,8 +178,8 @@ a:hover {
 .fl-r { float: right; }
 .cur { cursor: pointer; }
 .p-std { padding: 1em; }
-.p-top { padding-top: 2.5em; }
-.pr-m { padding-right: 2.5em; }
+.p-top { padding-top: 6em; }
+.pr-m { padding-right: 3.5em; }
 .p-none { padding: 0; }
 .m-r {margin-right: 5em; }
 .bgc-day { background-color: #948181; }
