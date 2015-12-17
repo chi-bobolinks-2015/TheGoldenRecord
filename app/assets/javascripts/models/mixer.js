@@ -57,13 +57,15 @@ Mixer.prototype.buildEffects = function (trackID) {
 	//create Tuna object for the track
 	var tuna = new Tuna(context)
 
+	//Put context/tuna into an object
+	var tunaParams = {'tuna' : tuna, 'context' : context}
+	
 	//Build Tuna effect nodes
-	var filter = this.buildFilter({'tuna' : tuna, 'context' : context})
-	var convolver = this.buildConvolver({'tuna' : tuna, 'context' : context})
-	var reverb = this.buildReverb({'tuna' : tuna, 'context' : context})
+	var filter = this.buildFilter(tunaParams)
+	var convolver = this.buildConvolver(tunaParams)
+	var reverb = this.buildReverb(tunaParams)
 
 	//Point at the gainNode created in our new Howl
-	//Where trackID is on ln63, it used to be '0'
 	var input = this.mix[trackID]._audioNode[0]
 
 	//Set output destination to our context destination(speakers)
@@ -116,7 +118,7 @@ Mixer.prototype.buildConvolver = function (params) {
     dryLevel: 1,                            //0 to 1+
     wetLevel: 1,                            //0 to 1+
     level: 1,                               //0 to 1+, adjusts total output of both wet and dry
-    impulse: "/assets/impulseResponse.wav",    //the path to your impulse response
+    impulse: "https://s3.amazonaws.com/the-golden-record/Sound+Effects/impulseResponse.wav",    //the path to your impulse response
     bypass: 0
 	});
 
