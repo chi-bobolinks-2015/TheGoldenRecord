@@ -22,11 +22,12 @@ function dropTrack(mix){
       var trackTitle = draggable.text();
       var image = draggable.attr("image");
       var trackAdded = {src: draggable.attr("url"), id: trackId, name: draggable.html()}
+      var innerText = $(this).find(".inner-text");
+      $(innerText).removeClass("emptied");
 
       mix.addTrack({'urls': draggable.attr("url"), 'divId': divId})
       trackInfoHover($(this), mix, trackTitle);
       loadImage(image, $(this));
-      // draggableImage();
 
     }
   });
