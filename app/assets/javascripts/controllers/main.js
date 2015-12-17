@@ -8,5 +8,6 @@ $(document).ready(function(event){
   activeMix.assignTarget
   setUserEvents(activeMix);
   setControls(activeMix);
+  hideControls();
 })
 
