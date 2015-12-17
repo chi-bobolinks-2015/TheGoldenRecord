@@ -10,6 +10,13 @@ function loadImage(imageUrl, cell){
   });
 }
 
+function unloadImage(hex) {
+    var image = "/assets/sound-categories/plus-e91e2af8c8332fcbca611da7a3344dad5398ce0916f96f453399ea730aefc11a.jpg";
+    console.log(image);
+   $(hex).attr('style', 'width: 225px; height: 194.856px; background-image: url(' + image + ')');
+   $(hex).parent().parent().parent().find('img').attr('src', image);
+}
+
 // To drag image onto deck.
 // function draggableImage(){
 //   $(".mixer-image").draggable({

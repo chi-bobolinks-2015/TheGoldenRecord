@@ -55,13 +55,13 @@ function removeTrack(mixer) {
     $('.mix').droppable({
     accept: drag,
     drop: function(event, ui) {
-      console.log("track dropped");
+      var innerHex = $(drag).parent().parent();
       mixer.stopTrack(targetId);
       mixer.mix[targetId] = null;
       $(drag).addClass("emptied");
-      $(drag).parent().parent().removeClass("active");
-
       $(drag).empty();
+      $(innerHex).removeClass("active");
+      unloadImage(innerHex);
      }
     });
   });
@@ -144,6 +144,8 @@ function globalPause(mix) {
     };
   });
 }
+
+
 
 
 
