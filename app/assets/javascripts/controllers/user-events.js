@@ -26,7 +26,7 @@ function dropTrack(mix){
       $(innerText).removeClass("emptied");
 
       mix.addTrack({'urls': draggable.attr("url"), 'divId': divId})
-      trackInfoHover($(this), mix, trackTitle);
+      assignTrackInfoHover($(this), mix, trackTitle);
       loadImage(image, $(this));
 
     }
@@ -68,7 +68,9 @@ function removeTrack(mixer) {
 }
 
 function setTargetForControlPanel(cellId, currentMixer, event){
-   if( event.keyCode === 13){
+  console.log(cellId)
+  console.log(currentMixer.mix)
+   if( event.keyCode === 13 && currentMixer.mix[cellId] != 'undefined'){
     //  assign target, show control panel
     console.log("show control panel")
     currentMixer.assignTarget(cellId);
@@ -94,30 +96,33 @@ function setTargetForControlPanel(cellId, currentMixer, event){
     };
 };
 
-function trackInfoHover(cell, currentMixer, trackTitle){
-  $(cell).hover(function() {
-    console.log("new hover")
+function assignTrackInfoHover(cell, currentMixer, trackTitle){
+    var targetCombText = $(cell).find('.inner-text')
+    $(targetCombText).html(trackTitle);
+}
+
+function onHoverOptions(currentMixer){
+  $(".cell").hover(function() {
     var thisCellId = Number($(this).attr("id"))
     var $targetComb =  $(this).find('.hex_inner')
     var targetCombText = $(this).find('.inner-text')
-    $(targetCombText).html(trackTitle);
-      if ( $(targetCombText).hasClass("emptied") ){
-        $(targetCombText).attr('style', "position: relative;");
-      }else{
+
+    if ( $(targetCombText).hasClass("emptied") ){
+      $(targetCombText).attr('style', "position: relative;");
+    } else {
       $(window).on("keyup", function(event){
         if ( ($targetComb).hasClass("active") ){
           setTargetForControlPanel(thisCellId, currentMixer, event)
         };
       });
     }
-  },
-  mouseExitCell
-  );
+  });
+  // mouseExitCell
 }
 
-function mouseExitCell(){
-  $(this).find("#track-info").remove();
-}
+// function mouseExitCell(){
+//   $(this).find("#track-info").remove();
+// }
 
 function returnDivs() {
   return $('div.cell')
