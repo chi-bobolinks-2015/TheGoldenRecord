@@ -116,7 +116,7 @@ Mixer.prototype.buildConvolver = function (params) {
     dryLevel: 1,                            //0 to 1+
     wetLevel: 1,                            //0 to 1+
     level: 1,                               //0 to 1+, adjusts total output of both wet and dry
-    impulse: "/assets/impulseResponse.wav",    //the path to your impulse response
+    impulse: "https://s3.amazonaws.com/the-golden-record/Sound+Effects/impulseResponse.wav",    //the path to your impulse response
     bypass: 0
 	});
 
