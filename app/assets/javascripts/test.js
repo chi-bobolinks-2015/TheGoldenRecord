@@ -156,10 +156,10 @@ console.log(context)
 
  $(window).on("keyup", function(event) {
 
- 	// for (var i = 1; i < 25; i++) {
- 	// 	var log = someMix.adjustPlayback(i); 
- 	// 	console.log(i + ": " + log)
- 	// }
+ 	for (var i = 1; i < 25; i++) {
+ 		var log = someMix.adjustPlayback(i); 
+ 		console.log(i + ": " + log)
+ 	}
 
     if (event.keyCode == 38) {
       console.log("play")
@@ -167,7 +167,7 @@ console.log(context)
       console.log(someMix.assignPanning(1))
     }
     else if (event.keyCode == 40) {
-      console.log(someMix.assignPanning(0))
+      console.log(someMix.assignPanning(.25))
       console.log("effect")
     }
   })
