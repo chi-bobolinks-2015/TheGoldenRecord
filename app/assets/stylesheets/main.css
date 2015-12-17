@@ -59,6 +59,17 @@ a.boxclose{
 }
 
 /*Refactor to make DRY*/
+#mask {
+  background-image: url("backgrounds/golden-record.jpg");
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 77777;
+  width: 100%;
+  /*opacity: 0.7;*/
+  height: 100vh;
+}
+
 #bg-about {
   background-image: url("backgrounds/golden-record.jpg");
   position: fixed;
@@ -66,7 +77,7 @@ a.boxclose{
   top: 0;
   z-index: 77777;
   width: 100%;
-  opacity: 0.7;
+  /*opacity: 0.7;*/
   height: 100vh;
 }
 
@@ -77,7 +88,18 @@ a.boxclose{
   top: 0;
   z-index: 77777;
   width: 100%;
-  opacity: 0.7;
+  /*opacity: 0.7;*/
+  height: 100vh;
+}
+
+#bg-start {
+  background-image: url("backgrounds/cosmic-clouds.jpg");
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 77777;
+  width: 100%;
+  /*opacity: 0.7;*/
   height: 100vh;
 }
 
