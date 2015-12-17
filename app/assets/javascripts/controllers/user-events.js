@@ -52,7 +52,7 @@ function setTargetForControlPanel(cellId, currentMixer, event){
         $("#volume-dial").val($currentVolume * 10).trigger("change");
 
         // var $currentPanning = currentMixer.mix[currentMixer.target]._audioNode[0].panner.setPosition(0, 0, 0);
-        $("#panning-dial").val("0") //.trigger("change");
+        // $("#panning-dial").val("0") //.trigger("change");
 
         var $currentDelay= currentMixer.mix[currentMixer.target]._audioNode[3].delayTime.value
         $("#echo-dial").val($currentDelay * 10).trigger("change");

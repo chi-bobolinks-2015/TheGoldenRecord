@@ -49,14 +49,11 @@ function movePanningDial(currentMixer){
       console.log("In here");
       console.log($(".option.active").attr("value"));
       selectedValue = $(".option.active").attr("value");
-      currentMixer.mix[currentMixer.target]._audioNode[0].panner.setPosition(selectedValue, 0, 0)
-      // currentMixer.assignPanning(0);
+
+      // currentMixer.mix[currentMixer.target].listener.setPosition(Number(selectedValue), 0, 0)
+      currentMixer.assignPanning(Number(selectedValue));
     });
-    // console.log(panningDial.children().attr("value"));
-    // console.log(panningDial.children("option").find("selected"));
-    // selected = panningDial.children("option").find("selected");
-    // console.log(selected);
-    console.log(panningDial);
+
   });
 }
 
