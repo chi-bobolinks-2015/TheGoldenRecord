@@ -77,8 +77,8 @@ function setTargetForControlPanel(cellId, currentMixer, event){
 
     var divId = cellId.toString();
     var trackTitle = $("div#" + divId).find(".inner-text").text();
-    $("p#track-title").remove();
-    $(".control-panel").append("<p id='track-title'>" + trackTitle + "</p>");
+    // $("p#track-title").remove();
+    // $(".control-panel").append("<p id='track-title'>" + trackTitle + "</p>");
 
     // Then all the dials need to be updated to reflect the attribute values of the target
       var $currentVolume= currentMixer.mix[currentMixer.target].volume();
@@ -98,7 +98,7 @@ function setTargetForControlPanel(cellId, currentMixer, event){
 
     }else{
       currentMixer.assignTarget(null);
-      $("p#track-title").remove();
+      // $("p#track-title").remove();
     };
 };
 
