@@ -1,12 +1,12 @@
 .ui-segment{
-	color: rgb(0, 122, 255);
-	border: 1px solid rgb(0, 122, 255);
+	color: #333;
+	border: 1px solid #333;
 	border-radius: 4px;
 	display:inline-block;
 	font-family: 'Lato',Georgia, Serif;
 }
 .ui-segment span.option.active{
-	background-color: rgb(0, 122, 255);
+	background-color: #333;
 	color: white;
 }
 .ui-segment span.option{
@@ -20,7 +20,7 @@
 	margin: 0px;
 	float:left;
 	cursor:pointer;
-	border-right:1px solid rgb(0, 122, 255);
+	border-right:1px solid #333;
 }
 .ui-segment span.option:last-child{
 	border-right: none;
