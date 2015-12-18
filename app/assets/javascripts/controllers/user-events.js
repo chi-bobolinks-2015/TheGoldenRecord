@@ -57,7 +57,7 @@ function removeTrack(mixer) {
     drop: function(event, ui) {
       var innerHex = $(drag).parent().parent();
       mixer.stopTrack(targetId);
-      mixer.mix[targetId] = null;
+      mixer.removeTrack(targetId);
       $(drag).addClass("emptied");
       $(drag).empty();
       $(innerHex).removeClass("active");
