@@ -18,6 +18,7 @@ Mixer.prototype.addTrack = function (args) {
 		var targetComb = $("div#" + trackID + " div.hex_l div.hex_r div.hex_inner.active");
 		targetComb.toggleClass("active");
 	})
+	console.log(this.mix)
 	if (typeof this.mix[trackID] !== 'undefined') {
 		this.mix[trackID].unload()
 	}
@@ -27,7 +28,7 @@ Mixer.prototype.addTrack = function (args) {
 
 //Removes a track from the mix array
 Mixer.prototype.removeTrack = function (position) {
-	this.mix[position] = null;
+	this.mix[position] = undefined;
 }
 
 
