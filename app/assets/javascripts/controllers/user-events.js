@@ -3,8 +3,6 @@ function setUserEvents(mix){
   globalPause(mix);
   dropTrack(mix);
   removeTrack(mix);
-  // controlPanelHover(mix)
-  //Put in deck user event file
 
 };
 
