@@ -1,4 +1,5 @@
 $(document).ready(function(event){
+
   $('.honeycombs').honeycombs({
     combWidth: 225,
     margin: 10
@@ -6,8 +7,11 @@ $(document).ready(function(event){
 
   var activeMixer = startMixer();
   activeMixer.assignTarget
+
+  setSidebar();
   setUserEvents(activeMixer);
   setControls(activeMixer);
+
   hideControls();
   onHoverOptions(activeMixer)
 })
