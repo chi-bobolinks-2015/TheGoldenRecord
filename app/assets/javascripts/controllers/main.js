@@ -1,13 +1,11 @@
 $(document).ready(function(event){
-
-  $('.honeycombs').honeycombs({
-    combWidth: 225,
-    margin: 10
-  });
+  setWelcome();
+  setHexagons();
 
   var activeMixer = startMixer();
   activeMixer.assignTarget
 
+  setNavHeader();
   setSidebar();
   setUserEvents(activeMixer);
   setControls(activeMixer);

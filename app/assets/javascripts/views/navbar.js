@@ -1,10 +1,9 @@
-$(document).ready(function() {
+function setNavHeader(){
+  setNavPopUp();
+  setNavClose();
+};
 
-  $(".welcome").on("click", function() {
-    $(this).fadeOut(1400);
-    $(this).parent().slideUp(1800);
-  });
-
+function setNavPopUp(){
   $("#about").on("click", function() {
     var popupBox = $(".popup-about");
     popupBox.fadeIn(400);
@@ -25,7 +24,9 @@ $(document).ready(function() {
     $('body').append('<div class="container" id="bg-meet"></div>');
     $("#bg-meet").fadeIn(400);
   });
+}
 
+function setNavClose(){
   $("body").on("click", ".close", function() {
     $(".popup-info").hide();
     $("#mask").remove();
@@ -33,5 +34,4 @@ $(document).ready(function() {
     $("#bg-start").remove();
     $("#bg-meet").remove();
   });
-
-});
+}

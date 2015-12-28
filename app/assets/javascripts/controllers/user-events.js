@@ -3,7 +3,6 @@ function setUserEvents(mix){
   globalPause(mix);
   dropTrack(mix);
   removeTrack(mix);
-
 };
 
 

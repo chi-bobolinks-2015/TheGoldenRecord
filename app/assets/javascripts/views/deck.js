@@ -1,3 +1,10 @@
+function setHexagons(){
+   $('.honeycombs').honeycombs({
+    combWidth: 225,
+    margin: 10
+  });
+}
+
 function addToDeck(){
   $(".deck").droppable({
     // accept: ".mixer-image",

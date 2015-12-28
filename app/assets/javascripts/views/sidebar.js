@@ -1,5 +1,3 @@
-// $(document).ready(function() {
-
 function setSidebar(){
   setCollapsible();
   setTrackInfo();
@@ -55,5 +53,3 @@ function setTrackDrag(){
   });
 }
 
-
-// });
