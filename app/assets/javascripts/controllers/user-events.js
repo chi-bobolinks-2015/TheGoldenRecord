@@ -5,8 +5,6 @@ function setUserEvents(mix){
   removeTrack(mix);
 };
 
-
-
 function dropTrack(mix){
   $(".cell").droppable({
     accept: ".draggableTrack",
@@ -72,10 +70,6 @@ function setTargetForControlPanel(cellId, currentMixer, event){
     currentMixer.assignTarget(cellId);
     $(".control-panel").show();
 
-    var divId = cellId.toString();
-    var trackTitle = $("div#" + divId).find(".inner-text").text();
-    // $("p#track-title").remove();
-    // $(".control-panel").append("<p id='track-title'>" + trackTitle + "</p>");
 
     // Then all the dials need to be updated to reflect the attribute values of the target
       var $currentVolume= currentMixer.mix[currentMixer.target].volume();
@@ -160,6 +154,13 @@ function globalPause(mix) {
     };
   });
 }
+
+// function showTargetTrackInControlPanel(){
+    // var divId = cellId.toString();
+    // var trackTitle = $("div#" + divId).find(".inner-text").text();
+    // $("p#track-title").remove();
+    // $(".control-panel").append("<p id='track-title'>" + trackTitle + "</p>");
+// }
 
 
 
