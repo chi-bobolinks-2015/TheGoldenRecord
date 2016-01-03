@@ -13,7 +13,7 @@
   <nav class="navbar navbar-default bgc-day">
     <div class="container-fluid bgc-day">
       <div class="navbar-header bgc-day">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <button type="button" class="navbar-toggle collapsed bgc-stormy" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -23,9 +23,9 @@
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="p-std pr-m"><a href="#" id="about"><%= image_tag("navigation-bar/share.png", height: '50', width: '50') %></a></li>
-          <li class="p-std pr-m"><a href="#" id="start"><%= image_tag("navigation-bar/start.png", height: '50', width: '50') %></a></li>
-          <li class="p-std pr-m"><a href="#" id="meet"><%= image_tag("navigation-bar/meet-team.png", height: '50', width: '50') %></a></li>
+          <li class="p-lg pr-m"><a href="#" id="about"><%= image_tag("navigation-bar/share.png", height: '50', width: '50') %></a></li>
+          <li class="p-lg pr-m"><a href="#" id="start"><%= image_tag("navigation-bar/start.png", height: '50', width: '50') %></a></li>
+          <li class="p-lg pr-m"><a href="#" id="meet"><%= image_tag("navigation-bar/meet-team.png", height: '50', width: '50') %></a></li>
         </ul>
       </div>
     </div>
@@ -35,12 +35,12 @@
 <%= render "tracks/start" %>
 <%= render "tracks/meet" %>
 <%= render "tracks/launch" %>
+<%= render "tracks/credits" %>
 
 <%= yield %>
 
-  <footer class="navbar navbar-static-bottom bgc-stormy">
-
-    <div class="fl-r m-r f-header p-std" id="star"><%= image_tag("navigation-bar/star-credits.png") %></div>
+  <footer class="footer bgc-stormy">
+    <div class="fl-r mr-xlg f-header p-std" id="credits"><%= image_tag("navigation-bar/star-credits.png") %></div>
   </footer>
 
 </body>
