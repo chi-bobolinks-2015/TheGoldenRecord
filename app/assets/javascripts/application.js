@@ -13,10 +13,11 @@
 //= require jquery
 //= require jquery-ui
 //= require jquery_ujs
+//= require bootstrap
+//= require npm
 //= require segment
 //= require honeycombs
 //= require aterrien-knob
-//= require jquery_kontrol
 //= require turbolinks
 //= require tuna-min
 //= require howler
