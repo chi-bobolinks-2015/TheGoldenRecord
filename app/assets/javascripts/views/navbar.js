@@ -24,6 +24,13 @@ function setNavPopUp(){
     $('body').append('<div class="container" id="bg-meet"></div>');
     $("#bg-meet").fadeIn(400);
   });
+
+  $("#credits").on("click", function() {
+    var popupBox = $(".popup-credits");
+    popupBox.fadeIn(400);
+    $('body').append('<div class="container" id="bg-credits"></div>');
+    $("#bg-credits").fadeIn(400);
+  });
 }
 
 function setNavClose(){
@@ -33,5 +40,6 @@ function setNavClose(){
     $("#bg-about").remove();
     $("#bg-start").remove();
     $("#bg-meet").remove();
+    $("#bg-credits").remove();
   });
 }

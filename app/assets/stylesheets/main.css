@@ -101,6 +101,17 @@ li {
   height: 100vh;
 }
 
+#bg-credits {
+  background-image: url("backgrounds/stars.jpg");
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 77777;
+  width: 100%;
+  opacity: 0.7;
+  height: 100vh;
+}
+
 .launch {
   background-image: url("backgrounds/earth-arc.jpg");
   position: fixed;
@@ -181,7 +192,9 @@ a:hover {
 .clear { clear: both; }
 .fl-l { float: left; }
 .fl-r { float: right; }
-.m-r {margin-right: 5em; }
+.mr-xlg {margin-right: 5em; }
+.mb-lg { margin-bottom: 20px; }
+
 .p-std { padding: 1em; }
 .p-lg { padding: 2.5em;}
 .p-top { padding-top: 6em; }
