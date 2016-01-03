@@ -1,3 +1,14 @@
+html {
+  /* Pushes sticky footer to bottom */
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Footer height */
+  margin-bottom: 7em;
+}
+
 .debug {
   border: 0px dashed blue;
 }
@@ -116,6 +127,13 @@ li {
   width: 100%;
 }
 
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 7em;
+}
+
 p {
   font-family: 'PT Mono';
   line-height: 1.8em;
@@ -156,16 +174,21 @@ a:hover {
   text-decoration: none;
 }
 
+
 /*Atomic styles*/
+.cur { cursor: pointer; }
+
 .clear { clear: both; }
 .fl-l { float: left; }
 .fl-r { float: right; }
-.cur { cursor: pointer; }
+.m-r {margin-right: 5em; }
 .p-std { padding: 1em; }
+.p-lg { padding: 2.5em;}
 .p-top { padding-top: 6em; }
 .pr-m { padding-right: 3.5em; }
+.p-xsm { padding: 15px; }
 .p-none { padding: 0; }
-.m-r {margin-right: 5em; }
+
 .bgc-day { background-color: #948181; }
 .bgc-stormy { background-color: #B9B3B3; }
 
