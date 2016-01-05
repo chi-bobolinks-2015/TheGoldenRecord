@@ -1,11 +1,11 @@
 class TracksController < ApplicationController
 
   def index
-    client = make_client
-    bucket_contents = get_bucket_contents(client)
+    client = AmazonRetrievalJob.make_client
+    bucket_contents = AmazonRetrievalJob.get_bucket_contents(client)
 
-    folder_array = add_objects_to_folder(bucket_contents)
-    create_tracks_from_folders(folder_array)
+    folder_array = AmazonRetrievalJob.add_objects_to_folder(bucket_contents)
+    AmazonRetrievalJob.create_tracks_from_folders(folder_array)
 
     # @categories = Category.all
     # puts @categories

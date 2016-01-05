@@ -1,6 +1,5 @@
 class AmazonRetrievalJob < ActiveRecord::Base
 
-
   def self.get_amazon_tracks
     # Get objects from inside the the-golden-record bucket
     # Using objects' information, create and save Track objects and clean out old objects
@@ -28,11 +27,11 @@ class AmazonRetrievalJob < ActiveRecord::Base
     # end
   end
 
-  def make_client
+  def self.make_client
     s3 = Aws::S3::Client.new(region: "us-east-1")
   end
 
-  def get_bucket_contents(client)
+  def self.get_bucket_contents(client)
     client.list_objects(bucket: "the-golden-record").contents
   end
 
@@ -41,7 +40,7 @@ class AmazonRetrievalJob < ActiveRecord::Base
 
   end
 
-  def add_objects_to_folder(bucket_contents)
+  def self.add_objects_to_folder(bucket_contents)
     earth_array = []
     music_array = []
     nature_array = []
@@ -63,10 +62,14 @@ class AmazonRetrievalJob < ActiveRecord::Base
     full_array = [earth_array, music_array, nature_array, space_array]
   end
 
-  def create_tracks_from_folders(folder_array)
+  def self.create_tracks_from_folders(folder_array)
     folder_array.each do |folder|
       folder.each do |object|
-         Track.create(key: object.key)
+         track = Track.new(key: object.key)
+         track.url = track.url
+         track.title = track.title
+         track.artist = track.artist
+         track.save!
       end
     end
   end
