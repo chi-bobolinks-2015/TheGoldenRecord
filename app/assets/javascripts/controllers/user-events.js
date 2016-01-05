@@ -13,14 +13,14 @@ function dropTrack(mix){
       var draggable = ui.draggable.clone();
       var divId = Number($(this).attr("id"));
 
-      var trackId = Number(draggable.attr("id"));
+      var trackId = convertId(divId);
       var trackTitle = draggable.text();
       var image = draggable.attr("image");
       var trackAdded = {src: draggable.attr("url"), id: trackId, name: draggable.html()}
       var innerText = $(this).find(".inner-text");
       $(innerText).removeClass("emptied");
 
-      mix.addTrack({'urls': draggable.attr("url"), 'divId': divId})
+      mix.addTrack({'urls': draggable.attr("url"), 'divId': trackId})
       assignTrackInfoHover($(this), mix, trackTitle);
       loadImage(image, $(this));
 
@@ -40,7 +40,8 @@ function draggableMixText(cell) {
 function removeTrack(mixer) {
   $(".cell").on("click", function() {
     var $targetCell = $(this);
-    var targetId = $targetCell.attr("id")
+    var divId = $targetCell.attr("id")
+    var trackId = convertId(divId);
     var drag = $targetCell.find(".inner-text");
     drag.draggable( {
       containment: ".container",
@@ -51,8 +52,8 @@ function removeTrack(mixer) {
     accept: drag,
     drop: function(event, ui) {
       var innerHex = $(drag).parent().parent();
-      mixer.stopTrack(targetId);
-      mixer.removeTrack(targetId);
+      mixer.stopTrack(trackId);
+      mixer.removeTrack(trackId);
       $(drag).addClass("emptied");
       $(drag).empty();
       $(innerHex).removeClass("active");
@@ -62,12 +63,12 @@ function removeTrack(mixer) {
   });
 }
 
-function setTargetForControlPanel(cellId, currentMixer, event){
+function setTargetForControlPanel(trackId, currentMixer, event){
   console.log(cellId)
   if( event.keyCode === 13 ){
     //  assign target, show control panel
     // console.log("show control panel")
-    currentMixer.assignTarget(cellId);
+    currentMixer.assignTarget(trackId);
     $(".control-panel").show();
 
 
@@ -100,8 +101,9 @@ function assignTrackInfoHover(cell, currentMixer, trackTitle){
 
 function onHoverOptions(currentMixer){
   $(".cell").hover(function() {
-    var thisCellId = Number($(this).attr("id"))
-  console.log("hovering in" + thisCellId)
+    var divId = Number($(this).attr("id"))
+    trackId =  convertId(divId)
+  console.log("hovering in" + trackId)
     var $targetComb =  $(this).find('.hex_inner')
     var targetCombText = $(this).find('.inner-text')
 
@@ -110,8 +112,8 @@ function onHoverOptions(currentMixer){
     } else {
       $(window).on("keyup", function(event){
         if ( ($targetComb).hasClass("active") ){
-          console.log(thisCellId)
-          setTargetForControlPanel(thisCellId, currentMixer, event)
+          console.log(trackId)
+          setTargetForControlPanel(trackId, currentMixer, event)
         };
       });
     }
@@ -134,8 +136,9 @@ function startAndStopTrack(mix) {
     var $targetComb =  $(this).find('.hex_inner')
     $targetComb.toggleClass('active');
     var divId = Number($(this).attr("id"));
-    mix.assignTarget(divId)
-    $targetComb.hasClass("active") ? mix.playTrack(divId) : mix.stopTrack(divId);
+    var trackId = convertId(divId);
+    mix.assignTarget(trackId)
+    $targetComb.hasClass("active") ? mix.playTrack(trackId) : mix.stopTrack(trackId);
   });
 }
 
