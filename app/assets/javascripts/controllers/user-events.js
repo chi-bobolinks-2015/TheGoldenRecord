@@ -64,10 +64,9 @@ function removeTrack(mixer) {
 }
 
 function setTargetForControlPanel(trackId, currentMixer, event){
-  console.log(cellId)
   if( event.keyCode === 13 ){
     //  assign target, show control panel
-    // console.log("show control panel")
+    console.log("show control panel for track " + trackId)
     currentMixer.assignTarget(trackId);
     $(".control-panel").show();
 
@@ -102,8 +101,8 @@ function assignTrackInfoHover(cell, currentMixer, trackTitle){
 function onHoverOptions(currentMixer){
   $(".cell").hover(function() {
     var divId = Number($(this).attr("id"))
-    trackId =  convertId(divId)
-  console.log("hovering in" + trackId)
+    var trackId =  convertId(divId)
+  // console.log("hovering in " + trackId)
     var $targetComb =  $(this).find('.hex_inner')
     var targetCombText = $(this).find('.inner-text')
 
@@ -112,7 +111,7 @@ function onHoverOptions(currentMixer){
     } else {
       $(window).on("keyup", function(event){
         if ( ($targetComb).hasClass("active") ){
-          console.log(trackId)
+          console.log("sensing a key up inside a hover")
           setTargetForControlPanel(trackId, currentMixer, event)
         };
       });
