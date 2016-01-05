@@ -7,9 +7,9 @@ class AmazonRetrievalJob < ActiveRecord::Base
     s3 = Aws::S3::Client.new(region: "us-east-1")
     bucket_contents = s3.list_objects(bucket: "the-golden-record").contents
 
-    bucket_contents.each do |object|
-      Track.create(key: object.key)
-    end
+    # bucket_contents.each do |object|
+    #   Track.create(key: object.key)
+    # end
 
     # earth_folder.each do |track|
     #   Track.create(title: track.key.split(".")[0], artist: "", url: "https://the-golden-record.s3.amazonaws.com/#{track.key}", category: "Earth")
@@ -38,28 +38,37 @@ class AmazonRetrievalJob < ActiveRecord::Base
 
   def make_folders
 
+
   end
 
   def add_objects_to_folder(bucket_contents)
+    earth_array = []
+    music_array = []
+    nature_array = []
+    space_array = []
     # needs to take in empty folders
     # then iterate over bucket_contents
     # and push to each particular empty folder
     bucket_contents.each do |object|
       if object.key.include?("Earth/") && object.key != "Earth/"
-        earth_folder << object
+        earth_array << object
       elsif object.key.include?("Music/") && object.key != "Music/"
-        music_folder << object
+        music_array << object
       elsif object.key.include?("Nature/") && object.key != "Nature/"
-        nature_folder << object
+        nature_array << object
       elsif object.key.include?("Space/") && object.key != "Space/"
-        space_folder << object
+        space_array << object
       end
     end
-    # return array of populated arrays named after folders
+    full_array = [earth_array, music_array, nature_array, space_array]
   end
 
-  def create_tracks_from_folders(folder)
-
+  def create_tracks_from_folders(folder_array)
+    folder_array.each do |folder|
+      folder.each do |object|
+         Track.create(key: object.key)
+      end
+    end
   end
 
 end
