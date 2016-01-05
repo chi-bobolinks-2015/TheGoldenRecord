@@ -1,29 +1,29 @@
 <div class="container debug">
-  <div class="nav nav-stacked p-top sidebar fl-l col-lg-2 debug">
+  <div class="nav nav-stacked sidebar hidden fl-l col-lg-2 p-top debug">
     <ul>
       <div class="collapsible"><%= image_tag("navigation-bar/arrow.png", height: '50', width: '50') %></div>
-      <% @categories.each do |category| %>
-        <li class="category-name cur fz-l f-header"><%= category.name %>
-          <ul class="tracks fz-s hidden">
-            <% category.tracks.each do |track| %>
-              <li class="draggableTrack" url="<%= track.url %>" id="<%= track.id %>" image="<%= category.img %>"><a data-track-id="<%= track.id %>" data-track-title="<%= track.title %>" data-track-description="<%= track.description %>" class="popup-window"><%= image_tag("navigation-bar/dark-plus.png") %></a><%= track.title %></li>
-              <li>
+    <% @categories.each do |category| %>
+      <li class="category-name cur fz-l f-header"><%= category.name %>
+        <ul class="tracks fz-s hidden">
+          <% category.tracks.each do |track| %>
+            <li class="draggableTrack" url="<%= track.url %>" id="<%= track.id %>" image="<%= category.img %>"><a data-track-id="<%= track.id %>" data-track-title="<%= track.title %>" data-track-description="<%= track.description %>" class="popup-window"><%= image_tag("navigation-bar/dark-plus.png") %></a><%= track.title %></li>
+            <li>
 
-              </li>
-            <% end %>
-          </ul>
-        </li>
-      <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
     </ul>
   </div>
 
   <div class="popup-info popup-box">
   </div>
 
-  <div class="sidebar p-top collapsible col-lg-1 hidden debug"><%= image_tag("navigation-bar/arrow-reverse.png", height: '50', width: '50') %></div>
+  <div class="sidebar p-top collapsible col-lg-1 debug"><%= image_tag("navigation-bar/arrow-reverse.png", height: '50', width: '50') %></div>
 
   <div class="jquery-script-clear"></div>
-  <div class="mix p-top debug fl-l col-lg-10">
+  <div class="mix p-top debug fl-l col-lg-11">
     <div class="track-divs honeycombs debug">
 
         <div id="0" class="cell comb border debug" ><%= image_tag("sound-categories/plus.jpg") %><span></span></div>
