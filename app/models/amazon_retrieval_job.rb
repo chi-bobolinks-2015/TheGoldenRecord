@@ -69,6 +69,7 @@ class AmazonRetrievalJob < ActiveRecord::Base
          track.url = track.url
          track.title = track.title
          track.artist = track.artist
+         track.category = track.category
          track.save!
       end
     end

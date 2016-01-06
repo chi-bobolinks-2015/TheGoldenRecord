@@ -13,7 +13,17 @@ class Track < ActiveRecord::Base
     @artist ||= key.split("-")[1]
   end
 
-  # def category
-  #   @category ||= "Earth"
-  # end
+  def category
+    name = key.split("/")[0]
+    case name
+    when "Earth"
+      @category = 1
+    when "Music"
+      @category = 2
+    when "Nature"
+      @category = 3
+    when "Space"
+      @category = 4
+    end
+  end
 end
