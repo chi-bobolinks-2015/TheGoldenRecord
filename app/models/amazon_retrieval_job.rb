@@ -40,7 +40,7 @@ class AmazonRetrievalJob < ActiveRecord::Base
 
   end
 
-  def add_objects_to_folder(bucket_contents)
+  def
     # needs to take in empty folders
     # then iterate over bucket_contents
     # and push to each particular empty folder
