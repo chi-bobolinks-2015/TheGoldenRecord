@@ -1,5 +1,9 @@
 Category.create(name: "Beats", img: "assets/sound-categories/boombox.png")
+<<<<<<< HEAD
 Category.create(name: "Earth", img: "assets/sound-categories/nature.png")
+=======
+Category.create(name: "Nature", img: "assets/sound-categories/elephant.png")
+>>>>>>> 2b1533bc2bbdb7565ebc5d24c1a54ad0b471b386
 Category.create(name: "Music", img: "assets/sound-categories/guitar.png")
 # Change nature image.
 Category.create(name: "Nature", img: "assets/sound-categories/guitar.png")
