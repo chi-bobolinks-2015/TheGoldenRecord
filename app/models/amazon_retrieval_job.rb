@@ -41,35 +41,42 @@ class AmazonRetrievalJob < ActiveRecord::Base
   end
 
   def self.add_objects_to_folder(bucket_contents)
+    beats_array = []
     earth_array = []
     music_array = []
     nature_array = []
+    effects_array = []
     space_array = []
     # needs to take in empty folders
     # then iterate over bucket_contents
     # and push to each particular empty folder
     bucket_contents.each do |object|
-      if object.key.include?("Earth/") && object.key != "Earth/"
+      if object.key.include?("Beats/") && object.key != "Beats/"
+        beats_array << object
+      elsif object.key.include?("Earth/") && object.key != "Earth/"
         earth_array << object
       elsif object.key.include?("Music/") && object.key != "Music/"
         music_array << object
       elsif object.key.include?("Nature/") && object.key != "Nature/"
         nature_array << object
+      elsif object.key.include?("Sound Effects/") && object.key != "Sound Effects/"
+        effects_array << object
       elsif object.key.include?("Space/") && object.key != "Space/"
         space_array << object
       end
     end
-    full_array = [earth_array, music_array, nature_array, space_array]
+    full_array = [beats_array, earth_array, music_array, nature_array, effects_array,space_array]
   end
 
   def self.create_tracks_from_folders(folder_array)
+    Track.delete_all
     folder_array.each do |folder|
       folder.each do |object|
          track = Track.new(key: object.key)
          track.url = track.url
          track.title = track.title
          track.artist = track.artist
-         track.category = track.category
+         track.category_id = track.category_id
          track.save!
       end
     end

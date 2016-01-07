@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20151211205251) do
     t.string   "title"
     t.string   "artist"
     t.text     "description"
+    t.integer  "category_id"
     t.string   "url"
     t.string   "key"
     t.datetime "created_at",  null: false

@@ -6,24 +6,28 @@ class Track < ActiveRecord::Base
   end
 
   def title
-    @title ||= key.split(".")[0]
+    @title ||= key.split("/")[1].split(".")[0]
   end
 
   def artist
     @artist ||= key.split("-")[1]
   end
 
-  def category
+  def category_id
     name = key.split("/")[0]
     case name
-    when "Earth"
+    when "Beats"
       @category = 1
-    when "Music"
+    when "Earth"
       @category = 2
-    when "Nature"
+    when "Music"
       @category = 3
-    when "Space"
+    when "Nature"
       @category = 4
+    when "Sound Effects"
+      @category = 5
+    when "Space"
+      @category = 6
     end
   end
 end

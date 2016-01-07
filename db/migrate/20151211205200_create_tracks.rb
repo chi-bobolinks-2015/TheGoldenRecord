@@ -4,7 +4,7 @@ class CreateTracks < ActiveRecord::Migration
       t.string :title
       t.string :artist
       t.text :description
-      # t.integer :category_id, null: false
+      t.integer :category_id
       t.string :url
       t.string :key
 
