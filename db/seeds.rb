@@ -2,7 +2,7 @@ Category.create(name: "Beats", img: "assets/sound-categories/boombox.png")
 Category.create(name: "Earth", img: "assets/sound-categories/nature.png")
 Category.create(name: "Music", img: "assets/sound-categories/guitar.png")
 # Change nature image.
-Category.create(name: "Nature", img: "assets/sound-categories/guitar.png")
+Category.create(name: "Nature", img: "assets/sound-categories/elephant.png")
 Category.create(name: "Sound Effects", img: "assets/sound-categories/space.png")
 Category.create(name: "Space", img: "assets/sound-categories/space.png")
 
