@@ -1,5 +1,5 @@
 Category.create(name: "Beats", img: "assets/sound-categories/boombox.png")
-Category.create(name: "Nature", img: "assets/sound-categories/nature.png")
+Category.create(name: "Nature", img: "assets/sound-categories/elephant.png")
 Category.create(name: "Music", img: "assets/sound-categories/guitar.png")
 Category.create(name: "Space", img: "assets/sound-categories/space.png")
 

@@ -11,7 +11,7 @@ function dropTrack(mix){
     drop: function(event, ui) {
       console.log("New track dropped in honeycomb")
       var draggable = ui.draggable.clone();
-      var divId = Number($(this).attr("id"));
+      var divId = $(this).attr("id");
 
       var trackId = convertId(divId);
       var trackTitle = draggable.text();
@@ -100,7 +100,7 @@ function assignTrackInfoHover(cell, currentMixer, trackTitle){
 
 function onHoverOptions(currentMixer){
   $(".cell").hover(function() {
-    var divId = Number($(this).attr("id"))
+    var divId = $(this).attr("id")
     var trackId =  convertId(divId)
   // console.log("hovering in " + trackId)
     var $targetComb =  $(this).find('.hex_inner')
@@ -134,7 +134,7 @@ function startAndStopTrack(mix) {
   returnDivs().on('click', function(e){
     var $targetComb =  $(this).find('.hex_inner')
     $targetComb.toggleClass('active');
-    var divId = Number($(this).attr("id"));
+    var divId = $(this).attr("id")
     var trackId = convertId(divId);
     mix.assignTarget(trackId)
     $targetComb.hasClass("active") ? mix.playTrack(trackId) : mix.stopTrack(trackId);
