@@ -11,7 +11,7 @@ Mixer.prototype.addTrack = function (args) {
 	var newTrack = new Howl({
 		urls: [args['urls']],
 		volume: 0.5,
-		loop: true
+		loop: false
 	});
 	var trackID = args['divId']
 	newTrack.on("end", function(){
