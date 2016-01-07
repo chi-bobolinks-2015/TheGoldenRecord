@@ -24,13 +24,12 @@ ActiveRecord::Schema.define(version: 20151211205251) do
   end
 
   create_table "tracks", force: :cascade do |t|
-    t.string   "title",       null: false
+    t.string   "title"
     t.string   "artist"
-    t.string   "composer"
     t.text     "description"
-    t.integer  "category_id", null: false
-    t.string   "url",         null: false
-    t.integer  "length"
+    t.integer  "category_id"
+    t.string   "url"
+    t.string   "key"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
