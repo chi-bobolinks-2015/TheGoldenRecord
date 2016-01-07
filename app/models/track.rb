@@ -6,7 +6,7 @@ class Track < ActiveRecord::Base
   end
 
   def title
-    @title ||= key.split("/")[1].split(".")[0]
+    @title ||= key.split("/")[1].split(".")[0].split("-")[0]
   end
 
   def artist
