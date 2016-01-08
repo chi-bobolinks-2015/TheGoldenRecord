@@ -27,6 +27,7 @@ function dropTrack(mix){
     }
   });
 }
+
 function draggableMixText(cell) {
   var text = $(cell).find(".inner-text");
   console.log(text)
@@ -63,13 +64,16 @@ function removeTrack(mixer) {
   });
 }
 
-function setTargetForControlPanel(trackId, currentMixer, event){
+function setTargetForControlPanel(divId, currentMixer, event){
+  var trackId =  convertId(divId)
   if( event.keyCode === 13 ){
     //  assign target, show control panel
     console.log("show control panel for track " + trackId)
     currentMixer.assignTarget(trackId);
     $(".control-panel").show();
 
+    // Change color of hexagon.
+    addColor(divId);
 
     // Then all the dials need to be updated to reflect the attribute values of the target
       var $currentVolume= currentMixer.mix[currentMixer.target].volume();
@@ -87,21 +91,36 @@ function setTargetForControlPanel(trackId, currentMixer, event){
         // var $currentLoopValue = currentMixer.mix[currentMixer.target].loop
         // $("#loop-toggle").val($currentLoopValue).trigger("change");
 
-    }else{
+    }
+    else {
       currentMixer.assignTarget(null);
       // $("p#track-title").remove();
     };
 };
 
+// function removeTargetFromControlPanel(event) {
+//   console.log("hi");
+//   if( event.keyCode == 81 ) {
+//     currentMixer.assignTarget(null);
+//     $("div").removeClass("on-mixer");
+//     $(".control-panel").hide();
+//   }
+// };
+
+function addColor(divId) {
+  var target = $("div#" + divId + " div.hex_l div.hex_r div.hex_inner");
+  $(target).addClass("on-mixer");
+};
+
 function assignTrackInfoHover(cell, currentMixer, trackTitle){
     var targetCombText = $(cell).find('.inner-text')
     $(targetCombText).html(trackTitle);
-}
+};
 
 function onHoverOptions(currentMixer){
   $(".cell").hover(function() {
     var divId = $(this).attr("id")
-    var trackId =  convertId(divId)
+
   // console.log("hovering in " + trackId)
     var $targetComb =  $(this).find('.hex_inner')
     var targetCombText = $(this).find('.inner-text')
@@ -112,13 +131,13 @@ function onHoverOptions(currentMixer){
       $(window).on("keyup", function(event){
         if ( ($targetComb).hasClass("active") ){
           console.log("sensing a key up inside a hover")
-          setTargetForControlPanel(trackId, currentMixer, event)
+          setTargetForControlPanel(divId,currentMixer, event)
         };
       });
     }
   });
   // mouseExitCell
-}
+};
 
 // function mouseExitCell(){
 //   $(this).find("#track-info").remove();
@@ -144,7 +163,6 @@ function startAndStopTrack(mix) {
 
 function globalPause(mix) {
  $(window).on('keyup', function(e) {
-
     e.preventDefault();
     if(e.keyCode == 32) {
       if(mix.pause === false) {
