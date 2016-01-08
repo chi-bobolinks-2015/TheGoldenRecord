@@ -63,7 +63,8 @@ function removeTrack(mixer) {
   });
 }
 
-function setTargetForControlPanel(trackId, currentMixer, event){
+function setTargetForControlPanel(divId, currentMixer, event){
+  var trackId =  convertId(divId)
   if( event.keyCode === 13 ){
     //  assign target, show control panel
     console.log("show control panel for track " + trackId)
@@ -71,7 +72,7 @@ function setTargetForControlPanel(trackId, currentMixer, event){
     $(".control-panel").show();
 
     // Change color of hexagon.
-    changeColor(trackId);
+    changeColor(divId);
 
     // Then all the dials need to be updated to reflect the attribute values of the target
       var $currentVolume= currentMixer.mix[currentMixer.target].volume();
@@ -95,12 +96,14 @@ function setTargetForControlPanel(trackId, currentMixer, event){
     };
 };
 
-function changeColor(trackId) {
+function changeColor(divId) {
   // divId should be a letter, not a number.
-  var divId = convertId(trackId);
   var target = $("div#" + divId + " div.hex_l div.hex_r div.hex_inner");
   $(target).toggleClass("on-mixer");
 };
+
+
+
 
 function assignTrackInfoHover(cell, currentMixer, trackTitle){
     var targetCombText = $(cell).find('.inner-text')
@@ -110,7 +113,7 @@ function assignTrackInfoHover(cell, currentMixer, trackTitle){
 function onHoverOptions(currentMixer){
   $(".cell").hover(function() {
     var divId = $(this).attr("id")
-    var trackId =  convertId(divId)
+
   // console.log("hovering in " + trackId)
     var $targetComb =  $(this).find('.hex_inner')
     var targetCombText = $(this).find('.inner-text')
@@ -121,7 +124,7 @@ function onHoverOptions(currentMixer){
       $(window).on("keyup", function(event){
         if ( ($targetComb).hasClass("active") ){
           console.log("sensing a key up inside a hover")
-          setTargetForControlPanel(trackId,currentMixer, event)
+          setTargetForControlPanel(divId,currentMixer, event)
         };
       });
     }
