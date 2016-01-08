@@ -21,6 +21,10 @@ body {
   background-color: #5889A9;
 }
 
+.on-mixer {
+  background-color: red;
+}
+
 .paused {
     background-color: rgba(252,150,99, .7)
 }

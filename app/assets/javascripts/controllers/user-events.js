@@ -70,6 +70,9 @@ function setTargetForControlPanel(trackId, currentMixer, event){
     currentMixer.assignTarget(trackId);
     $(".control-panel").show();
 
+    // Change color of hexagon.
+    changeColor(trackId);
+
     // Then all the dials need to be updated to reflect the attribute values of the target
       var $currentVolume= currentMixer.mix[currentMixer.target].volume();
       $("#volume-dial").val($currentVolume * 10).trigger("change");
@@ -92,9 +95,11 @@ function setTargetForControlPanel(trackId, currentMixer, event){
     };
 };
 
-function changeColor(trackID) {
-  // should call specific trackID that is active...call this method on line 68.
-    $(".hex_inner").attr('style', "background-color: red;");
+function changeColor(trackId) {
+  // divId should be a letter, not a number.
+  var divId = convertId(trackId);
+  var target = $("div#" + divId + " div.hex_l div.hex_r div.hex_inner");
+  $(target).toggleClass("on-mixer");
 };
 
 function assignTrackInfoHover(cell, currentMixer, trackTitle){
@@ -116,7 +121,7 @@ function onHoverOptions(currentMixer){
       $(window).on("keyup", function(event){
         if ( ($targetComb).hasClass("active") ){
           console.log("sensing a key up inside a hover")
-          setTargetForControlPanel(trackId, currentMixer, event)
+          setTargetForControlPanel(trackId,currentMixer, event)
         };
       });
     }
