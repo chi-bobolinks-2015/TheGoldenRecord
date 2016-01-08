@@ -11,7 +11,7 @@ function setControls(mix){
   $(".control-panel").hide();
 }
 
-function hideControls(){
+function hideControls(currentMixer){
   $(document).mouseup(function (e){
     var container = $(".control-panel");
 
@@ -19,6 +19,8 @@ function hideControls(){
         && container.has(e.target).length === 0) // ... nor a descendant of the container
     {
         container.hide();
+        currentMixer.assignTarget(null);
+        $("div").removeClass("on-mixer");
     }
   });
 }

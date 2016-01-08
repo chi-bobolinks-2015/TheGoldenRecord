@@ -10,7 +10,7 @@ $(document).ready(function(event){
   setUserEvents(activeMixer);
   setControls(activeMixer);
 
-  hideControls();
+  hideControls(activeMixer);
   onHoverOptions(activeMixer);
   removeTargetFromControlPanel(event);
 

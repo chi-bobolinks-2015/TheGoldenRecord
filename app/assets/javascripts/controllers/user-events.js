@@ -92,11 +92,6 @@ function setTargetForControlPanel(divId, currentMixer, event){
         // $("#loop-toggle").val($currentLoopValue).trigger("change");
 
     }
-    else if ( event.keyCode == 81 ) {
-      currentMixer.assignTarget(null);
-      $("div").removeClass("on-mixer");
-      $(".control-panel").hide();
-    }
     else {
       currentMixer.assignTarget(null);
       // $("p#track-title").remove();
