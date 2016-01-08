@@ -27,6 +27,7 @@ function dropTrack(mix){
     }
   });
 }
+
 function draggableMixText(cell) {
   var text = $(cell).find(".inner-text");
   console.log(text)
@@ -72,7 +73,7 @@ function setTargetForControlPanel(divId, currentMixer, event){
     $(".control-panel").show();
 
     // Change color of hexagon.
-    changeColor(divId);
+    addColor(divId);
 
     // Then all the dials need to be updated to reflect the attribute values of the target
       var $currentVolume= currentMixer.mix[currentMixer.target].volume();
@@ -90,25 +91,36 @@ function setTargetForControlPanel(divId, currentMixer, event){
         // var $currentLoopValue = currentMixer.mix[currentMixer.target].loop
         // $("#loop-toggle").val($currentLoopValue).trigger("change");
 
-    }else{
+    }
+    else if ( event.keyCode == 81 ) {
+      currentMixer.assignTarget(null);
+      $("div").removeClass("on-mixer");
+      $(".control-panel").hide();
+    }
+    else {
       currentMixer.assignTarget(null);
       // $("p#track-title").remove();
     };
 };
 
-function changeColor(divId) {
-  // divId should be a letter, not a number.
+// function removeTargetFromControlPanel(event) {
+//   console.log("hi");
+//   if( event.keyCode == 81 ) {
+//     currentMixer.assignTarget(null);
+//     $("div").removeClass("on-mixer");
+//     $(".control-panel").hide();
+//   }
+// };
+
+function addColor(divId) {
   var target = $("div#" + divId + " div.hex_l div.hex_r div.hex_inner");
-  $(target).toggleClass("on-mixer");
+  $(target).addClass("on-mixer");
 };
-
-
-
 
 function assignTrackInfoHover(cell, currentMixer, trackTitle){
     var targetCombText = $(cell).find('.inner-text')
     $(targetCombText).html(trackTitle);
-}
+};
 
 function onHoverOptions(currentMixer){
   $(".cell").hover(function() {
@@ -130,7 +142,7 @@ function onHoverOptions(currentMixer){
     }
   });
   // mouseExitCell
-}
+};
 
 // function mouseExitCell(){
 //   $(this).find("#track-info").remove();
@@ -156,7 +168,6 @@ function startAndStopTrack(mix) {
 
 function globalPause(mix) {
  $(window).on('keyup', function(e) {
-
     e.preventDefault();
     if(e.keyCode == 32) {
       if(mix.pause === false) {
