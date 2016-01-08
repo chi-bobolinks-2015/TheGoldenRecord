@@ -70,7 +70,6 @@ function setTargetForControlPanel(trackId, currentMixer, event){
     currentMixer.assignTarget(trackId);
     $(".control-panel").show();
 
-
     // Then all the dials need to be updated to reflect the attribute values of the target
       var $currentVolume= currentMixer.mix[currentMixer.target].volume();
       $("#volume-dial").val($currentVolume * 10).trigger("change");
@@ -91,6 +90,11 @@ function setTargetForControlPanel(trackId, currentMixer, event){
       currentMixer.assignTarget(null);
       // $("p#track-title").remove();
     };
+};
+
+function changeColor(trackID) {
+  // should call specific trackID that is active...call this method on line 68.
+    $(".hex_inner").attr('style', "background-color: red;");
 };
 
 function assignTrackInfoHover(cell, currentMixer, trackTitle){
