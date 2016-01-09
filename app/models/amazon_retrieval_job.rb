@@ -73,10 +73,10 @@ class AmazonRetrievalJob < ActiveRecord::Base
     folder_array.each do |folder|
       folder.each do |object|
          track = Track.new(key: object.key)
-         track.url = track.url
-         track.title = track.title
-         track.artist = track.artist
-         track.category_id = track.category_id
+         track.url = track.generate_url
+         track.title = track.generate_title
+         track.artist = track.generate_artist
+         track.category_id = track.generate_category_id
          track.save!
       end
     end

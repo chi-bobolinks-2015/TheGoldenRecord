@@ -17,4 +17,22 @@ class TracksController < ApplicationController
     # # end
   end
 
+  def new
+  end
+
+  def create
+    @track = Track.create(track_params)
+
+    if @track.valid?
+      redirect_to root_path
+     else
+       render action: 'new'
+    end
+  end
+
+  private
+
+  def track_params
+    params.require(:track).permit(:title, :audio)
+  end
 end
