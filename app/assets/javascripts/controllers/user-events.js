@@ -85,8 +85,8 @@ function setTargetForControlPanel(divId, currentMixer, event){
       var $currentDelay= currentMixer.mix[currentMixer.target]._audioNode[3].delayTime.value
       $("#echo-dial").val($currentDelay * 10).trigger("change");
 
-      var $currentTempo = currentMixer.mix[currentMixer.target]._audioNode[0].bufferSource.playbackRate.value
-      $("#tempo-dial").val($currentTempo).trigger("change");
+      var currentTempo = currentMixer.mix[currentMixer.target]._audioNode[0].bufferSource.playbackRate.value
+      $("#tempo-dial").val(convertPlaybackForTempoDial(currentTempo)).trigger("change");
 
         // var $currentLoopValue = currentMixer.mix[currentMixer.target].loop
         // $("#loop-toggle").val($currentLoopValue).trigger("change");
@@ -98,14 +98,15 @@ function setTargetForControlPanel(divId, currentMixer, event){
     };
 };
 
-// function removeTargetFromControlPanel(event) {
-//   console.log("hi");
-//   if( event.keyCode == 81 ) {
-//     currentMixer.assignTarget(null);
-//     $("div").removeClass("on-mixer");
-//     $(".control-panel").hide();
-//   }
-// };
+function convertPlaybackForTempoDial(integer){
+// this method is the reverse of adjust playback in the mixer controller
+  if (integer >= 1) {
+    return (integer * 50).toFixed(2)
+  } else {
+    return ((integer * 100) - .5).toFixed(2)
+  }
+}
+
 
 function addColor(divId) {
   var target = $("div#" + divId + " div.hex_l div.hex_r div.hex_inner");
