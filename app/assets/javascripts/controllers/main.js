@@ -12,7 +12,6 @@ $(document).ready(function(event){
 
   hideControls(activeMixer);
   onHoverOptions(activeMixer);
-  removeTargetFromControlPanel(event);
 
 })
 
