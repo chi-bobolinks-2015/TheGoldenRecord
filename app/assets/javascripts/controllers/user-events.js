@@ -6,6 +6,7 @@ function setUserEvents(mix){
 };
 
 // ############### Drag and Drop functionality ##################
+
 // Loads track info into mixer
 function dropTrack(mix){
   $(".cell").droppable({
@@ -29,7 +30,6 @@ function dropTrack(mix){
     }
   });
 }
-
 
 // Makes track title on hexagon draggable for removeTrack
 function draggableMixText(cell) {
@@ -67,12 +67,6 @@ function removeTrack(mixer) {
     });
   });
 }
-
-
-function addColor(divId) {
-  var target = $("div#" + divId + " div.hex_l div.hex_r div.hex_inner");
-  $(target).addClass("on-mixer");
-};
 
 
 

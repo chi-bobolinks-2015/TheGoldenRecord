@@ -5,14 +5,19 @@ function setHexagons(){
   });
 }
 
-function addToDeck(){
-  $(".deck").droppable({
-    // accept: ".mixer-image",
-    drop: function(event, ui) {
-      ui.draggable.parent().toggleClass("on-deck");
-    }
-  });
-}
+function addColor(divId) {
+  var target = $("div#" + divId + " div.hex_l div.hex_r div.hex_inner");
+  $(target).addClass("on-mixer");
+};
+
+// function addToDeck(){
+//   $(".deck").droppable({
+//     // accept: ".mixer-image",
+//     drop: function(event, ui) {
+//       ui.draggable.parent().toggleClass("on-deck");
+//     }
+//   });
+// }
 
 function loadImage(imageUrl, cell){
   // $(cell).append("<img src=" + imageUrl + " class='mixer-image'>");
