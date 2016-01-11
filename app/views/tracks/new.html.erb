@@ -1,0 +1,13 @@
+<%= form_for :track, multipart: true do |f| %>
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :audio %>
+    <%= f.file_field :audio %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Make a track' %>
+  </div>
+<% end %>

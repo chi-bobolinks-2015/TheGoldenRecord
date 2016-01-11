@@ -6,6 +6,7 @@ class CreateTracks < ActiveRecord::Migration
       t.text :description
       t.integer :category_id
       t.string :url
+      t.string :audio
       t.string :key
 
       t.timestamps null: false
