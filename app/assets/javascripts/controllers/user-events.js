@@ -5,6 +5,8 @@ function setUserEvents(mix){
   removeTrack(mix);
 };
 
+// ############### Drag and Drop functionality ##################
+// Loads track info into mixer
 function dropTrack(mix){
   $(".cell").droppable({
     accept: ".draggableTrack",
@@ -28,6 +30,8 @@ function dropTrack(mix){
   });
 }
 
+
+// Makes track title on hexagon draggable for removeTrack
 function draggableMixText(cell) {
   var text = $(cell).find(".inner-text");
   console.log(text)
@@ -70,9 +74,7 @@ function addColor(divId) {
   $(target).addClass("on-mixer");
 };
 
-function assignTrackInfoHover(cell, currentMixer, trackTitle){
-   $(cell).find('.inner-text').html(trackTitle);
-};
+
 
 function onHoverOptions(currentMixer){
   $(".cell").hover(function() {
