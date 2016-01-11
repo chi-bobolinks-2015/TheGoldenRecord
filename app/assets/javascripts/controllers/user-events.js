@@ -71,8 +71,7 @@ function addColor(divId) {
 };
 
 function assignTrackInfoHover(cell, currentMixer, trackTitle){
-    var targetCombText = $(cell).find('.inner-text')
-    $(targetCombText).html(trackTitle);
+   $(cell).find('.inner-text').html(trackTitle);
 };
 
 function onHoverOptions(currentMixer){
@@ -104,9 +103,8 @@ function onHoverOptions(currentMixer){
 function returnDivs() {
   return $('div.cell')
 };
-
+// Start and Stop on click, toggles "active" class
 function startAndStopTrack(mix) {
-  // ON CLICK - PLAY AND STOP
   // returnDivs().on('click', controlBoard.togglePlay.bind(controlBoard));
   returnDivs().on('click', function(e){
     var $targetComb =  $(this).find('.hex_inner')
@@ -132,13 +130,6 @@ function globalPause(mix) {
     };
   });
 }
-
-// function showTargetTrackInControlPanel(){
-    // var divId = cellId.toString();
-    // var trackTitle = $("div#" + divId).find(".inner-text").text();
-    // $("p#track-title").remove();
-    // $(".control-panel").append("<p id='track-title'>" + trackTitle + "</p>");
-// }
 
 
 

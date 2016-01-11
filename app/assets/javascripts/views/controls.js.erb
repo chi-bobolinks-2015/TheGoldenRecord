@@ -16,20 +16,16 @@ function unloadImage(hex) {
    $(hex).parent().parent().parent().find('img').attr('src', image);
 }
 
-// To drag image onto deck.
-// function draggableImage(){
-//   $(".mixer-image").draggable({
-//     containment: ".container",
-//     snap: ".deck",
-//     helper: "clone"
-//   });
+// function showTargetTrackInControlPanel(divId){
+//     var idString = divId.toString();
+//     var trackTitle = $("div#" + idString).find(".inner-text").text();
+//     $("p#track-title").remove();
+//     $(".control-panel").append("<p id='track-title'>" + trackTitle + "</p>");
 // }
 
+// ############### set up dials ###############
 
 function moveVolumeDial(currentMixer){
-
-  $(window).load(function(event){
-    // starting value of knob set in relation to target in setTargetForControlPanel() method
     $("#volume-dial").knob({
       'min': -1,
       'max': 11,
@@ -42,12 +38,43 @@ function moveVolumeDial(currentMixer){
       'displayInput': false,
       'change': function() { currentMixer.assignTargetVolume((this.$.val()/10)); }
     });
-
-  });
 }
 
+function moveEchoDial(currentMixer){
+    $("#echo-dial").knob({
+    'min': -1,
+    'max': 11,
+    'step': 1,
+    'cursor': 30,
+    'angleOffset': -125,
+    'angleArc': 250,
+    'width': 75,
+    'fgColor': "#222222",
+    'skin': "tron",
+    'thickness': .2,
+    'displayPrevious': true,
+    'displayInput': false,
+    'change': function() { currentMixer.assignDelayTime((this.$.val()/10));}
+    });
+}
+
+function moveTempoDial(currentMixer){
+    $("#tempo-dial").knob({
+    'min': 2,
+    'max': 100,
+    'step': 1,
+    'width': 75,
+    'fgColor': "#222222",
+    'skin': "tron",
+    'thickness': .2,
+    'displayPrevious': true,
+    'displayInput': false,
+    'change': function() { currentMixer.assignPlaybackRate(currentMixer.adjustPlayback((this.$.val()))); }
+    });
+}
+
+
 function movePanningDial(currentMixer){
-  $(window).load(function(event){
     var panningDial = $("#panning-dial")
     var selectedValue;
     panningDial.Segment();
@@ -58,8 +85,6 @@ function movePanningDial(currentMixer){
       // currentMixer.mix[currentMixer.target].listener.setPosition(Number(selectedValue), 0, 0)
       currentMixer.assignPanning(Number(selectedValue));
     });
-
-  });
 }
 
 // function loopToggle(currentMixer){
@@ -129,46 +154,7 @@ function movePanningDial(currentMixer){
 //   });
 // }
 
-function moveEchoDial(currentMixer){
-  $(window).load(function(event){
-    // console.log("Inside of moveDial")
 
-    $("#echo-dial").knob({
-    'min': -1,
-    'max': 11,
-    'step': 1,
-    'cursor': 30,
-    'angleOffset': -125,
-    'angleArc': 250,
-    'width': 75,
-    'fgColor': "#222222",
-    'skin': "tron",
-    'thickness': .2,
-    'displayPrevious': true,
-    'displayInput': false,
-    'change': function() { currentMixer.assignDelayTime((this.$.val()/10));}
-    });
-  });
-}
-
-function moveTempoDial(currentMixer){
-  $(window).load(function(event){
-    // console.log("Inside of moveDial")
-
-    $("#tempo-dial").knob({
-    'min': 2,
-    'max': 100,
-    'step': 1,
-    'width': 75,
-    'fgColor': "#222222",
-    'skin': "tron",
-    'thickness': .2,
-    'displayPrevious': true,
-    'displayInput': false,
-    'change': function() { currentMixer.assignPlaybackRate(currentMixer.adjustPlayback((this.$.val()))); }
-    });
-  });
-}
 
 
 

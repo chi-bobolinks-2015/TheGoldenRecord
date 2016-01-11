@@ -7,7 +7,7 @@ function setControls(mix){
   $(".control-panel").hide();
 }
 
-// Hides control panel when not in use
+// Hides control panel and unassign target when not in use
 function hideControls(currentMixer){
   $(document).mouseup(function (e){
     var container = $(".control-panel");
@@ -16,6 +16,7 @@ function hideControls(currentMixer){
         container.hide();
         currentMixer.assignTarget(null);
         $("div").removeClass("on-mixer");
+         $("p#track-title").remove();
     }
   });
 }
@@ -28,9 +29,10 @@ function setTargetForControlPanel(divId, currentMixer, event){
     console.log("show control panel for track " + trackId)
 
     currentMixer.assignTarget(trackId);
+    // showTargetTrackInControlPanel(divId);
     $(".control-panel").show();
     addColor(divId);
-    updateDials(currentMixer)
+    updateDials(currentMixer);
     }
     else {
       currentMixer.assignTarget(null);
