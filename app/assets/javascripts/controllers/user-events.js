@@ -64,49 +64,6 @@ function removeTrack(mixer) {
   });
 }
 
-function setTargetForControlPanel(divId, currentMixer, event){
-  var trackId =  convertId(divId)
-  if( event.keyCode === 13 ){
-    //  assign target, show control panel
-    console.log("show control panel for track " + trackId)
-    currentMixer.assignTarget(trackId);
-    $(".control-panel").show();
-
-    // Change color of hexagon.
-    addColor(divId);
-
-    // Then all the dials need to be updated to reflect the attribute values of the target
-      var $currentVolume= currentMixer.mix[currentMixer.target].volume();
-      $("#volume-dial").val($currentVolume * 10).trigger("change");
-
-      // var $currentPanning = currentMixer.mix[currentMixer.target]._audioNode[0].panner.setPosition(0, 0, 0);
-      // $("#panning-dial").val("0") //.trigger("change");
-
-      var $currentDelay= currentMixer.mix[currentMixer.target]._audioNode[3].delayTime.value
-      $("#echo-dial").val($currentDelay * 10).trigger("change");
-
-      var currentTempo = currentMixer.mix[currentMixer.target]._audioNode[0].bufferSource.playbackRate.value
-      $("#tempo-dial").val(convertPlaybackForTempoDial(currentTempo)).trigger("change");
-
-        // var $currentLoopValue = currentMixer.mix[currentMixer.target].loop
-        // $("#loop-toggle").val($currentLoopValue).trigger("change");
-
-    }
-    else {
-      currentMixer.assignTarget(null);
-      // $("p#track-title").remove();
-    };
-};
-
-function convertPlaybackForTempoDial(integer){
-// this method is the reverse of adjust playback in the mixer controller
-  if (integer >= 1) {
-    return (integer * 50).toFixed(2)
-  } else {
-    return ((integer * 100) - .5).toFixed(2)
-  }
-}
-
 
 function addColor(divId) {
   var target = $("div#" + divId + " div.hex_l div.hex_r div.hex_inner");
