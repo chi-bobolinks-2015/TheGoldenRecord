@@ -24,13 +24,15 @@ function setTrackInfo(){
    $(".popup-window").on("click", function() {
     var trackId = $(this).data("track-id")
     var trackTitle = $(this).data("track-title")
+    var trackArtist = $(this).data("track-artist")
     var trackDescription = $(this).data("track-description")
     var popupBox = $(".popup-box");
     popupBox.fadeIn(400);
 
     popupBox.empty();
-    popupBox.append("<h3 class='f-header'>" + trackTitle + "</h3>");
-    popupBox.append("<p>" + trackDescription + "</p>");
+    popupBox.append("<h2 class='f-header'>" + trackArtist + "</h2>");
+    popupBox.append("<h3 class='mb-lg mt-none'>" + trackTitle + "</h3>");
+    popupBox.append("<p>" + trackDescription + "Information about artist and track coming soon!</p>");
     popupBox.append('<button type="button" class="close f-header">close</button>');
 
     $('body').append('<div class="container" id="mask"></div>');
