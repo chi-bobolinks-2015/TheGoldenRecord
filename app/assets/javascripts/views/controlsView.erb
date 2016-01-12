@@ -58,7 +58,6 @@ function movePanningDial(currentMixer){
 
       selectedValue = $(".option.active").attr("value");
 
-      // currentMixer.mix[currentMixer.target].listener.setPosition(Number(selectedValue), 0, 0)
       currentMixer.assignPanning(Number(selectedValue));
     });
 }
