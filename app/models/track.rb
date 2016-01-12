@@ -10,7 +10,7 @@ class Track < ActiveRecord::Base
   end
 
   def artist
-    @artist ||= key.split("-")[1]
+    @artist ||= key.split("-")[1].split(".")[0]
   end
 
   def category_id
