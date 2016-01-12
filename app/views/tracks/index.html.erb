@@ -6,7 +6,7 @@
       <li class="category-name cur fz-l f-header"><%= category.name %>
         <ul class="tracks fz-s hidden">
           <% category.tracks.each do |track| %>
-            <li class="draggableTrack" url="<%= track.url %>" id="<%= track.id %>" image="<%= category.img %>"><a data-track-id="<%= track.id %>" data-track-title="<%= track.title %>" data-track-description="<%= track.description %>" class="popup-window"><%= image_tag("navigation-bar/dark-plus.png") %></a><%= track.title %></li>
+            <li class="draggableTrack" url="<%= track.url %>" id="<%= track.id %>" image="<%= category.img %>"><a data-track-id="<%= track.id %>" data-track-title="<%= track.title %>" data-track-artist="<%= track.artist %>" data-track-description="<%= track.description %>" class="popup-window"><%= image_tag("navigation-bar/dark-plus.png") %></a><%= track.title %></li>
             <li>
 
             </li>
