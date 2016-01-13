@@ -31,6 +31,7 @@ function setNavPopUp(){
     $('body').append('<div class="container" id="bg-credits"></div>');
     $("#bg-credits").fadeIn(400);
   });
+
 }
 
 function setNavClose(){

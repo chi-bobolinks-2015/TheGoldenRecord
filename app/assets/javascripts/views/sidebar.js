@@ -37,7 +37,10 @@ function setTrackInfo(){
       popupBox.append("<p>Information about artist and track coming soon!</p>");
     } else {
       popupBox.append("<p>" + trackDescription + "</p>");
+      popupBox.append()
     };
+
+
 
     popupBox.append('<button type="button" class="close f-header">close</button>');
 

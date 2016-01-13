@@ -198,7 +198,8 @@ a:hover {
 .fl-r { float: right; }
 .mr-xlg {margin-right: 5em; }
 .mb-lg { margin-bottom: 15px; }
-.mt-none { margin-top: 0;}
+.mt-none { margin-top: 0; }
+.mt-m { margin-top: 1em; }
 
 .p-std { padding: 1em; }
 .p-lg { padding: 2.5em;}
@@ -209,6 +210,7 @@ a:hover {
 
 .bgc-day { background-color: #948181; }
 .bgc-stormy { background-color: #B9B3B3; }
+.bgc-sea { background-color: #5889A9; }
 
 .f-header { font-family: 'Droid Sans Mono'; }
 
