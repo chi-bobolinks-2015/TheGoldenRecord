@@ -1,0 +1,16 @@
+<div class="container">
+  <h2 class='f-header'><%= @track.title %></h2>
+
+  <%= form_for @track do |f| %>
+
+    <div class="field">
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+</div>
