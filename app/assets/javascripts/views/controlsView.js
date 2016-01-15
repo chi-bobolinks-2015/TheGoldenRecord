@@ -54,7 +54,7 @@ function movePanningDial(currentMixer){
     var panningDial = $("#panning-dial")
     var selectedValue;
     panningDial.Segment();
-    $(document).on("click", panningDial, function() {
+    $('.control-panel').on("click", panningDial, function() {
 
       selectedValue = $(".option.active").attr("value");
 
