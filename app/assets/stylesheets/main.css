@@ -197,7 +197,8 @@ a:hover {
 .fl-l { float: left; }
 .fl-r { float: right; }
 .mr-xlg {margin-right: 5em; }
-.mb-lg { margin-bottom: 20px; }
+.mb-lg { margin-bottom: 15px; }
+.mt-none { margin-top: 0;}
 
 .p-std { padding: 1em; }
 .p-lg { padding: 2.5em;}

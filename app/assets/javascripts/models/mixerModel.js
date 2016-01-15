@@ -229,7 +229,7 @@ Mixer.prototype.toggleLoop = function () {
 
 // ################# MISC METHODS ######################
 
-//Adjusts dial input to valid playback level.. NEEDS REFACTOR
+//Adjusts dial input to valid playback level (reverse of adjustTempoDial method) .. NEEDS REFACTOR
 Mixer.prototype.adjustPlayback = function (integer) {
 	if (integer >= 50) {
 		return (integer / 50).toFixed(2)
