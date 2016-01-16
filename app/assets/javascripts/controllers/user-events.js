@@ -43,7 +43,7 @@ function draggableMixText(cell) {
 }
 
 function removeTrack(mixer) {
-  $(".cell").on("click", function() {
+  $(".cell").on("mousedown", function() {
     var $targetCell = $(this);
     var divId = $targetCell.attr("id")
     var trackId = convertId(divId);
@@ -61,6 +61,7 @@ function removeTrack(mixer) {
       mixer.removeTrack(trackId);
       $(drag).addClass("emptied");
       $(drag).empty();
+      $(drag).attr('style', "position: relative;");
       $(innerHex).removeClass("active");
       unloadImage(innerHex);
      }
@@ -69,25 +70,29 @@ function removeTrack(mixer) {
 }
 
 
-
+// Hover displays track information and listens for return bar key up
 function onHoverOptions(currentMixer){
-  $(".cell").hover(function() {
+  $(".cell").bind("hover, keyup", function() {
     var divId = $(this).attr("id")
-
   // console.log("hovering in " + trackId)
     var $targetComb =  $(this).find('.hex_inner')
     var targetCombText = $(this).find('.inner-text')
 
-    if ( $(targetCombText).hasClass("emptied") ){
-      $(targetCombText).attr('style', "position: relative;");
-    } else {
-      $(window).on("keyup", function(event){
-        if ( ($targetComb).hasClass("active") ){
+    // if ( $(targetCombText).hasClass("emptied") ){
+    //   $(targetCombText).attr('style', "position: relative;");
+    // }
+
+      // $(window).on("keyup", function(event){
+        // only show controls for a track that is currently playing
+        if ( ($targetComb).hasClass("active") && event.keyCode === 13 ){
+           event.stopPropagation();
           console.log("sensing a key up inside a hover")
-          setTargetForControlPanel(divId,currentMixer, event)
+          setTargetForControlPanel(divId,currentMixer)
+        } else {
+          currentMixer.assignTarget(null);
         };
-      });
-    }
+      // });
+
   });
   // mouseExitCell
 };

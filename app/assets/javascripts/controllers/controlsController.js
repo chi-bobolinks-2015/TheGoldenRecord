@@ -1,4 +1,3 @@
-
 function setControls(mix){
   moveVolumeDial(mix);
   movePanningDial(mix);
@@ -8,7 +7,7 @@ function setControls(mix){
   $(".control-panel").hide();
 }
 
-// Hides control panel and unassign target when not in use
+// Hide control panel and unassign target when not in use
 function hideControls(currentMixer){
   $(document).mouseup(function (e){
     var container = $(".control-panel");
@@ -22,25 +21,19 @@ function hideControls(currentMixer){
   });
 }
 
-// Assigns target and show control panel, called by onHoverOptions method
-function setTargetForControlPanel(divId, currentMixer, event){
+// Assign target and show control panel, called by onHoverOptions method
+function setTargetForControlPanel(divId, currentMixer){
   var trackId =  convertId(divId)
-  if( event.keyCode === 13 ){
 
-    console.log("show control panel for track " + trackId)
+  console.log("show control panel for track " + trackId)
 
-    currentMixer.assignTarget(trackId);
-    // showTargetTrackInControlPanel(divId);
-    $(".control-panel").show();
-    addColor(divId);
-    updateDials(currentMixer);
-    }
-    else {
-      currentMixer.assignTarget(null);
-    };
+  currentMixer.assignTarget(trackId);
+  $(".control-panel").show();
+  addColor(divId);
+  updateDials(currentMixer);
 };
 
-// Updates dials with current level of target track
+// Update dials with current level of target track
 function updateDials(currentMixer){
       var currentVolume= currentMixer.mix[currentMixer.target].volume();
       $("#volume-dial").val(currentVolume * 10).trigger("change");
@@ -56,7 +49,7 @@ function updateDials(currentMixer){
 
 }
 
-// Adjusts playback level to valid dial input (reverse of adjustPlayback method)
+// Adjust playback level to valid tempo dial input (reverse of adjustPlayback method)
 function adjustTempoDial(integer){
   if (integer >= 1) {
     return (integer * 50).toFixed(2)
