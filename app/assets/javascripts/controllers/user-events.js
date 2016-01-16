@@ -3,6 +3,8 @@ function setUserEvents(mix){
   globalPause(mix);
   dropTrack(mix);
   removeTrack(mix);
+  onHexHover();
+  openControls(mix)
 };
 
 // ############### Drag and Drop functionality ##################
@@ -70,36 +72,44 @@ function removeTrack(mixer) {
 }
 
 
-// Hover displays track information and listens for return bar key up
-function onHoverOptions(currentMixer){
-  $(".cell").bind("hover, keyup", function() {
-    var divId = $(this).attr("id")
-  // console.log("hovering in " + trackId)
-    var $targetComb =  $(this).find('.hex_inner')
-    var targetCombText = $(this).find('.inner-text')
+$(".mydiv")
+    .on("mouseenter", function () {
+        activeElem = $(this);
+    }).on("mouseleave", function () {
+        if(activeElem && activeElem.is(this)) {
+            activeElem = null;
+        }
+    });
 
-    // if ( $(targetCombText).hasClass("emptied") ){
-    //   $(targetCombText).attr('style', "position: relative;");
-    // }
+// Hover listening
+function onHexHover(){
+  $(".cell").on("mouseenter", function() {
+    activeElem = $(this);
+   }).on("mouseleave", function () {
+        if(activeElem && activeElem.is(this)) {
+           activeElem = null;
+        }
+   });
+}
 
-      // $(window).on("keyup", function(event){
+// Open Control Panel on return key
+function openControls(currentMixer){
+  $(window).on("keydown", function(event){
+    if( activeElem && (event.keyCode ===13) ){
+      var divId = activeElem.attr("id")
+      // console.log("hovering in " + trackId)
+      var $targetComb =  activeElem.find('.hex_inner')
+      var targetCombText = activeElem.find('.inner-text')
         // only show controls for a track that is currently playing
-        if ( ($targetComb).hasClass("active") && event.keyCode === 13 ){
-           event.stopPropagation();
-          console.log("sensing a key up inside a hover")
-          setTargetForControlPanel(divId,currentMixer)
-        } else {
-          currentMixer.assignTarget(null);
-        };
-      // });
-
+        // if ( ($targetComb).hasClass("active")
+           // event.stopPropagation();
+          // console.log("sensing a key up inside a hover")
+      setTargetForControlPanel(divId,currentMixer)
+    } else {
+        currentMixer.assignTarget(null);
+    };
   });
-  // mouseExitCell
 };
-
-// function mouseExitCell(){
-//   $(this).find("#track-info").remove();
-// }
 
 function returnDivs() {
   return $('div.cell')
