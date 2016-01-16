@@ -3,6 +3,8 @@ function setUserEvents(mix){
   globalPause(mix);
   dropTrack(mix);
   removeTrack(mix);
+  onHexHover();
+  openControls(mix)
 };
 
 // ############### Drag and Drop functionality ##################
@@ -43,7 +45,7 @@ function draggableMixText(cell) {
 }
 
 function removeTrack(mixer) {
-  $(".cell").on("click", function() {
+  $(".cell").on("mousedown", function() {
     var $targetCell = $(this);
     var divId = $targetCell.attr("id")
     var trackId = convertId(divId);
@@ -61,6 +63,7 @@ function removeTrack(mixer) {
       mixer.removeTrack(trackId);
       $(drag).addClass("emptied");
       $(drag).empty();
+      $(drag).attr('style', "position: relative;");
       $(innerHex).removeClass("active");
       unloadImage(innerHex);
      }
@@ -69,32 +72,44 @@ function removeTrack(mixer) {
 }
 
 
+$(".mydiv")
+    .on("mouseenter", function () {
+        activeElem = $(this);
+    }).on("mouseleave", function () {
+        if(activeElem && activeElem.is(this)) {
+            activeElem = null;
+        }
+    });
 
-function onHoverOptions(currentMixer){
-  $(".cell").hover(function() {
-    var divId = $(this).attr("id")
+// Hover listening
+function onHexHover(){
+  $(".cell").on("mouseenter", function() {
+    activeElem = $(this);
+   }).on("mouseleave", function () {
+        if(activeElem && activeElem.is(this)) {
+           activeElem = null;
+        }
+   });
+}
 
-  // console.log("hovering in " + trackId)
-    var $targetComb =  $(this).find('.hex_inner')
-    var targetCombText = $(this).find('.inner-text')
-
-    if ( $(targetCombText).hasClass("emptied") ){
-      $(targetCombText).attr('style', "position: relative;");
+// Open Control Panel on return key
+function openControls(currentMixer){
+  $(window).on("keydown", function(event){
+    if( activeElem && (event.keyCode ===13) ){
+      var divId = activeElem.attr("id")
+      // console.log("hovering in " + trackId)
+      var $targetComb =  activeElem.find('.hex_inner')
+      var targetCombText = activeElem.find('.inner-text')
+        // only show controls for a track that is currently playing
+        // if ( ($targetComb).hasClass("active")
+           // event.stopPropagation();
+          // console.log("sensing a key up inside a hover")
+      setTargetForControlPanel(divId,currentMixer)
     } else {
-      $(window).on("keyup", function(event){
-        if ( ($targetComb).hasClass("active") ){
-          console.log("sensing a key up inside a hover")
-          setTargetForControlPanel(divId,currentMixer, event)
-        };
-      });
-    }
+        currentMixer.assignTarget(null);
+    };
   });
-  // mouseExitCell
 };
-
-// function mouseExitCell(){
-//   $(this).find("#track-info").remove();
-// }
 
 function returnDivs() {
   return $('div.cell')
