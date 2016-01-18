@@ -1,0 +1,16 @@
+<div class="popup-info popup-login">
+
+<h2 class="f-header">Login for Administrators</h2>
+
+
+<%= form_tag '/login' do %>
+
+  <p>Name: <%= text_field_tag :name %><p>
+  <p>Password: <%= password_field_tag :password %></p>
+  <%= submit_tag "login" %>
+
+<% end %>
+
+<button type="button" class="close f-header">close</button>
+
+</div>

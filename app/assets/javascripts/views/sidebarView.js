@@ -32,7 +32,16 @@ function setTrackInfo(){
     popupBox.empty();
     popupBox.append("<h2 class='f-header'>" + trackArtist + "</h2>");
     popupBox.append("<h3 class='mb-lg mt-none'>" + trackTitle + "</h3>");
-    popupBox.append("<p>" + trackDescription + "Information about artist and track coming soon!</p>");
+
+    if (trackDescription === "") {
+      popupBox.append("<p>Information about artist and track coming soon!</p>");
+    } else {
+      popupBox.append("<p>" + trackDescription + "</p>");
+      popupBox.append()
+    };
+
+
+
     popupBox.append('<button type="button" class="close f-header">close</button>');
 
     $('body').append('<div class="container" id="mask"></div>');

@@ -34,13 +34,19 @@
 <%= render "tracks/about" %>
 <%= render "tracks/start" %>
 <%= render "tracks/meet" %>
-<%= render "tracks/launch" %>
 <%= render "tracks/credits" %>
+
 
 <%= yield %>
 
   <footer class="footer bgc-stormy">
-    <div class="fl-r mr-xlg f-header p-std" id="credits"><%= image_tag("navigation-bar/star-credits.png") %></div>
+    <% if current_user %>
+      Signed in as <%= current_user.name %> | <%= link_to "Logout", logout_path %>
+    <% else %>
+      <div class="fl-l ml-xlg p-std pt-m" id="login"><%= image_tag("navigation-bar/exit-big.png", height: '60', width: '60') %></div>
+      <%= render "tracks/login" %>
+    <% end %>
+    <div class="fl-r mr-xlg p-std" id="credits"><%= image_tag("navigation-bar/star-credits.png") %></div>
   </footer>
 
 </body>

@@ -69,15 +69,16 @@ class AmazonRetrievalJob < ActiveRecord::Base
   end
 
   def self.create_tracks_from_folders(folder_array)
-    Track.delete_all
-    folder_array.each do |folder|
-      folder.each do |object|
-         track = Track.new(key: object.key)
-         track.url = track.url
-         track.title = track.title
-         track.artist = track.artist
-         track.category_id = track.category_id
-         track.save!
+    unless Track.exists?
+      folder_array.each do |folder|
+        folder.each do |object|
+           track = Track.new(key: object.key)
+           track.url = track.url
+           track.title = track.title
+           track.artist = track.artist
+           track.category_id = track.category_id
+           track.save!
+        end
       end
     end
   end
