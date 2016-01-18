@@ -3,8 +3,13 @@ function setUserEvents(mix){
   globalPause(mix);
   dropTrack(mix);
   removeTrack(mix);
+  onHexHover();
+  openControls(mix)
 };
 
+// ############### Drag and Drop functionality ##################
+
+// Loads track info into mixer
 function dropTrack(mix){
   $(".cell").droppable({
     accept: ".draggableTrack",
@@ -28,6 +33,7 @@ function dropTrack(mix){
   });
 }
 
+// Makes track title on hexagon draggable for removeTrack
 function draggableMixText(cell) {
   var text = $(cell).find(".inner-text");
   console.log(text)
@@ -39,7 +45,7 @@ function draggableMixText(cell) {
 }
 
 function removeTrack(mixer) {
-  $(".cell").on("click", function() {
+  $(".cell").on("mousedown", function() {
     var $targetCell = $(this);
     var divId = $targetCell.attr("id")
     var trackId = convertId(divId);
@@ -57,6 +63,7 @@ function removeTrack(mixer) {
       mixer.removeTrack(trackId);
       $(drag).addClass("emptied");
       $(drag).empty();
+      $(drag).attr('style', "position: relative;");
       $(innerHex).removeClass("active");
       unloadImage(innerHex);
      }
@@ -64,92 +71,51 @@ function removeTrack(mixer) {
   });
 }
 
-function setTargetForControlPanel(divId, currentMixer, event){
-  var trackId =  convertId(divId)
-  if( event.keyCode === 13 ){
-    //  assign target, show control panel
-    console.log("show control panel for track " + trackId)
-    currentMixer.assignTarget(trackId);
-    $(".control-panel").show();
 
-    // Change color of hexagon.
-    addColor(divId);
+$(".mydiv")
+    .on("mouseenter", function () {
+        activeElem = $(this);
+    }).on("mouseleave", function () {
+        if(activeElem && activeElem.is(this)) {
+            activeElem = null;
+        }
+    });
 
-    // Then all the dials need to be updated to reflect the attribute values of the target
-      var $currentVolume= currentMixer.mix[currentMixer.target].volume();
-      $("#volume-dial").val($currentVolume * 10).trigger("change");
-
-      // var $currentPanning = currentMixer.mix[currentMixer.target]._audioNode[0].panner.setPosition(0, 0, 0);
-      // $("#panning-dial").val("0") //.trigger("change");
-
-      var $currentDelay= currentMixer.mix[currentMixer.target]._audioNode[3].delayTime.value
-      $("#echo-dial").val($currentDelay * 10).trigger("change");
-
-      var currentTempo = currentMixer.mix[currentMixer.target]._audioNode[0].bufferSource.playbackRate.value
-      $("#tempo-dial").val(convertPlaybackForTempoDial(currentTempo)).trigger("change");
-
-        // var $currentLoopValue = currentMixer.mix[currentMixer.target].loop
-        // $("#loop-toggle").val($currentLoopValue).trigger("change");
-
-    }
-    else {
-      currentMixer.assignTarget(null);
-      // $("p#track-title").remove();
-    };
-};
-
-function convertPlaybackForTempoDial(integer){
-// this method is the reverse of adjust playback in the mixer controller
-  if (integer >= 1) {
-    return (integer * 50).toFixed(2)
-  } else {
-    return ((integer * 100) - .5).toFixed(2)
-  }
+// Hover listening
+function onHexHover(){
+  $(".cell").on("mouseenter", function() {
+    activeElem = $(this);
+   }).on("mouseleave", function () {
+        if(activeElem && activeElem.is(this)) {
+           activeElem = null;
+        }
+   });
 }
 
-
-function addColor(divId) {
-  var target = $("div#" + divId + " div.hex_l div.hex_r div.hex_inner");
-  $(target).addClass("on-mixer");
-};
-
-function assignTrackInfoHover(cell, currentMixer, trackTitle){
-    var targetCombText = $(cell).find('.inner-text')
-    $(targetCombText).html(trackTitle);
-};
-
-function onHoverOptions(currentMixer){
-  $(".cell").hover(function() {
-    var divId = $(this).attr("id")
-
-  // console.log("hovering in " + trackId)
-    var $targetComb =  $(this).find('.hex_inner')
-    var targetCombText = $(this).find('.inner-text')
-
-    if ( $(targetCombText).hasClass("emptied") ){
-      $(targetCombText).attr('style', "position: relative;");
+// Open Control Panel on return key
+function openControls(currentMixer){
+  $(window).on("keydown", function(event){
+    if( activeElem && (event.keyCode ===13) ){
+      var divId = activeElem.attr("id")
+      // console.log("hovering in " + trackId)
+      var $targetComb =  activeElem.find('.hex_inner')
+      var targetCombText = activeElem.find('.inner-text')
+        // only show controls for a track that is currently playing
+        // if ( ($targetComb).hasClass("active")
+           // event.stopPropagation();
+          // console.log("sensing a key up inside a hover")
+      setTargetForControlPanel(divId,currentMixer)
     } else {
-      $(window).on("keyup", function(event){
-        if ( ($targetComb).hasClass("active") ){
-          console.log("sensing a key up inside a hover")
-          setTargetForControlPanel(divId,currentMixer, event)
-        };
-      });
-    }
+        currentMixer.assignTarget(null);
+    };
   });
-  // mouseExitCell
 };
-
-// function mouseExitCell(){
-//   $(this).find("#track-info").remove();
-// }
 
 function returnDivs() {
   return $('div.cell')
 };
-
+// Start and Stop on click, toggles "active" class
 function startAndStopTrack(mix) {
-  // ON CLICK - PLAY AND STOP
   // returnDivs().on('click', controlBoard.togglePlay.bind(controlBoard));
   returnDivs().on('click', function(e){
     var $targetComb =  $(this).find('.hex_inner')
@@ -175,13 +141,6 @@ function globalPause(mix) {
     };
   });
 }
-
-// function showTargetTrackInControlPanel(){
-    // var divId = cellId.toString();
-    // var trackTitle = $("div#" + divId).find(".inner-text").text();
-    // $("p#track-title").remove();
-    // $(".control-panel").append("<p id='track-title'>" + trackTitle + "</p>");
-// }
 
 
 
