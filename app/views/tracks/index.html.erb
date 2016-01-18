@@ -9,7 +9,9 @@
           <% category.tracks.each do |track| %>
             <% @track = track %>
             <li class="draggableTrack" url="<%= track.url %>" id="<%= track.id %>" image="<%= category.img %>"><a data-track-id="<%= track.id %>" data-track-title="<%= track.title %>" data-track-artist="<%= track.artist %>" data-track-description="<%= track.description %>" class="popup-window"><%= image_tag("navigation-bar/dark-plus.png") %></a><%= track.title %></li>
-            <li><%= link_to "EDIT", edit_track_path(track) %></li>
+            <% if current_user %>
+              <li><%= link_to "EDIT", edit_track_path(track) %></li>
+            <% end %>
           <% end %>
         </ul>
       </li>
