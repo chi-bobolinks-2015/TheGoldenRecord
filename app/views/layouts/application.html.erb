@@ -36,9 +36,16 @@
 <%= render "tracks/meet" %>
 <%= render "tracks/credits" %>
 
+
 <%= yield %>
 
   <footer class="footer bgc-stormy">
+    <% if current_user %>
+      Signed in as <%= current_user.name %> | <%= link_to "Logout", logout_path %>
+    <% else %>
+      <div class="fl-l p-lg pr-m" id="login"><%= image_tag("navigation-bar/share.png", height: '50', width: '50') %></div>
+      <%= render "tracks/login" %>
+    <% end %>
     <div class="fl-r mr-xlg f-header p-std" id="credits"><%= image_tag("navigation-bar/star-credits.png") %></div>
   </footer>
 
