@@ -35,8 +35,8 @@ function setNavPopUp(){
   $("#login").on("click", function() {
     var popupBox = $(".popup-login");
     popupBox.fadeIn(400);
-    $('body').append('<div class="container" id="bg-credits"></div>');
-    $("#bg-credits").fadeIn(400);
+    $('body').append('<div class="container" id="bg-login"></div>');
+    $("#bg-login").fadeIn(400);
   });
 
 }
@@ -49,5 +49,6 @@ function setNavClose(){
     $("#bg-start").remove();
     $("#bg-meet").remove();
     $("#bg-credits").remove();
+    $("#bg-login").remove();
   });
 }
