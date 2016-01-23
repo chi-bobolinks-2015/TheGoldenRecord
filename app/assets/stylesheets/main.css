@@ -192,7 +192,7 @@ h1, h2 {
 }
 
 a {
-  color: #948181;
+  color: #FFDD7D;
 }
 
 a:hover {
@@ -200,6 +200,14 @@ a:hover {
   text-decoration: none;
 }
 
+footer a {
+  color: #FFF;
+}
+
+footer a:hover {
+  color: #948181;
+  text-decoration: none;
+}
 
 /*Atomic styles*/
 .cur { cursor: pointer; }
