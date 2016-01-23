@@ -41,7 +41,7 @@
 
   <footer class="footer bgc-stormy">
     <% if current_user %>
-      Signed in as <%= current_user.name %> | <%= link_to "Logout", logout_path %>
+      <div class="fl-l ml-m pt-m fz-l f-header"><strong>signed in as <%= current_user.name %> | <%= link_to "logout", logout_path %></strong></div>
     <% else %>
       <div class="fl-l ml-xlg p-std pt-m" id="login"><%= image_tag("navigation-bar/exit-big.png", height: '60', width: '60') %></div>
       <%= render "tracks/login" %>
