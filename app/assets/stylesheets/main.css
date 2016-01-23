@@ -192,7 +192,7 @@ h1, h2 {
 }
 
 a {
-  color: #e4be51;
+  color: #948181;
 }
 
 a:hover {
@@ -208,6 +208,7 @@ a:hover {
 .fl-l { float: left; }
 .fl-r { float: right; }
 .mr-xlg {margin-right: 5em; }
+.ml-m { margin-left: 1em; }
 .ml-xlg { margin-left: 5em; }
 .mb-lg { margin-bottom: 15px; }
 .mt-none { margin-top: 0; }
