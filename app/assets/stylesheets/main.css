@@ -212,6 +212,7 @@ a:hover {
 .mb-lg { margin-bottom: 15px; }
 .mt-none { margin-top: 0; }
 .mt-m { margin-top: 1em; }
+.m-none { margin: none; }
 
 .p-std { padding: 1em; }
 .pt-m { padding-top: 1.5em; }

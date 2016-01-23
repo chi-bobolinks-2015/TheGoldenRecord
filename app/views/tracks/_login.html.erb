@@ -5,9 +5,12 @@
 
 <%= form_tag '/login' do %>
 
-  <p>Name: <%= text_field_tag :name %><p>
-  <p>Password: <%= password_field_tag :password %></p>
-  <%= submit_tag "login" %>
+  <p class="p-none fz-l m-none">Name:</p>
+  <%= text_field_tag :name %>
+  <p class="p-none fz-l m-none">Password:</p>
+  <%= password_field_tag :password %>
+  </br>
+  <%= submit_tag "login", class: "btn btn-primary mt-m f-header fz-l bgc-sea" %>
 
 <% end %>
 
