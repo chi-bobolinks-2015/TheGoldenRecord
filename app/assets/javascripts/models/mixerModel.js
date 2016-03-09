@@ -18,7 +18,6 @@ Mixer.prototype.addTrack = function (args) {
 		var targetComb = $("div#" + trackID + " div.hex_l div.hex_r div.hex_inner.active");
 		targetComb.toggleClass("active");
 	})
-	console.log(this.mix)
 	if (typeof this.mix[trackID] !== 'undefined') {
 		this.mix[trackID].unload()
 	}
@@ -132,7 +131,7 @@ Mixer.prototype.buildConvolver = function (params) {
 	return convolver
 }
 
-//Create new tuna.convolver(echo)
+//Create new tuna.delay
 Mixer.prototype.buildReverb = function (params) {
 
 	//Set variables for new effect from params
